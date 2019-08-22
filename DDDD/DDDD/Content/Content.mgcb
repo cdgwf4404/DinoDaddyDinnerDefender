@@ -49,7 +49,7 @@
 /processorParam:TextureFormat=Color
 /build:meteor.jpg
 
-#begin platform.png
+#begin tail.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,7 +59,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:platform.png
+/build:tail.jpg
 
 #begin volcano.png
 /importer:TextureImporter
