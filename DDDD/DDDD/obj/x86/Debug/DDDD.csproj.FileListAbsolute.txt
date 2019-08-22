@@ -54,3 +54,7 @@ C:\Users\u1274601\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\W
 C:\Users\u1274601\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
 C:\Users\u1274601\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XInput.xml
 C:\Users\u1274601\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CopyComplete
+C:\Users\u1274601\source\repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\dino2.xnb
+C:\Users\u1274601\source\repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Dino-RunCycle-300.xnb
+C:\Users\u1274601\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Grapes.xnb
+C:\Users\u1274601\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\dino3.xnb

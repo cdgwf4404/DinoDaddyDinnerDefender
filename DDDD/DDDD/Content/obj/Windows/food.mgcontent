@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/food.jpg</SourceFile>
-  <SourceTime>2019-08-21T01:43:22.1147123-06:00</SourceTime>
-  <DestFile>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/bin/Windows/food.xnb</DestFile>
-  <DestTime>2019-08-21T01:44:02.575903-06:00</DestTime>
+  <SourceFile>C:/Users/u1274601/source/repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/food.jpg</SourceFile>
+  <SourceTime>2019-08-22T11:06:14.4585467-06:00</SourceTime>
+  <DestFile>C:/Users/u1274601/source/repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/bin/Windows/food.xnb</DestFile>
+  <DestTime>2019-08-22T12:35:14.2197514-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T09:35:54-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

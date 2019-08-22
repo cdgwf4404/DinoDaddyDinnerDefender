@@ -52,7 +52,7 @@ namespace DDDD
 
             volcano = Content.Load<Texture2D>("volcano");
 
-            dino = new Dino(Content.Load<Texture2D>("dino"), new Vector2(GraphicsDevice.DisplayMode.Width / 2, GraphicsDevice.DisplayMode.Height), graphics);
+            dino = new Dino(Content.Load<Texture2D>("dino3"), new Vector2(GraphicsDevice.DisplayMode.Width / 2, GraphicsDevice.DisplayMode.Height), graphics);
         }
 
 
@@ -129,7 +129,7 @@ namespace DDDD
                 meteorAmount = 0;
                 if (meteors.Count < 1) // Amount of meteors allowed on the screen
                 {
-                    meteors.Add(new Meteor(Content.Load<Texture2D>("meteor"), new Vector2(randomX, -10)));
+                    meteors.Add(new Meteor(Content.Load<Texture2D>("Meteor"), new Vector2(randomX, -10)));
                 }
             }
 
@@ -151,7 +151,7 @@ namespace DDDD
                 foodAmount = 0;
                 if (foods.Count < 10) // Amount of foods allowed on the screen
                 {
-                    foods.Add(new Food(Content.Load<Texture2D>("food"), new Vector2(randomX, -10), graphics));
+                    foods.Add(new Food(Content.Load<Texture2D>("Grapes"), new Vector2(randomX, -10), graphics));
                 }
             }
 

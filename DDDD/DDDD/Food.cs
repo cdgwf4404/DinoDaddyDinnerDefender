@@ -58,7 +58,7 @@ namespace DDDD
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(food, foodPosition, null, Color.White, 0f, Vector2.Zero, 0.03f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(food, foodPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
     }
 }

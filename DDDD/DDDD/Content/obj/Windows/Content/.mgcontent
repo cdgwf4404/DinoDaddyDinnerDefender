@@ -5,12 +5,22 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino.jpg</File>
+    <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino2.png</File>
+    <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino3.png</File>
+    <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Dino-RunCycle-300.png</File>
     <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/food.jpg</File>
+    <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Grapes.png</File>
     <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/meteor.jpg</File>
+    <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Meteor.png</File>
     <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/tail.jpg</File>
     <File>C:/Users/u1274601/Source/Repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/volcano.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

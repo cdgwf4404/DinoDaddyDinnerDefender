@@ -44,7 +44,7 @@ namespace DDDD
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(meteor, meteorPosition, null, Color.White, 0f, Vector2.Zero, 0.05f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(meteor, meteorPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
     }
 }

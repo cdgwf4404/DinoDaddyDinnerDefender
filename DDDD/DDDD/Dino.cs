@@ -77,7 +77,7 @@ namespace DDDD
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(dino, dinoPosition, null, Color.White, 0f, dinoCenter, 0.1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(dino, dinoPosition, null, Color.White, 0f, dinoCenter, 1f, SpriteEffects.None, 0f);
         }
 
     }
