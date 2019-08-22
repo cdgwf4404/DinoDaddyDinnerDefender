@@ -18,11 +18,12 @@ namespace DDDD
         public bool dinoJumpFlag;
 
         public double dinoAngle = 0;
-
+        GraphicsDeviceManager graphics;
         public Rectangle dinoRec;
 
-        public Dino(Texture2D texture, Vector2 vector)
+        public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
+            graphics = gdm;
             dino = texture;
             dinoPosition = vector;
             dinoCenter = new Vector2(dino.Width / 2, dino.Height); //(1000 / 2, 1000)
@@ -63,7 +64,7 @@ namespace DDDD
                 dinoJumpSpeed.Y += 0.15f; // falling speed
             }
 
-            if (dinoPosition.Y >= 480) //dino reaches floor
+            if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height) //dino reaches floor
             {
                 dinoJumpFlag = false;
             }

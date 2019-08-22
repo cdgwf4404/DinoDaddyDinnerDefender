@@ -21,9 +21,11 @@ namespace DDDD
         Random random = new Random();
 
         public Rectangle foodRec;
+        GraphicsDeviceManager graphics;
 
-        public Food(Texture2D texture, Vector2 vector)
+        public Food(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
+            graphics = gdm;
             food = texture;
             foodPosition = vector;
 
@@ -41,7 +43,7 @@ namespace DDDD
         {
             foodPosition += foodSpeed;
 
-            if (foodPosition.Y > 500) // make the meteors disappear when hit the ground
+            if (foodPosition.Y > graphics.GraphicsDevice.DisplayMode.Height - 100) // make the meteors disappear when hit the ground
             {
                 foodSpawn = false;
             }

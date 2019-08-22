@@ -10,7 +10,7 @@ namespace DDDD
 
     public class Main : Game
     {
-        GraphicsDeviceManager graphics;
+        public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public Dino dino;
         List<Meteor> meteors = new List<Meteor>();
@@ -23,7 +23,8 @@ namespace DDDD
 
         public float meteorAmount = 0;
         public float foodAmount = 0;
-
+        TimeSpan foodTimeout = TimeSpan.FromSeconds(3);
+       
         
 
         public Main()
@@ -38,6 +39,10 @@ namespace DDDD
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
+            graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
+            graphics.IsFullScreen = true;
+            graphics.ApplyChanges();
         }
 
         protected override void LoadContent()
@@ -47,7 +52,7 @@ namespace DDDD
 
             volcano = Content.Load<Texture2D>("volcano");
 
-            dino = new Dino(Content.Load<Texture2D>("dino"), new Vector2(GraphicsDevice.Viewport.Bounds.Width / 2, GraphicsDevice.Viewport.Bounds.Height)); //(800 / 2, 480)
+            dino = new Dino(Content.Load<Texture2D>("dino"), new Vector2(GraphicsDevice.DisplayMode.Width / 2, GraphicsDevice.DisplayMode.Height), graphics);
         }
 
 
@@ -72,7 +77,7 @@ namespace DDDD
             {
                 food.Update(graphics.GraphicsDevice);
             }
-            randomFood();
+            randomFood(gameTime);
 
             dino.Update(gameTime);
 
@@ -91,7 +96,7 @@ namespace DDDD
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(volcano, new Rectangle(0, 0, 800, 480), Color.White); //background
+            spriteBatch.Draw(volcano, new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width/*800*/, GraphicsDevice.DisplayMode.Height/*480*/), Color.White); //background
 
             foreach(Meteor meteor in meteors)
             {
@@ -138,15 +143,15 @@ namespace DDDD
             }
         }
 
-        public void randomFood() //spwan foods
+         public void randomFood(GameTime gameTime) //spwan foods
         {
-            int randomX = random.Next(0, 800);
+            int randomX = random.Next(0, GraphicsDevice.DisplayMode.Width);
             if (foodAmount > 1) // Spawn cool down (seconds)
             {
                 foodAmount = 0;
-                if (foods.Count < 5) // Amount of foods allowed on the screen
+                if (foods.Count < 10) // Amount of foods allowed on the screen
                 {
-                    foods.Add(new Food(Content.Load<Texture2D>("food"), new Vector2(randomX, -10)));
+                    foods.Add(new Food(Content.Load<Texture2D>("food"), new Vector2(randomX, -10), graphics));
                 }
             }
 
@@ -154,8 +159,17 @@ namespace DDDD
             {
                 if (foods[i].foodSpawn == false) //TODO: Collision for foods and dino
                 {
-                    foods.RemoveAt(i); //Remove foods when hit ground
-                    i--;
+                    foods[i].foodSpeed = new Vector2(0f, 0f); //Stop food falling and begin countdown
+                    foodTimeout -= gameTime.ElapsedGameTime;  
+                    
+                    if (foodTimeout <= TimeSpan.Zero) 
+                    {
+                        foods.RemoveAt(i); //Remove foods after time
+                        i--;
+                        foodTimeout = TimeSpan.FromSeconds(3); 
+                    }
+
+                    
                 }
 
             }
