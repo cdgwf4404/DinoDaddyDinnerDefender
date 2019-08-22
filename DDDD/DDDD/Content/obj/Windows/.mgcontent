@@ -7,9 +7,11 @@
     <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/dino.jpg</File>
     <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/food.jpg</File>
     <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/meteor.jpg</File>
+    <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/tail.jpg</File>
     <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/volcano.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

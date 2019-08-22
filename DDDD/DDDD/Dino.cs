@@ -17,6 +17,8 @@ namespace DDDD
         public Vector2 dinoJumpSpeed;
         public bool dinoJumpFlag;
 
+        public double dinoAngle = 0;
+
         public Rectangle dinoRec;
 
         public Dino(Texture2D texture, Vector2 vector)
@@ -36,10 +38,12 @@ namespace DDDD
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 dinoJumpSpeed.X = -3f;
+                dinoAngle = Math.PI;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 dinoJumpSpeed.X = 3f;
+                dinoAngle = 0f;
             }
             else
             {

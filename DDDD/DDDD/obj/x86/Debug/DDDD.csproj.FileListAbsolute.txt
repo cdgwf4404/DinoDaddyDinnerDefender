@@ -25,3 +25,4 @@ C:\Users\jingyi\source\repos\DDDD\DDDD\bin\Windows\x86\Debug\Content\volcano.xnb
 C:\Users\jingyi\source\repos\DDDD\DDDD\bin\Windows\x86\Debug\Content\meteor.xnb
 C:\Users\jingyi\source\repos\DDDD\DDDD\bin\Windows\x86\Debug\Content\dino.xnb
 C:\Users\jingyi\source\repos\DDDD\DDDD\bin\Windows\x86\Debug\Content\food.xnb
+C:\Users\jingyi\source\repos\DDDD\DDDD\bin\Windows\x86\Debug\Content\tail.xnb

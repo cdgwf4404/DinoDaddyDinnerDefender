@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace DDDD
 {
@@ -14,6 +15,8 @@ namespace DDDD
         public Dino dino;
         List<Meteor> meteors = new List<Meteor>();
         List<Food> foods = new List<Food>();
+        List<Tail> tails = new List<Tail>();
+
         Random random = new Random();
 
         public Texture2D volcano;
@@ -21,6 +24,7 @@ namespace DDDD
         public float meteorAmount = 0;
         public float foodAmount = 0;
 
+        
 
         public Main()
         {
@@ -71,12 +75,13 @@ namespace DDDD
             randomFood();
 
             dino.Update(gameTime);
-            /*
-            if (dinoRec.Intersects(foodRec))
-            {
 
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                swip();
             }
-            */
+            tailAction();
+
             base.Update(gameTime);
         }
 
@@ -98,7 +103,14 @@ namespace DDDD
                 food.Draw(spriteBatch);
             }
 
+            foreach (Tail tail in tails)
+            {
+                tail.Draw(spriteBatch);
+            }
+
             dino.Draw(spriteBatch);
+
+
             spriteBatch.End();
 
             base.Draw(gameTime);
@@ -146,6 +158,42 @@ namespace DDDD
                     i--;
                 }
 
+            }
+        }
+
+        public void tailAction() //generate a tail
+        {
+            foreach (Tail tail in tails.ToList())
+            {
+                tail.tailPosition += tail.tailSpeed;
+                if (Vector2.Distance(tail.tailPosition, dino.dinoPosition) > 100) //length of the tail
+                {
+                    tail.swip = false;
+                }
+
+                for (int i = 0; i < tails.Count; i++)
+                {
+                    if(tails[i].swip == false)
+                    {
+                        tails.RemoveAt(i);
+                        i--;
+                    }
+
+                }
+            }
+        }
+
+        public void swip() //asign speed and position to the tail
+        {
+            Tail newtail = new Tail(Content.Load<Texture2D>("tail")); // draw only for testings 
+            newtail.tailSpeed = new Vector2((float)Math.Cos(dino.dinoAngle), (float)Math.Sin(dino.dinoAngle)) * 5f + dino.dinoJumpSpeed;
+            newtail.tailPosition = dino.dinoPosition + newtail.tailSpeed * 5;
+            newtail.tailPosition.Y -= 50; //adjest tail position
+            newtail.swip = true;
+
+            if(tails.Count < 1)
+            {
+                tails.Add(newtail);
             }
         }
     }
