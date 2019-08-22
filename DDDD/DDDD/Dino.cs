@@ -11,18 +11,18 @@ namespace DDDD
 {
     public class Dino
     {
+        GraphicsDeviceManager graphics;
         public Texture2D dino;
         public Vector2 dinoPosition;
         public Vector2 dinoCenter;
         public Vector2 dinoJumpSpeed;
         public bool dinoJumpFlag;
 
-        public double dinoAngle = 0;
-
         public Rectangle dinoRec;
 
-        public Dino(Texture2D texture, Vector2 vector)
+        public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
+            graphics = gdm;
             dino = texture;
             dinoPosition = vector;
             dinoCenter = new Vector2(dino.Width / 2, dino.Height); //(1000 / 2, 1000)
@@ -38,12 +38,10 @@ namespace DDDD
             if (Keyboard.GetState().IsKeyDown(Keys.A))
             {
                 dinoJumpSpeed.X = -3f;
-                dinoAngle = Math.PI;
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.D))
             {
                 dinoJumpSpeed.X = 3f;
-                dinoAngle = 0f;
             }
             else
             {
@@ -63,7 +61,7 @@ namespace DDDD
                 dinoJumpSpeed.Y += 0.15f; // falling speed
             }
 
-            if (dinoPosition.Y >= 480) //dino reaches floor
+            if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height) //dino reaches floor
             {
                 dinoJumpFlag = false;
             }
@@ -76,9 +74,10 @@ namespace DDDD
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(dino, dinoPosition, null, Color.White, 0f, dinoCenter, 0.1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(dino, dinoPosition, null, Color.White, 0f, dinoCenter, .125f, SpriteEffects.None, 0f);
         }
 
     }
    
 }
+ 
