@@ -17,17 +17,13 @@ namespace DDDD
         public Vector2 foodPosition;
         public Vector2 foodSpeed;
         public bool foodSpawn;
-        public bool foodExpire;
         public int foodY;
         Random random = new Random();
 
         public Rectangle foodRec;
-        GraphicsDeviceManager graphics;
-        TimeSpan foodTime = TimeSpan.FromSeconds(3);
 
-        public Food(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
+        public Food(Texture2D texture, Vector2 vector)
         {
-            graphics = gdm;
             food = texture;
             foodPosition = vector;
 
@@ -38,20 +34,17 @@ namespace DDDD
             foodRec = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, (int)foodPosition.X + food.Width, (int)foodPosition.Y + food.Height);
 
             foodSpawn = true;
-            foodExpire = false;
+
         }
 
         public void Update(GraphicsDevice graphicsDevice)
         {
-
             foodPosition += foodSpeed;
 
-            if (foodPosition.Y > graphics.GraphicsDevice.DisplayMode.Height - 100) // make the meteors disappear when hit the ground
+            if (foodPosition.Y > 500) // make the meteors disappear when hit the ground
             {
                 foodSpawn = false;
             }
-
-            
             /*
             if (foodRec.Intersects(main.dino.dinoRec))
             {

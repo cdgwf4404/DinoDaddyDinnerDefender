@@ -2,4 +2,5 @@ Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Siz
 "C:/Users/jingyi/source/repos/DDDD/DDDD/Content/dino.jpg","C:/Users/jingyi/source/repos/DDDD/DDDD/Content/bin/Windows/dino.xnb","TextureProcessor","Texture2DContent",128296,4000085,0.2673008
 "C:/Users/jingyi/source/repos/DDDD/DDDD/Content/food.jpg","C:/Users/jingyi/source/repos/DDDD/DDDD/Content/bin/Windows/food.xnb","TextureProcessor","Texture2DContent",128777,6750085,0.3461807
 "C:/Users/jingyi/source/repos/DDDD/DDDD/Content/meteor.jpg","C:/Users/jingyi/source/repos/DDDD/DDDD/Content/bin/Windows/meteor.xnb","TextureProcessor","Texture2DContent",27853,2160085,0.2344508
+"C:/Users/jingyi/source/repos/DDDD/DDDD/Content/tail.jpg","C:/Users/jingyi/source/repos/DDDD/DDDD/Content/bin/Windows/tail.xnb","TextureProcessor","Texture2DContent",5630,288085,0.8456377
 "C:/Users/jingyi/source/repos/DDDD/DDDD/Content/volcano.png","C:/Users/jingyi/source/repos/DDDD/DDDD/Content/bin/Windows/volcano.xnb","TextureProcessor","Texture2DContent",656772,3686485,0.7593606

@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DDDD
 {
-    public class Platform
+    class Platform
     {
         public Texture2D platform;
         public Vector2 platformPosition;
@@ -23,9 +23,8 @@ namespace DDDD
             }
         }
 
-        public Platform(Texture2D texture, Vector2 position)
+        public Platform(Texture2D texture)
         {
-            platformPosition = position;
             platform = texture;
         }
 
