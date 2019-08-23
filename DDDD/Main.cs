@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
-//v2
+//DDDD2
 namespace DDDD
 {
 
@@ -19,8 +19,9 @@ namespace DDDD
         private Nest _nest1;
         private Yum _yum;
         private Full _full;
+        public int foodIndex = 0;
 
-        
+
 
         public Texture2D volcano;
         public Texture2D nest1Texture;
@@ -33,7 +34,7 @@ namespace DDDD
         public Boolean receivedFood = false;//collision detected
         public int foodFromDaddy = 0;
         public Boolean babyIsfull = false;
-        public int foodMax = 20;
+        public int foodMax = 3;
         public List<bool> fed = new List<bool>();
 
 
@@ -119,44 +120,30 @@ namespace DDDD
             }
             */
 
-           // for (int i=0; i<foods.Count; i++)
-           foreach (var food in foods)
+            for (int i=0; i<foods.Count; i++)
+           //foreach (var food in foods)
             {
-                //Rectangle foodRectangle = new Rectangle((int)foods[i].foodPosition.X, (int)foods[i].foodPosition.Y, foods[i].food.Width, foods[i].food.Height);
-                Rectangle foodRectangle = new Rectangle((int)food.foodPosition.X, (int)food.foodPosition.Y, food.food.Width, food.food.Height);
+                Rectangle foodRectangle = new Rectangle((int)foods[i].foodPosition.X, (int)foods[i].foodPosition.Y, foods[i].food.Width, foods[i].food.Height);
+                //Rectangle foodRectangle = new Rectangle((int)food.foodPosition.X, (int)food.foodPosition.Y, food.food.Width, food.food.Height);
                 //check collision
                 //if (foodRectangle.Intersects(_nest1.Rectangle))
+                
                 
                 if (_nest1.Rectangle.Intersects(foodRectangle))
                 {
                     receivedFood = true;//collision
-                   // fed.Add(true);
+                                        
+                    foodIndex = i;
                     
-                    //foodFromDaddy += 1;
  
                 }
                 
-                
-           
-          
-                /*
 
-                if (_nest1.IsTouchingLeft(food))
-                {
-                    receivedFood = true;//collision
-                    foodFromDaddy += 1;
-                }
-                */
-                /*
-                if (fed.Count > 20)
+                if (fed.Count == foodMax)
                     {
                         babyIsfull = true;
 
                     }
-                */
-
-
-                    
                 
 
             }
@@ -191,6 +178,8 @@ namespace DDDD
             {
                 _yum.Draw(spriteBatch);
                 receivedFood = false;
+                foods.RemoveAt(foodIndex);
+
                 foodFromDaddy += 1;
                 Console.WriteLine("test " + foodFromDaddy);
             }
@@ -199,7 +188,7 @@ namespace DDDD
 
             if (foodFromDaddy == foodMax)
             {
-               // babyIsfull = true;
+                babyIsfull = true;
 
             }
 
