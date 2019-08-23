@@ -29,7 +29,6 @@ namespace DDDD
         {
             //spriteBatch.Draw(_texture, _postion, Color.White);
             spriteBatch.Draw(_texture, destinationRectangle: new Rectangle(250, 200, 50, 50), Color.White);
-
         }
     }
 }
