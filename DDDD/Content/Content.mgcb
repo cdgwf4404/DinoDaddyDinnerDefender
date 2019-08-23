@@ -25,6 +25,18 @@
 /processorParam:TextureFormat=Color
 /build:dino.jpg
 
+#begin egg1.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:egg1.jpg
+
 #begin food.jpg
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -36,6 +48,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:food.jpg
+
+#begin full.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:full.jpg
 
 #begin meteor.jpg
 /importer:TextureImporter
@@ -72,4 +96,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:volcano.png
+
+#begin yummy.jpg
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:yummy.jpg
 

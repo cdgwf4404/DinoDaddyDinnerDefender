@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+//all 3 branches - platform, tail & nest
 namespace DDDD
 {
 
@@ -17,13 +18,28 @@ namespace DDDD
         List<Food> foods = new List<Food>();
         List<Tail> tails = new List<Tail>();
 
+        private Nest _nest1;
+        private Yum _yum;
+        private Full _full;
+        public int foodIndex = 0;
+
         Random random = new Random();
 
         public Texture2D volcano;
+        public Texture2D nest1Texture;
+        public Texture2D yumTexture;
+        public Texture2D fullTexture;
 
         public float meteorAmount = 0;
         public float foodAmount = 0;
+        public int foodFromDaddy = 0;
+        public Boolean receivedFood = false;//collision detected
+        public Boolean babyIsfull = false;
+        public int foodMax = 3;
+
         TimeSpan foodTimeout = TimeSpan.FromSeconds(3);
+
+
        
         
 
@@ -53,6 +69,18 @@ namespace DDDD
             volcano = Content.Load<Texture2D>("volcano");
 
             dino = new Dino(Content.Load<Texture2D>("dino"), new Vector2(GraphicsDevice.DisplayMode.Width / 2, GraphicsDevice.DisplayMode.Height), graphics);
+
+            nest1Texture = Content.Load<Texture2D>("egg1");
+            _nest1 = new Nest(nest1Texture);
+            _nest1._position = new Vector2(100, 100);
+
+            yumTexture = Content.Load<Texture2D>("yummy");
+            _yum = new Yum(yumTexture);
+            _yum._position = new Vector2(300, 300);
+
+            fullTexture = Content.Load<Texture2D>("full");
+            _full = new Full(fullTexture);
+            _full._position = new Vector2(100, 100);
         }
 
 
@@ -87,7 +115,27 @@ namespace DDDD
             }
             tailAction();
 
+            for (int i = 0; i < foods.Count; i++)
+            //foreach (var food in foods)
+            {
+                Rectangle foodRectangle = new Rectangle((int)foods[i].foodPosition.X, (int)foods[i].foodPosition.Y, foods[i].food.Width, foods[i].food.Height);
+                //Rectangle foodRectangle = new Rectangle((int)food.foodPosition.X, (int)food.foodPosition.Y, food.food.Width, food.food.Height);
+                //check collision
+                //if (foodRectangle.Intersects(_nest1.Rectangle))
+
+
+                if (_nest1.Rectangle.Intersects(foodRectangle))
+                {
+                    receivedFood = true;//collision
+
+                    foodIndex = i;
+                }
+
+            }
+
             base.Update(gameTime);
+
+
         }
 
 
@@ -114,6 +162,29 @@ namespace DDDD
             }
 
             dino.Draw(spriteBatch);
+            _nest1.Draw(spriteBatch);
+
+            if (receivedFood)
+            {
+                _yum.Draw(spriteBatch);
+                receivedFood = false;
+                foods.RemoveAt(foodIndex);
+
+                foodFromDaddy += 1;
+                Console.WriteLine("test " + foodFromDaddy);
+            }
+
+            if (foodFromDaddy == foodMax)
+            {
+                babyIsfull = true;
+
+            }
+
+            //baby is full
+            if (babyIsfull)
+            {
+                _full.Draw(spriteBatch);
+            }
 
 
             spriteBatch.End();
