@@ -19,11 +19,8 @@ namespace DDDD
         public int meteorY;
         Random random = new Random();
 
-        GraphicsDeviceManager graphics;
-
-        public Meteor(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
+        public Meteor(Texture2D texture, Vector2 vector)
         {
-            graphics = gdm;
             meteor = texture;
             meteorPosition = vector;
 
@@ -39,8 +36,7 @@ namespace DDDD
         {
             meteorPosition += meteorSpeed;
 
-            //if(meteorPosition.Y > 500) // make the meteors disappear when hit the ground
-            if (meteorPosition.Y > graphics.GraphicsDevice.DisplayMode.Height - 100) // make the meteors disappear when hit the ground
+            if(meteorPosition.Y > 500) // make the meteors disappear when hit the ground
             {
                 meteorSpawn = false;
             }

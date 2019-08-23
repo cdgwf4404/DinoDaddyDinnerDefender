@@ -49,7 +49,7 @@ namespace DDDD
 
         }
 
-        #region Collision
+        
         public bool IsTouchingLeft(Food food)
         {
             return this.Rectangle.Right > food.foodRec.Left &&
@@ -81,7 +81,7 @@ namespace DDDD
                    this.Rectangle.Right > food.foodRec.Left &&
                    this.Rectangle.Left < food.foodRec.Right;
         }
-        #endregion 
+        
 
 
     }
