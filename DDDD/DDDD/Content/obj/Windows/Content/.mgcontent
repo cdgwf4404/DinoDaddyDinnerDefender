@@ -4,13 +4,39 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/dino.jpg</File>
-    <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/food.jpg</File>
-    <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/meteor.jpg</File>
-    <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/tail.jpg</File>
-    <File>C:/Users/jingyi/source/repos/DDDD/DDDD/Content/volcano.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/Apples.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/BabyDino.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/Background.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/Carrots.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/dino.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/dino2.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/DinoSheet.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/egg1.jpg</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/food.jpg</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/full.jpg</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/fullSmall.jpg</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/Grapes.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/meteor.jpg</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/Meteor.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/tail.jpg</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/Ubuntu32.spritefont</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/volcano.png</File>
+    <File>C:/Users/jingyi/Desktop/master/DinoDaddyDinnerDefender-master/DDDD/Content/yummy.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
