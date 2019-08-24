@@ -121,6 +121,7 @@ namespace DDDD
                     if (swipeLeft >= 21)
                     {
                         swipeLeft = 17;
+                        
                     }
                     else
                     {

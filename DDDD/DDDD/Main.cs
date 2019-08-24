@@ -46,9 +46,9 @@ namespace DDDD
         public Boolean receivedFood2 = false;
 
         public Boolean babyIsfull = false;
-        public Boolean babyIsfull2 = false;
+        public Boolean babyIsfull2 = false; 
 
-        public int foodMax = 1;
+        public int foodMax = 2;
 
         TimeSpan foodTimeout = TimeSpan.FromSeconds(3);
 
@@ -70,6 +70,18 @@ namespace DDDD
             {
                 foods.RemoveAt(i);
             }
+
+            foodFromDaddy = 0;
+            foodFromDaddy2 = 0;
+
+            receivedFood = false;//collision detected
+            receivedFood2 = false;
+
+            babyIsfull = false;
+            babyIsfull2 = false;
+
+
+
         }
 
         enum GameState
@@ -81,6 +93,7 @@ namespace DDDD
         }
 
         GameState currentGameState = GameState.Menu;
+
         public Main()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -96,7 +109,7 @@ namespace DDDD
             base.Initialize();
             graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
             graphics.ApplyChanges();
         }
 
@@ -104,17 +117,15 @@ namespace DDDD
         {
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
             volcano = Content.Load<Texture2D>("Background");
-
             dino = new Dino(Content.Load<Texture2D>("dino"), new Vector2(1920 / 2, 900), graphics);
-
             Ubuntu32 = Content.Load<SpriteFont>("Ubuntu32");
 
             //nest1Texture = Content.Load<Texture2D>("egg1");
             nest1Texture = Content.Load<Texture2D>("BabyDino");
             nests.Add(new Nest(nest1Texture));
             nests[0]._position = new Vector2(500, 900);
+            // nests.Add(new Nest(Content.Load<Texture2D>("BabyDino2"), new Vector2(1200, 400)));
 
             nest2Texture = Content.Load<Texture2D>("BabyDino");
             nests.Add(new Nest(nest1Texture));
@@ -139,121 +150,133 @@ namespace DDDD
 
         protected override void Update(GameTime gameTime)
         {
-            switch (currentGameState)
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
-                case GameState.Menu:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-                    {
-                        currentGameState = GameState.Playing;
-                    }
+                Exit();
+            }
+            else
+            {
 
-                    break;
-
-                case GameState.Playing:
-                    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                    {
-                        Exit();
-                    }
-                    else
-                    {
-
-
-                        dino.Update(gameTime);
-
-                        meteorAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                        foreach (Meteor meteor in meteors)
+                switch (currentGameState)
+                {
+                    case GameState.Menu:
+                        if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                         {
-                            meteor.Update(graphics.GraphicsDevice);
-                        }
-                        randomMeteor();
-
-                        foodAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                        //Rectangle dinoRectangle = new Rectangle((int)dino.dinoPosition.X - 250, (int)dino.dinoPosition.Y - 147, dino.dino.Width, dino.dino.Height);
-
-                        //foreach (Food food in foods)
-                        for (int i = 0; i < foods.Count; i++)
-                        {
-                            if (foods[i].Rectangle.Intersects(dino.Rectangle))
-                            {
-                                foodHitDino = true;
-                            }
-
-                            foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, foodHitDino);
-                            foodHitDino = false;
+                            currentGameState = GameState.Playing;
                         }
 
-                        randomFood(gameTime);
+                        break;
 
-
-
-                        for (int i = 0; i < foods.Count; i++)
-                        //foreach (var food in foods)
+                    case GameState.Playing:
+                        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                         {
-                            Rectangle foodRectangle = new Rectangle((int)foods[i].foodPosition.X, (int)foods[i].foodPosition.Y, foods[i].food.Width, foods[i].food.Height);
-                            //Rectangle foodRectangle = new Rectangle((int)food.foodPosition.X, (int)food.foodPosition.Y, food.food.Width, food.food.Height);
-
-                            //if (foodRectangle.Intersects(_nest1.Rectangle))
-
-
-                            //check collision
-                            if (nests[0].Rectangle.Intersects(foodRectangle) && foods[i].foodHit)
-                            {
-                                receivedFood = true;//collision
-
-                                foodIndex = i;
-                            }
-
-                            if (nests[1].Rectangle.Intersects(foodRectangle) && foods[i].foodHit)
-                            {
-                                receivedFood2 = true;//collision
-
-                                foodIndex2 = i;
-                            }
-
+                            Exit();
                         }
-
-                        for (int i = 0; i < meteors.Count; i++)
+                        else
                         {
-                            if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyDown(Keys.Space))
+                            dino.Update(gameTime);
+
+                            meteorAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                            foreach (Meteor meteor in meteors)
                             {
-                                //meteorHitDino = true;
-                                meteors.RemoveAt(i);
+                                meteor.Update(graphics.GraphicsDevice);
+                            }
+                            randomMeteor();
+
+                            foodAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                            //Rectangle dinoRectangle = new Rectangle((int)dino.dinoPosition.X - 250, (int)dino.dinoPosition.Y - 147, dino.dino.Width, dino.dino.Height);
+
+                            //foreach (Food food in foods)
+                            for (int i = 0; i < foods.Count; i++)
+                            {
+                                if (foods[i].Rectangle.Intersects(dino.Rectangle))//&& swipe
+                                {
+                                    foodHitDino = true;
+                                }
+
+                                foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, foodHitDino);//and swipe== true
+                                foodHitDino = false;
+                            }
+
+                            randomFood(gameTime);
+
+
+
+                            for (int i = 0; i < foods.Count; i++)
+                            //foreach (var food in foods)
+                            {
+                                Rectangle foodRectangle = new Rectangle((int)foods[i].foodPosition.X, (int)foods[i].foodPosition.Y, foods[i].food.Width, foods[i].food.Height);
+                                //Rectangle foodRectangle = new Rectangle((int)food.foodPosition.X, (int)food.foodPosition.Y, food.food.Width, food.food.Height);
+
+                                //if (foodRectangle.Intersects(_nest1.Rectangle))
+
+
+                                //check collision
+                                if (nests[0].Rectangle.Intersects(foodRectangle) && foods[i].foodHit)
+                                {
+                                    receivedFood = true;//collision
+
+                                    foodIndex = i;
+                                }
+
+                                if (nests[1].Rectangle.Intersects(foodRectangle) && foods[i].foodHit)
+                                {
+                                    receivedFood2 = true;//collision
+
+                                    foodIndex2 = i;
+                                }
 
                             }
-                            else if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyUp(Keys.Space))
-                            {
-                                //meteorHitDino = true;
-                                meteors.RemoveAt(i);
-                                dinoHealth -= 1;
 
+                            for (int i = 0; i < meteors.Count; i++)
+                            {
+                                if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyDown(Keys.Space))
+                                {
+                                    //meteorHitDino = true;
+                                    meteors.RemoveAt(i);
+
+                                }
+                                else if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyUp(Keys.Space))
+                                {
+                                    //meteorHitDino = true;
+                                    meteors.RemoveAt(i);
+                                    dinoHealth -= 1;
+
+                                }
                             }
+
+                            if (dinoHealth <= 0)
+                            {
+                                reload();
+                                currentGameState = GameState.Lose;
+                            }
+
+                            if (babyIsfull && babyIsfull2)
+                            {
+                                reload();
+                                currentGameState = GameState.Win;
+                            }
+
+                            base.Update(gameTime);
                         }
+                        break;
 
-                        if(dinoHealth <= 0)
+                    case GameState.Win:
+                        if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                         {
-                            reload();
-                            currentGameState = GameState.Lose;
+                            currentGameState = GameState.Playing;
                         }
+                        break;
 
-                        base.Update(gameTime);
-                    }
-                    break;
-
-                case GameState.Win:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-                    {
-                        currentGameState = GameState.Playing;
-                    }
-                    break;
-
-                case GameState.Lose:
-                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-                    {
-                        currentGameState = GameState.Playing;
-                    }
-                    break;
+                    case GameState.Lose:
+                        if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                        {
+                            currentGameState = GameState.Playing;
+                        }
+                        break;
+                }
             }
 
         }
@@ -269,7 +292,7 @@ namespace DDDD
             {
                 case GameState.Menu:
                     spriteBatch.Draw(volcano, new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width/*800*/, GraphicsDevice.DisplayMode.Height/*480*/), Color.White); //background
-                    spriteBatch.DrawString(Ubuntu32, "Press Enter to Begin", new Vector2(GraphicsDevice.DisplayMode.Width/2, 100), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, "Press Enter to Begin", new Vector2(GraphicsDevice.DisplayMode.Width / 2, 100), Color.Black);
                     break;
 
                 case GameState.Playing:
