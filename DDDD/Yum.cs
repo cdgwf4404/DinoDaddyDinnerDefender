@@ -22,7 +22,6 @@ namespace DDDD
         public void Update()
         {
 
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
