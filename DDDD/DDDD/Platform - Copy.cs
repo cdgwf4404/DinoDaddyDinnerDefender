@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DDDD
 {
-    public class Platform
+    public class Sprite
     {
         //Main main;
 

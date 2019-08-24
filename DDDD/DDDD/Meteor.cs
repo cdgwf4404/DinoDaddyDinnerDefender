@@ -17,10 +17,24 @@ namespace DDDD
         public Vector2 meteorSpeed;
         public bool meteorSpawn;
         public int meteorY;
-        Random random = new Random();
+        //Random random = new Random();
 
-        public Meteor(Texture2D texture, Vector2 vector)
+        GraphicsDeviceManager graphics;
+
+        public Rectangle Rectangle
         {
+            get
+            {
+
+                Rectangle rectangle = new Rectangle((int)meteorPosition.X, (int)meteorPosition.Y, meteor.Width, meteor.Height);
+                //Console.WriteLine("nestrectangle height " + rectangle.Height + "width " + rectangle.Width);
+                return rectangle;
+            }
+        }
+
+        public Meteor(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
+        {
+            graphics = gdm;
             meteor = texture;
             meteorPosition = vector;
 
@@ -36,7 +50,8 @@ namespace DDDD
         {
             meteorPosition += meteorSpeed;
 
-            if(meteorPosition.Y > 500) // make the meteors disappear when hit the ground
+            //if(meteorPosition.Y > 500) // make the meteors disappear when hit the ground
+            if (meteorPosition.Y > graphics.GraphicsDevice.DisplayMode.Height - 100) // make the meteors disappear when hit the ground
             {
                 meteorSpawn = false;
             }
