@@ -17,6 +17,7 @@ namespace DDDD
         List<Meteor> meteors = new List<Meteor>();
         List<Food> foods = new List<Food>();
         List<Nest> nests = new List<Nest>();
+        List<Platform> platforms = new List<Platform>();
 
         public int meteorIndex = 0;
 
@@ -40,6 +41,8 @@ namespace DDDD
 
         public float meteorAmount = 0;
         public float foodAmount = 0;
+
+        public bool onPlatform = false;
         
 
         public int foodMax = 2;
@@ -51,7 +54,11 @@ namespace DDDD
 
         private SpriteFont Ubuntu32;
 
-        public int dinoHealth = 3;
+        public int dinoHealth = 5;
+
+        public bool babyHit = false;
+
+        public string failText;
 
         private void reload() //reset game values when win or fail
         {
@@ -115,15 +122,19 @@ namespace DDDD
             dino = new Dino(Content.Load<Texture2D>("dino"), new Vector2(1920 / 2, 900), graphics);
             Ubuntu32 = Content.Load<SpriteFont>("Ubuntu32");
 
+            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1920 / 2 + 200, 1080/2 + 120), graphics));
+            //platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(550, 1080 / 2), graphics));
+            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(0, 1080 / 2 + 120), graphics));
+
             //nest1Texture = Content.Load<Texture2D>("egg1");
             nest1Texture = Content.Load<Texture2D>("BabyDino");
             nests.Add(new Nest(nest1Texture));
-            nests[0]._position = new Vector2(500, 900);
+            nests[0]._position = new Vector2(50, 1080 / 2 + 50);
             // nests.Add(new Nest(Content.Load<Texture2D>("BabyDino2"), new Vector2(1200, 400)));
 
             nest2Texture = Content.Load<Texture2D>("BabyDino");
             nests.Add(new Nest(nest1Texture));
-            nests[1]._position = new Vector2(1000, 900);
+            nests[1]._position = new Vector2(1300, 885);
 
             yumTexture = Content.Load<Texture2D>("yummy");
             _yum = new Yum(yumTexture);
@@ -174,15 +185,84 @@ namespace DDDD
                         }
                         else
                         {
-                            dino.Update(gameTime);
+                            for (int i = 0; i < platforms.Count; i++)
+                            {
+
+                                //Console.WriteLine("dinoY: " + dino.dinoPosition.Y + " platformY: " + platforms[i].platformPosition.Y);
+
+                                if (dino.dinoJumpSpeed.Y > 0 && IsTouchingTop(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed) /*&& dino.dinoPosition.Y <= platforms[i].platformPosition.Y*/)
+                                {
+                                    //Console.WriteLine("touching top");
+                                    dino.dinoJumpSpeed.Y = 0f;
+                                    onPlatform = true;
+
+                                    //dino.dinoJumpFlag = false;
+                                }
+
+                                if ((/*dino.dinoJumpSpeed.X > 0 &&*/ IsTouchingLeft(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed)) ||
+                                    (/*dino.dinoJumpSpeed.X < 0 &&*/ IsTouchingRight(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed)))
+                                {
+                                    //float index = 2;
+                                    //dino.dinoJumpSpeed.Y += 0.15f * index;
+                                    //Console.WriteLine("touching sides");
+                                    //dino.dinoJumpSpeed.X = 0f;
+                                    dino.dinoJumpSpeed.X = 0f;
+                                    onPlatform = false;
+                                }
+                                
+
+                                 if (dino.dinoJumpSpeed.Y < 0 && IsTouchingBottom(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed))
+                                {
+                                    //float index = 2;
+                                    //dino.dinoJumpSpeed.Y += 0.15f * index;
+                                    //dino.dinoJumpSpeed = -dino.dinoJumpSpeed;
+                                    //Console.WriteLine("touching bottom");
+                                    dino.dinoJumpSpeed.Y = 0f;
+                                    onPlatform = false;
+                                }
+
+
+
+                            }
+
+                            dino.Update(gameTime, onPlatform);
+                            onPlatform = false;
 
                             meteorAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                            foreach (Meteor meteor in meteors)
+                            //foreach (Meteor meteor in meteors)
+                            for (int i = 0; i < meteors.Count; i++)
                             {
-                                meteor.Update(graphics.GraphicsDevice);
+                                meteors[i].Update(graphics.GraphicsDevice);
                             }
                             randomMeteor();
+
+                            for (int i = 0; i < meteors.Count; i++)
+                            {
+                                for (int j = 0; j < nests.Count; j++)
+                                {
+                                    if (nests[j].Rectangle.Intersects(meteors[i].Rectangle))
+                                    {
+                                        nests[j].babyHealth -= 1;
+                                        meteorIndex = i;
+                                        babyHit = true;
+                                    }
+
+                                    if(nests[j].babyHealth <= 0)
+                                    {
+                                        failText = "One of Your Babies Died";
+                                        reload();
+                                        currentGameState = GameState.Lose;
+                                    }
+                                }
+                            }
+                            if (babyHit == true)
+                            {
+                                meteors.RemoveAt(meteorIndex);
+                                babyHit = false;
+                            }
+
+
 
                             foodAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -222,9 +302,12 @@ namespace DDDD
 
                             if (dinoHealth <= 0)
                             {
+                                failText = "You Died";
                                 reload();
                                 currentGameState = GameState.Lose;
                             }
+
+                            setBabyHitbyMeteor();
 
                             babyIsFed();
                             gameWon();
@@ -262,7 +345,8 @@ namespace DDDD
             {
                 case GameState.Menu:
                     spriteBatch.Draw(volcano, new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width/*800*/, GraphicsDevice.DisplayMode.Height/*480*/), Color.White); //background
-                    spriteBatch.DrawString(Ubuntu32, "Press Enter to Begin", new Vector2(GraphicsDevice.DisplayMode.Width / 2, 100), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, "Dino Daddy - Dinner Defender", new Vector2(GraphicsDevice.DisplayMode.Width / 2 - 230, 100), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, "Press Enter to Begin", new Vector2(GraphicsDevice.DisplayMode.Width / 2 - 150, 200), Color.Black);
                     break;
 
                 case GameState.Playing:
@@ -278,7 +362,10 @@ namespace DDDD
                         food.Draw(spriteBatch);
                     }
 
-
+                    foreach (Platform platform in platforms)
+                    {
+                        platform.Draw(spriteBatch);
+                    }
 
                     foreach (Nest nests in nests)
                     {
@@ -286,12 +373,14 @@ namespace DDDD
                     }
                    
                     dino.Draw(spriteBatch);
+                    
 
+                    /*
                     foreach(Nest nests in nests)
                     {
                         nests.Draw(spriteBatch);
                     }
-
+                    */
 
                     babyReceivedFood();
                     setBabyAsFull();
@@ -299,17 +388,20 @@ namespace DDDD
                   
 
                     spriteBatch.DrawString(Ubuntu32, "HP: " + dinoHealth, new Vector2(100, 100), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, "Baby (L) HP: " + nests[0].babyHealth, new Vector2(100, 150), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, "Baby (R) HP: " + nests[1].babyHealth, new Vector2(100, 200), Color.Black);
+
 
                     break;
 
                 case GameState.Win:
                     spriteBatch.Draw(volcano, new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width/*800*/, GraphicsDevice.DisplayMode.Height/*480*/), Color.White); //background
-                    spriteBatch.DrawString(Ubuntu32, "You Won! Press Enter to Retry", new Vector2(GraphicsDevice.DisplayMode.Width / 2, 100), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, "You Won! Press Enter to Retry", new Vector2(GraphicsDevice.DisplayMode.Width / 2 - 500, 100), Color.Black);
                     break;
 
                 case GameState.Lose:
                     spriteBatch.Draw(volcano, new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width/*800*/, GraphicsDevice.DisplayMode.Height/*480*/), Color.White); //background
-                    spriteBatch.DrawString(Ubuntu32, "You Died... Press Enter to Retry", new Vector2(GraphicsDevice.DisplayMode.Width / 2, 100), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, failText + "... Press Enter to Retry", new Vector2(GraphicsDevice.DisplayMode.Width / 2 - 500, 100), Color.Black);
                     break;
             }
 
@@ -320,14 +412,14 @@ namespace DDDD
 
         public void randomMeteor() //spawn meteors
         {
-            int randomX = random.Next(0, 800);
-            if (meteorAmount > 1) // Spawn cool down (seconds)
+            int randomX = random.Next(0, 1920);
+            if (meteorAmount > 2) // Spawn cool down (seconds)
             {
                 meteorAmount = 0;
                 if (meteors.Count < 2) // Amount of meteors allowed on the screen
                 {
                     // meteors.Add(new Meteor(Content.Load<Texture2D>("Meteor"), new Vector2(randomX, -10)));
-                    meteors.Add(new Meteor(Content.Load<Texture2D>("Meteor"), new Vector2(randomX, -10), graphics));
+                    meteors.Add(new Meteor(Content.Load<Texture2D>("Meteor"), new Vector2(randomX, -350), graphics));
                 }
             }
 
@@ -387,6 +479,10 @@ namespace DDDD
             }
         }
 
+        public void BabyFail()
+        {
+
+        }
 
         public void gameWon()
         {
@@ -525,7 +621,37 @@ namespace DDDD
         }
 
 
+        public bool IsTouchingLeft(Rectangle r1, Rectangle r2, Vector2 r1speed)
+        {
+            return r1.Right + r1speed.X > r2.Left &&
+                   r1.Left < r2.Left &&
+                   r1.Bottom > r2.Top &&
+                   r1.Top < r2.Bottom;
+        }
 
+        public bool IsTouchingRight(Rectangle r1, Rectangle r2, Vector2 r1speed)
+        {
+            return r1.Left +  r1speed.X < r2.Right &&
+                   r1.Right > r2.Right &&
+                   r1.Bottom > r2.Top &&
+                   r1.Top < r2.Bottom;
+        }
+
+        protected bool IsTouchingTop(Rectangle r1, Rectangle r2, Vector2 r1speed)
+        {
+            return r1.Bottom + r1speed.Y > r2.Top &&
+                   r1.Top < r2.Top &&
+                   r1.Right > r2.Left &&
+                   r1.Left < r2.Right;
+        }
+
+        public bool IsTouchingBottom(Rectangle r1, Rectangle r2, Vector2 r1speed)
+        {
+            return r1.Top + r1speed.Y < r2.Bottom &&
+                   r1.Bottom > r2.Bottom &&
+                   r1.Right > r2.Left &&
+                   r1.Left < r2.Right;
+        }
 
 
     }

@@ -16,6 +16,7 @@ namespace DDDD
         public Boolean receivedFood = false;//collision detected
         public int foodFromDaddy = 0;
         public Boolean hitByMeteor = false;
+        public int babyHealth = 3;
 
         public Rectangle Rectangle
         {
@@ -41,7 +42,6 @@ namespace DDDD
 
             //if collision meteor - dead
             //if collision food - count and grow
-
 
         }
 

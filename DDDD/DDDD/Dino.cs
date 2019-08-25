@@ -61,7 +61,7 @@ namespace DDDD
             dino.GetData(dinoTextureData);
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, bool onPlatform)
         {
             //dino logic
             //dinoRec = new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y, dino.Width, dino.Height);
@@ -151,7 +151,7 @@ namespace DDDD
             if (Keyboard.GetState().IsKeyDown(Keys.W) && dinoJumpFlag == false)
             {
                 dinoPosition.Y -= 5f;
-                dinoJumpSpeed.Y = -13f; //the height a dino jumps
+                dinoJumpSpeed.Y = -14f; //the height a dino jumps
                 dinoJumpFlag = true;
             }
 
@@ -161,16 +161,31 @@ namespace DDDD
                 float index = 2;
                 dinoJumpSpeed.Y += 0.15f * index; // falling speed
             }
+            else if(onPlatform == false && dinoPosition.Y < graphics.GraphicsDevice.DisplayMode.Height - 120)
+            {
+                float index = 2;
+                dinoJumpSpeed.Y += 0.15f * index;
+                //dinoJumpFlag = true;
+            }
 
             if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 120) //dino reaches floor
             {
                 dinoJumpFlag = false;
+                dinoJumpSpeed.Y = 0f;
             }
 
+            if(onPlatform == true)
+            {
+                dinoJumpFlag = false;
+            }
+
+            /*
             if (dinoJumpFlag == false) //dino on the floor
             {
                 dinoJumpSpeed.Y = 0f;
             }
+            */
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -183,3 +198,4 @@ namespace DDDD
     }
    
 }
+

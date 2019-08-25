@@ -116,3 +116,84 @@ C:\Users\u1274217\source\repos\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\D
 C:\Users\u1274217\source\repos\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CopyComplete
 C:\Users\u1274217\source\repos\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.exe
 C:\Users\u1274217\source\repos\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Apples.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\BabyDino.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Background.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Carrots.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\dino.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\dino2.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoSheet.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\egg1.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\food.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\full.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\fullSmall.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Grapes.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\meteor.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\tail.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Ubuntu32.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\volcano.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\yummy.xnb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\DDDD.exe
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\DDDD.pdb
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.csprojAssemblyReference.cache
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CoreCompileInputs.cache
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CopyComplete
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.exe
+C:\Users\jingyi\Desktop\DinoDaddyDinnerDefender-Jingyi (2)\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Apples.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\BabyDino.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Background.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Carrots.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\dino.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\dino2.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoSheet.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\egg1.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\food.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\full.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\fullSmall.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Grapes.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\meteor.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\tail.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\Ubuntu32.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\volcano.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\yummy.xnb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\DDDD.exe
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\DDDD.pdb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\MonoGame.Framework.dll
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.MediaFoundation.dll
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.dll
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XAudio2.dll
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.DXGI.dll
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct3D11.dll
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct2D1.dll
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XInput.dll
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\MonoGame.Framework.xml
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.MediaFoundation.xml
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.xml
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XAudio2.xml
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.DXGI.xml
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct3D11.xml
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.Direct2D1.xml
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\SharpDX.XInput.xml
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.csprojAssemblyReference.cache
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CoreCompileInputs.cache
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CopyComplete
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.exe
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
+C:\Users\jingyi\Desktop\master\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\platform.xnb
