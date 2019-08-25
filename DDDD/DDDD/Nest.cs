@@ -12,6 +12,10 @@ namespace DDDD
     {
         private Texture2D _texture;
         public Vector2 _position;
+        public Boolean babyIsfull = false;
+        public Boolean receivedFood = false;//collision detected
+        public int foodFromDaddy = 0;
+        public Boolean hitByMeteor = false;
 
         public Rectangle Rectangle
         {

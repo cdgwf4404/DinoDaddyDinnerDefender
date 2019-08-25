@@ -22,6 +22,7 @@ namespace DDDD
 
         private Yum _yum;
         private Full _full;
+        private Full _full2;
 
         public int foodIndex = 0;
         public int foodIndex2 = 0;
@@ -35,18 +36,11 @@ namespace DDDD
 
         public Texture2D yumTexture;
         public Texture2D fullTexture;
+        public Texture2D fullTexture2;
 
         public float meteorAmount = 0;
         public float foodAmount = 0;
-
-        public int foodFromDaddy = 0;
-        public int foodFromDaddy2 = 0;
-
-        public Boolean receivedFood = false;//collision detected
-        public Boolean receivedFood2 = false;
-
-        public Boolean babyIsfull = false;
-        public Boolean babyIsfull2 = false; 
+        
 
         public int foodMax = 2;
 
@@ -71,14 +65,12 @@ namespace DDDD
                 foods.RemoveAt(i);
             }
 
-            foodFromDaddy = 0;
-            foodFromDaddy2 = 0;
-
-            receivedFood = false;//collision detected
-            receivedFood2 = false;
-
-            babyIsfull = false;
-            babyIsfull2 = false;
+            foreach (Nest nest in nests)
+            {
+                nest.foodFromDaddy = 0;
+                nest.receivedFood = false;
+                nest.babyIsfull = false;
+            }
 
 
 
@@ -113,6 +105,8 @@ namespace DDDD
             graphics.ApplyChanges();
         }
 
+
+  
         protected override void LoadContent()
         {
 
@@ -137,7 +131,13 @@ namespace DDDD
 
             fullTexture = Content.Load<Texture2D>("fullSmall");
             _full = new Full(fullTexture);
-            _full._position = new Vector2(100, 100);
+            _full._position = new Vector2(500, 900);
+
+            fullTexture2 = Content.Load<Texture2D>("fullSmall");
+            _full2 = new Full(fullTexture);
+            _full2._position = new Vector2(1000, 900);
+
+
 
         }
 
@@ -202,34 +202,7 @@ namespace DDDD
 
                             randomFood(gameTime);
 
-
-
-                            for (int i = 0; i < foods.Count; i++)
-                            //foreach (var food in foods)
-                            {
-                                Rectangle foodRectangle = new Rectangle((int)foods[i].foodPosition.X, (int)foods[i].foodPosition.Y, foods[i].food.Width, foods[i].food.Height);
-                                //Rectangle foodRectangle = new Rectangle((int)food.foodPosition.X, (int)food.foodPosition.Y, food.food.Width, food.food.Height);
-
-                                //if (foodRectangle.Intersects(_nest1.Rectangle))
-
-
-                                //check collision
-                                if (nests[0].Rectangle.Intersects(foodRectangle) && foods[i].foodHit)
-                                {
-                                    receivedFood = true;//collision
-
-                                    foodIndex = i;
-                                }
-
-                                if (nests[1].Rectangle.Intersects(foodRectangle) && foods[i].foodHit)
-                                {
-                                    receivedFood2 = true;//collision
-
-                                    foodIndex2 = i;
-                                }
-
-                            }
-
+                                                                                  
                             for (int i = 0; i < meteors.Count; i++)
                             {
                                 if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyDown(Keys.Space))
@@ -253,11 +226,8 @@ namespace DDDD
                                 currentGameState = GameState.Lose;
                             }
 
-                            if (babyIsfull && babyIsfull2)
-                            {
-                                reload();
-                                currentGameState = GameState.Win;
-                            }
+                            babyIsFed();
+                            gameWon();
 
                             base.Update(gameTime);
                         }
@@ -314,52 +284,19 @@ namespace DDDD
                     {
                         nests.Draw(spriteBatch);
                     }
-                    //nests[0].Draw(spriteBatch);
+                   
                     dino.Draw(spriteBatch);
-                    //baby1
-                    if (receivedFood)
-                    {
-                        _yum.Draw(spriteBatch);
-                        receivedFood = false;
-                        foods.RemoveAt(foodIndex);
 
-                        foodFromDaddy += 1;
-                        Console.WriteLine("test " + foodFromDaddy);
+                    foreach(Nest nests in nests)
+                    {
+                        nests.Draw(spriteBatch);
                     }
 
-                    if (foodFromDaddy == foodMax)
-                    {
-                        babyIsfull = true;
 
-                    }
-
-                    //baby is full
-                    if (babyIsfull)
-                    {
-                        _full.Draw(spriteBatch);
-                    }
-
-                    //baby2
-                    if (receivedFood2)
-                    {
-                        //_yum.Draw(spriteBatch);
-                        receivedFood2 = false;
-                        foods.RemoveAt(foodIndex2);
-
-                        foodFromDaddy2 += 1;
-                        //Console.WriteLine("test " + foodFromDaddy);
-                    }
-
-                    if (foodFromDaddy2 == foodMax)
-                    {
-                        babyIsfull2 = true;
-
-                    }
-
-                    if (babyIsfull2)
-                    {
-                        //_full.Draw(spriteBatch);
-                    }
+                    babyReceivedFood();
+                    setBabyAsFull();
+                    babyGrows();
+                  
 
                     spriteBatch.DrawString(Ubuntu32, "HP: " + dinoHealth, new Vector2(100, 100), Color.Black);
 
@@ -449,6 +386,147 @@ namespace DDDD
 
             }
         }
+
+
+        public void gameWon()
+        {
+            if (checkIfAllBabiesAreFull())
+            {
+                reload();
+                currentGameState = GameState.Win;
+            }
+
+        }
+
+        public Boolean checkIfAllBabiesAreFull()
+        {
+            int numberOfNests = nests.Count;
+            int fullBabies = countFullBabies();
+            Boolean full = false;
+
+            if (fullBabies == numberOfNests)
+            {
+                full = true;
+            }
+            return full;
+
+        }
+
+        public int countFullBabies()
+        {
+            int totalFull = 0;
+
+            foreach (Nest nest in nests)
+            {
+                if (nest.babyIsfull)
+                    totalFull += 1;
+
+            }
+            return totalFull;
+
+        }
+
+
+
+
+
+        private void babyReceivedFood()
+        {
+            foreach (Nest nest in nests)
+            {
+                if (nest.receivedFood)
+                {
+                    nest.receivedFood = false;
+                    foods.RemoveAt(foodIndex2);
+                    nest.foodFromDaddy += 1;
+                }
+            }
+        }
+
+        //draw grown baby
+        private void babyGrows()
+        {
+            if (nests[0].babyIsfull)
+            {
+                _full.Draw(spriteBatch);
+            }
+            if (nests[1].babyIsfull)
+            {
+                _full2.Draw(spriteBatch);
+            }
+
+        }
+
+
+
+        private void setBabyAsFull()
+        {
+            foreach (Nest nest in nests)
+            {
+                if (nest.foodFromDaddy == foodMax)
+                {
+                    nest.babyIsfull = true;
+
+                }
+            }
+        }
+
+        private Boolean checkIfbabyIsFull(Nest nest)
+        {
+            Boolean full = false;
+            if (nest.babyIsfull)
+                full = true;
+            return full;
+        }
+
+
+
+        private void babyIsFed()
+        {
+
+            for (int i = 0; i < foods.Count; i++)
+            {
+                Rectangle foodRectangle = new Rectangle((int)foods[i].foodPosition.X, (int)foods[i].foodPosition.Y, foods[i].food.Width, foods[i].food.Height);
+
+                for (int j = 0; j < nests.Count; j++)
+                {
+                    if (nests[j].Rectangle.Intersects(foodRectangle) && foods[i].foodHit)
+                    {
+                        nests[j].receivedFood = true;
+                        foodIndex = i;
+
+                    }
+                }
+
+            }
+
+        }
+
+
+        private void setBabyHitbyMeteor()
+        {
+
+            for (int i = 0; i < meteors.Count; i++)
+            {
+                Rectangle meteorRectangle = new Rectangle((int)meteors[i].meteorPosition.X, (int)meteors[i].meteorPosition.Y, meteors[i].meteor.Width, meteors[i].meteor.Height);
+
+                for (int j = 0; j < nests.Count; j++)
+                {
+                    if (nests[j].Rectangle.Intersects(meteorRectangle))
+                    {
+                        nests[j].hitByMeteor = true;
+                        meteorIndex = i;
+
+                    }
+                }
+
+            }
+
+        }
+
+
+
+
 
     }
 }
