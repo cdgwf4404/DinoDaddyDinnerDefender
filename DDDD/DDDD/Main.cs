@@ -53,7 +53,7 @@ namespace DDDD
 
         TimeSpan foodTimeout = TimeSpan.FromSeconds(3);
 
-        public bool foodHitDino = false;
+        //public bool foodHitDino = false;
         public bool meteorHitDino = false;
 
         private SpriteFont Ubuntu32;
@@ -282,13 +282,23 @@ namespace DDDD
                             //foreach (Food food in foods)
                             for (int i = 0; i < foods.Count; i++)
                             {
-                                if (foods[i].Rectangle.Intersects(dino.Rectangle))//&& swipe
+                                
+                                if (foods[i].Rectangle.Intersects(dino.Rectangle) && dino.hitCount == 0 /*&& spinFlag*/)//&& swipe
                                 {
-                                    foodHitDino = true;
+                                    if (dino.hitCount == 0)
+                                    {
+                                        foods[i].foodHitDino = true;
+         
+                                        dino.hitCount = 1;
+                                        
+                                        
+                                    }
                                 }
 
-                                foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, foodHitDino);//and swipe== true
-                                foodHitDino = false;
+                                foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, /*foodHitDino,*/ dino);//and swipe== true
+                                foods[i].foodHitDino = false;
+
+                                //Console.WriteLine(foodHitDino);
                             }
 
                             randomFood(gameTime);

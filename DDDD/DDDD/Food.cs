@@ -27,6 +27,9 @@ namespace DDDD
         public Rectangle foodRec;
         GraphicsDeviceManager graphics;
 
+        public bool foodHitDino;
+
+
         public Rectangle Rectangle
         {
             get
@@ -51,6 +54,7 @@ namespace DDDD
 
         public Food(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
+            foodHitDino = false;
             graphics = gdm;
             food = texture;
             foodPosition = vector;
@@ -72,12 +76,12 @@ namespace DDDD
 
         }
 
-        public void Update(GraphicsDevice graphicsDevice, GameTime gameTime, double dinoAngle, bool foodHitDino)
+        public void Update(GraphicsDevice graphicsDevice, GameTime gameTime, double dinoAngle, /*bool foodHitDino,*/ Dino dino)
         {
             //foodRec = new Rectangle((int)foodPosition.X - food.Width/2, (int)foodPosition.Y - food.Height/2, food.Width, food.Height);
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-                if(foodHitDino == true && foodHit == false)
+            //if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            //{
+            if (foodHitDino/* == true && spinFlag*//*&& foodHit == false*/)
                 {
                     if (dinoAngle == 0f)
                     {
@@ -92,9 +96,10 @@ namespace DDDD
                         foodHit = true;
                     }
                 }
-            }
+            //}
 
             foodPosition += foodSpeed;
+           
 
             foodRec = new Rectangle((int)foodPosition.X - food.Width / 2, (int)foodPosition.Y - food.Height / 2, food.Width, food.Height);
 

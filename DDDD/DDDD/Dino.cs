@@ -45,6 +45,13 @@ namespace DDDD
         //public Rectangle aniStart = new Rectangle(1920 / 2 - 250, 1080 - 147, 250, 147);
         public Rectangle aniStart;
 
+
+        public bool hasAttacked = false;
+        TimeSpan attackCooldown;
+        public int hitCount = 0;
+        public Vector2 inputDirection;
+
+
         public Rectangle Rectangle
         {
             get
@@ -58,6 +65,9 @@ namespace DDDD
 
         public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
+           
+            attackCooldown = TimeSpan.FromMilliseconds(2000);
+            inputDirection = Vector2.Zero;
             graphics = gdm;
             dino = texture;
             dinoPosition = vector;
@@ -120,19 +130,25 @@ namespace DDDD
             {
                 dinoJumpSpeed.X = 0f;
             }
+
+            Attack(gameTime);
+
+
+
             //spinSpan -= gameTime.ElapsedGameTime;
             //coolDownSpan -= gameTime.ElapsedGameTime;
 
 
-            spaceBarPressed = spaceBarDown(gameTime, spinFlag);
+            //spaceBarPressed = spaceBarDown(gameTime, spinFlag);
 
-            if (spaceBarPressed)
+            /*if (spaceBarPressed)
             {
                 coolDown();
                 angle = checkAngle();
-                spinFrames(angle);
+                spinFrames(angle, spinFlag);
 
             }
+            */
           
 
 /*
@@ -249,10 +265,39 @@ namespace DDDD
             //spriteBatch.Draw(dinoRec, new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y - 147, 250, 147), new Rectangle(250 * aniFrame, 0, 250, 147), Color.White);
         }
 
+
+        public void Attack(GameTime gameTime)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !hasAttacked)
+            {
+                hasAttacked = true;
+            }
+            if (hasAttacked)
+            {
+                attackCooldown -= gameTime.ElapsedGameTime;
+            }
+            if (attackCooldown <= TimeSpan.Zero)
+            {
+                hasAttacked = false;
+                attackCooldown = TimeSpan.FromMilliseconds(2000);
+                hitCount = 0;
+            }
+        }
+
+        
+
+
+
+
+
+
+
+
+
         public bool spaceBarDown(GameTime gameTime, bool spinFlag)
         {
             bool spaceDown = false;
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && spinFlag == false && !coolDownFlag)
             {
                 spaceDown = true;
                 spinSpan -= gameTime.ElapsedGameTime;
@@ -309,7 +354,7 @@ namespace DDDD
             }
         }
 
-        public void spinFrames(int angle)
+        public void spinFrames(int angle, bool spinFlag)
         {
             if (angle == 2)
             {
@@ -318,6 +363,16 @@ namespace DDDD
             else
             {
                 swipeAnimationRight();
+            }
+
+            if (spinSpan >= TimeSpan.Zero)
+            {
+               // spinFlag = true;
+            }
+            else
+            {
+                 spinFlag = false;
+                spinSpan = TimeSpan.FromMilliseconds(1000);
             }
         }
 
