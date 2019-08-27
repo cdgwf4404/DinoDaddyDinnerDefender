@@ -18,12 +18,14 @@ namespace DDDD
         List<Food> foods = new List<Food>();
         List<Nest> nests = new List<Nest>();
         List<Platform> platforms = new List<Platform>();
+        List<Full> fulls = new List<Full>();
+        List<Infant> infants = new List<Infant>();
 
         public int meteorIndex = 0;
 
         private Yum _yum;
-        private Full _full;
-        private Full _full2;
+        //private Full _full;
+        //private Full _full2;
 
         public int foodIndex = 0;
         public int foodIndex2 = 0;
@@ -39,13 +41,15 @@ namespace DDDD
         public Texture2D fullTexture;
         public Texture2D fullTexture2;
 
+        public Texture2D infantTexture;
+
         public float meteorAmount = 0;
         public float foodAmount = 0;
 
         public bool onPlatform = false;
         
 
-        public int foodMax = 2;
+        public int foodMax = 10;
 
         TimeSpan foodTimeout = TimeSpan.FromSeconds(3);
 
@@ -60,13 +64,20 @@ namespace DDDD
 
         public string failText;
 
+        public bool exitLoop = false;
+
+        public bool spinFlag = false;
+
         private void reload() //reset game values when win or fail
         {
-            dinoHealth = 3;
+            dinoHealth = 5;
             for (int i = 0; i < meteors.Count; i++)
             {
                 meteors.RemoveAt(i);
             }
+
+            meteors = new List<Meteor>();
+
             for (int i = 0; i < foods.Count; i++)
             {
                 foods.RemoveAt(i);
@@ -77,8 +88,9 @@ namespace DDDD
                 nest.foodFromDaddy = 0;
                 nest.receivedFood = false;
                 nest.babyIsfull = false;
+                nest.babyHealth = 3;
             }
-
+            exitLoop = false;
 
 
         }
@@ -108,7 +120,7 @@ namespace DDDD
             base.Initialize();
             graphics.PreferredBackBufferWidth = GraphicsDevice.DisplayMode.Width;
             graphics.PreferredBackBufferHeight = GraphicsDevice.DisplayMode.Height;
-            graphics.IsFullScreen = false;
+            graphics.IsFullScreen = true;
             graphics.ApplyChanges();
         }
 
@@ -140,15 +152,18 @@ namespace DDDD
             _yum = new Yum(yumTexture);
             _yum._position = new Vector2(300, 300);
 
-            fullTexture = Content.Load<Texture2D>("fullSmall");
-            _full = new Full(fullTexture);
-            _full._position = new Vector2(500, 900);
+            fullTexture = Content.Load<Texture2D>("grown");
+            fulls.Add(new Full(fullTexture));
+            fulls[0]._position = new Vector2(nests[0]._position.X, nests[0]._position.Y - 15);
 
-            fullTexture2 = Content.Load<Texture2D>("fullSmall");
-            _full2 = new Full(fullTexture);
-            _full2._position = new Vector2(1000, 900);
+            fulls.Add(new Full(fullTexture));
+            fulls[1]._position = new Vector2(nests[1]._position.X, nests[1]._position.Y - 15);
 
-
+            infantTexture = Content.Load<Texture2D>("infant");
+            infants.Add(new Infant(infantTexture));
+            infants.Add(new Infant(infantTexture));
+            infants[0]._position = new Vector2(nests[0]._position.X, nests[0]._position.Y);
+            infants[1]._position = new Vector2(nests[1]._position.X, nests[1]._position.Y);
 
         }
 
@@ -188,24 +203,16 @@ namespace DDDD
                             for (int i = 0; i < platforms.Count; i++)
                             {
 
-                                //Console.WriteLine("dinoY: " + dino.dinoPosition.Y + " platformY: " + platforms[i].platformPosition.Y);
-
                                 if (dino.dinoJumpSpeed.Y > 0 && IsTouchingTop(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed) /*&& dino.dinoPosition.Y <= platforms[i].platformPosition.Y*/)
                                 {
-                                    //Console.WriteLine("touching top");
                                     dino.dinoJumpSpeed.Y = 0f;
                                     onPlatform = true;
-
-                                    //dino.dinoJumpFlag = false;
                                 }
 
                                 if ((/*dino.dinoJumpSpeed.X > 0 &&*/ IsTouchingLeft(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed)) ||
                                     (/*dino.dinoJumpSpeed.X < 0 &&*/ IsTouchingRight(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed)))
                                 {
-                                    //float index = 2;
-                                    //dino.dinoJumpSpeed.Y += 0.15f * index;
-                                    //Console.WriteLine("touching sides");
-                                    //dino.dinoJumpSpeed.X = 0f;
+
                                     dino.dinoJumpSpeed.X = 0f;
                                     onPlatform = false;
                                 }
@@ -213,10 +220,6 @@ namespace DDDD
 
                                  if (dino.dinoJumpSpeed.Y < 0 && IsTouchingBottom(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed))
                                 {
-                                    //float index = 2;
-                                    //dino.dinoJumpSpeed.Y += 0.15f * index;
-                                    //dino.dinoJumpSpeed = -dino.dinoJumpSpeed;
-                                    //Console.WriteLine("touching bottom");
                                     dino.dinoJumpSpeed.Y = 0f;
                                     onPlatform = false;
                                 }
@@ -225,12 +228,11 @@ namespace DDDD
 
                             }
 
-                            dino.Update(gameTime, onPlatform);
+                            dino.Update(gameTime, onPlatform, spinFlag);
                             onPlatform = false;
 
                             meteorAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-                            //foreach (Meteor meteor in meteors)
                             for (int i = 0; i < meteors.Count; i++)
                             {
                                 meteors[i].Update(graphics.GraphicsDevice);
@@ -253,13 +255,22 @@ namespace DDDD
                                         failText = "One of Your Babies Died";
                                         reload();
                                         currentGameState = GameState.Lose;
+                                        exitLoop = true;
+                                        break;
                                     }
+                                }
+                                if(exitLoop == true)
+                                {
+                                    break;
                                 }
                             }
                             if (babyHit == true)
                             {
-                                meteors.RemoveAt(meteorIndex);
-                                babyHit = false;
+                                if(meteors.Count > 0)
+                                {
+                                    meteors.RemoveAt(meteorIndex);
+                                    babyHit = false;
+                                }                     
                             }
 
 
@@ -366,12 +377,28 @@ namespace DDDD
                     {
                         platform.Draw(spriteBatch);
                     }
-
+                    /*
                     foreach (Nest nests in nests)
                     {
                         nests.Draw(spriteBatch);
                     }
-                   
+                    */
+                    for (int i = 0; i < nests.Count; i++)
+                    {
+                        if (nests[i].babyIsfull)
+                        {
+                            fulls[i].Draw(spriteBatch);
+                        }
+                        else if(nests[i].foodFromDaddy <= 5)
+                        {
+                            infants[i].Draw(spriteBatch);
+                        }
+                        else
+                        {
+                            nests[i].Draw(spriteBatch);
+                        }
+                    }
+
                     dino.Draw(spriteBatch);
                     
 
@@ -387,9 +414,13 @@ namespace DDDD
                     babyGrows();
                   
 
-                    spriteBatch.DrawString(Ubuntu32, "HP: " + dinoHealth, new Vector2(100, 100), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, "Daddy HP: " + dinoHealth, new Vector2(100, 100), Color.Black);
+
                     spriteBatch.DrawString(Ubuntu32, "Baby (L) HP: " + nests[0].babyHealth, new Vector2(100, 150), Color.Black);
                     spriteBatch.DrawString(Ubuntu32, "Baby (R) HP: " + nests[1].babyHealth, new Vector2(100, 200), Color.Black);
+
+                    spriteBatch.DrawString(Ubuntu32, "Baby (L) Progress: " + nests[0].foodFromDaddy + "/10", new Vector2(1400, 150), Color.Black);
+                    spriteBatch.DrawString(Ubuntu32, "Baby (R) Progress: " + nests[1].foodFromDaddy + "/10", new Vector2(1400, 200), Color.Black);
 
 
                     break;
@@ -413,7 +444,7 @@ namespace DDDD
         public void randomMeteor() //spawn meteors
         {
             int randomX = random.Next(0, 1920);
-            if (meteorAmount > 2) // Spawn cool down (seconds)
+            if (meteorAmount > 6) // Spawn cool down (seconds)
             {
                 meteorAmount = 0;
                 if (meteors.Count < 2) // Amount of meteors allowed on the screen
@@ -532,9 +563,12 @@ namespace DDDD
             {
                 if (nest.receivedFood)
                 {
-                    nest.receivedFood = false;
-                    foods.RemoveAt(foodIndex2);
-                    nest.foodFromDaddy += 1;
+                    if ( nest.foodFromDaddy < 10) //stops receving when reaching Max
+                    {
+                        nest.receivedFood = false;
+                        foods.RemoveAt(foodIndex);
+                        nest.foodFromDaddy += 1;
+                    }
                 }
             }
         }
@@ -544,11 +578,11 @@ namespace DDDD
         {
             if (nests[0].babyIsfull)
             {
-                _full.Draw(spriteBatch);
+                fulls[0].Draw(spriteBatch);
             }
             if (nests[1].babyIsfull)
             {
-                _full2.Draw(spriteBatch);
+                fulls[1].Draw(spriteBatch);
             }
 
         }

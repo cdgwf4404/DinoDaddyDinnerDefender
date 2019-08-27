@@ -11,7 +11,7 @@ namespace DDDD
 {
     public class Food
     {
-        Main main;
+        //Main main;
 
         public Texture2D food;
         public Vector2 foodPosition;
