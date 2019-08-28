@@ -141,14 +141,14 @@ namespace DDDD
 
             //spaceBarPressed = spaceBarDown(gameTime, spinFlag);
 
-            /*if (spaceBarPressed)
+            if (spaceBarPressed)
             {
                 coolDown();
                 angle = checkAngle();
                 spinFrames(angle, spinFlag);
 
             }
-            */
+            
           
 
 /*
@@ -260,9 +260,7 @@ namespace DDDD
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(dino, dinoPosition, null, Color.White, 0f, dinoCenter, 1f, SpriteEffects.None, 0f);
             spriteBatch.Draw(dino, new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y - 147, 250, 147), new Rectangle(250 * aniFrame, 0, 250, 147), Color.White);
-            //spriteBatch.Draw(dinoRec, new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y - 147, 250, 147), new Rectangle(250 * aniFrame, 0, 250, 147), Color.White);
         }
 
 

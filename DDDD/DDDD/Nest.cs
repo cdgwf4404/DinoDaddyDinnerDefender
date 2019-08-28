@@ -14,16 +14,18 @@ namespace DDDD
         public Vector2 _position;
         public Boolean babyIsfull = false;
         public Boolean receivedFood = false;//collision detected
-        public int foodFromDaddy = 0;
+        public int foodFromDaddy;
         public Boolean hitByMeteor = false;
-        public int babyHealth = 3;
+        public int babyHealth = 1;
+
+        public int aniFrame;
 
         public Rectangle Rectangle
         {
             get
             {
 
-                Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);
+                Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width / 5, _texture.Height);
                 //Console.WriteLine("nestrectangle height " + rectangle.Height + "width " + rectangle.Width);
                 return rectangle;
             }
@@ -32,7 +34,7 @@ namespace DDDD
         public Nest(Texture2D texture)
         {
             _texture = texture;
-
+            foodFromDaddy = 0;
         }
 
 
@@ -40,14 +42,14 @@ namespace DDDD
         public void Update()
         {
 
-            //if collision meteor - dead
-            //if collision food - count and grow
+
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, _position, Color.White);
+            //spriteBatch.Draw(_texture, _position, Color.White);
+            spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 147, 147), new Rectangle(147 * foodFromDaddy, 0, 147, 147), Color.White);
             //spriteBatch.Draw(_texture, destinationRectangle: new Rectangle(250, 200, 50, 50), Color.White);// scaling 50%
 
 
