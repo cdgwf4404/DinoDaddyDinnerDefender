@@ -20,6 +20,7 @@ namespace DDDD
         List<Platform> platforms = new List<Platform>();
         List<Full> fulls = new List<Full>();
         List<Infant> infants = new List<Infant>();
+        TestDino testDino;
 
         public int meteorIndex = 0;
 
@@ -165,6 +166,9 @@ namespace DDDD
             infants[0]._position = new Vector2(nests[0]._position.X, nests[0]._position.Y);
             infants[1]._position = new Vector2(nests[1]._position.X, nests[1]._position.Y);
 
+            testDino = new TestDino(new Vector2(100,100));
+            testDino.LoadContent(Content);
+
         }
 
 
@@ -230,6 +234,8 @@ namespace DDDD
 
                             dino.Update(gameTime, onPlatform, spinFlag);
                             onPlatform = false;
+
+
 
                             meteorAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -323,6 +329,8 @@ namespace DDDD
                             babyIsFed();
                             gameWon();
 
+                            testDino.Update(gameTime);
+
                             base.Update(gameTime);
                         }
                         break;
@@ -389,7 +397,7 @@ namespace DDDD
                         {
                             fulls[i].Draw(spriteBatch);
                         }
-                        else if(nests[i].foodFromDaddy <= 5)
+                        else if(nests[i].foodFromDaddy <=foodMax/5)
                         {
                             infants[i].Draw(spriteBatch);
                         }
@@ -422,6 +430,8 @@ namespace DDDD
                     spriteBatch.DrawString(Ubuntu32, "Baby (L) Progress: " + nests[0].foodFromDaddy + "/10", new Vector2(1400, 150), Color.Black);
                     spriteBatch.DrawString(Ubuntu32, "Baby (R) Progress: " + nests[1].foodFromDaddy + "/10", new Vector2(1400, 200), Color.Black);
 
+
+                    testDino.Draw(spriteBatch);
 
                     break;
 
