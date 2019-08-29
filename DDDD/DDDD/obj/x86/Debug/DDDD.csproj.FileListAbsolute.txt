@@ -428,3 +428,10 @@ C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Deb
 C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CopyComplete
 C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.exe
 C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
+C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\piece.xnb
+C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\greenLeft.xnb
+C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\greenRight.xnb
+C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\redLeft.xnb
+C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\redRight.xnb
+C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\yellowLeft.xnb
+C:\Users\jingyi\Desktop\Dev\DinoDaddyDinnerDefender-Jingyi\DDDD\DDDD\bin\Windows\x86\Debug\Content\yellowRight.xnb

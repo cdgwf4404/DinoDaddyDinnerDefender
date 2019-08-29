@@ -4,38 +4,52 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Apples.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/baby.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/BabyDino.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Background.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Carrots.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/dead.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/dino.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/dino2.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/DinoSheet.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/egg1.jpg</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/fail.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/food.jpg</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/full.jpg</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/fullSmall.jpg</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Grapes.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/green.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/grown.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/hit.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/infant.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/menu.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/meteor.jpg</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Meteor.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/platform.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/red.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/tail.jpg</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Ubuntu32.spritefont</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/volcano.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/win.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/yellow.png</File>
-    <File>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-Jingyi/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/yummy.jpg</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Apples.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/baby.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/BabyDino.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Background.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Carrots.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/dead.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/dino.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/dino2.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/DinoSheet.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/egg1.jpg</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/fail.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/food.jpg</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/full.jpg</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/fullSmall.jpg</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Grapes.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/green.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/greenLeft.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/greenRight.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/grown.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/hit.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/infant.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/menu.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/meteor.jpg</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Meteor.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/piece.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/platform.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/red.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/redLeft.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/redRight.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/tail.jpg</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Ubuntu32.spritefont</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/volcano.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/win.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/yellow.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/yellowLeft.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/yellowRight.png</File>
+    <File>C:/Users/jingyi/Desktop/Dev/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/yummy.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

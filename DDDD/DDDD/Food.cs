@@ -36,21 +36,9 @@ namespace DDDD
             {
 
                 Rectangle rectangle = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, food.Width, food.Height);
-                //Console.WriteLine("nestrectangle height " + rectangle.Height + "width " + rectangle.Width);
                 return rectangle;
             }
         }
-
-        /*public Rectangle Rectangle
-        {
-            get
-            {
-
-                Rectangle foodRec = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, food.Width, food.Height);
-                //Console.WriteLine("nestrectangle height " + rectangle.Height + "width " + rectangle.Width);
-                return foodRec;
-            }
-        }*/
 
         public Food(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
@@ -81,7 +69,7 @@ namespace DDDD
             //foodRec = new Rectangle((int)foodPosition.X - food.Width/2, (int)foodPosition.Y - food.Height/2, food.Width, food.Height);
             //if (Keyboard.GetState().IsKeyDown(Keys.Space))
             //{
-            if (foodHitDino/* == true && spinFlag*//*&& foodHit == false*/)
+            if (foodHitDino == true /*&& spinFlag*//*&& foodHit == false*/)
                 {
                     if (dinoAngle == 0f)
                     {

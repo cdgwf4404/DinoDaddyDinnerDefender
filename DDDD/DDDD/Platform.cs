@@ -19,7 +19,7 @@ namespace DDDD
         {
             get
             {
-                return new Rectangle((int)platformPosition.X, (int)platformPosition.Y, platform.Width, platform.Height);
+                return new Rectangle((int)platformPosition.X + 100, (int)platformPosition.Y, platform.Width - 200, platform.Height);
             }
         }
 

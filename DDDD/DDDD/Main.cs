@@ -16,6 +16,8 @@ namespace DDDD
         public Dino dino;
         public Hit hit;
         public Dead dead;
+        public Piece piece;
+        public Swipe swipe;
 
         List<Text> texts = new List<Text>();
         List<Meteor> meteors = new List<Meteor>();
@@ -23,14 +25,10 @@ namespace DDDD
         List<Food> menuFoods = new List<Food>();
         List<Nest> nests = new List<Nest>();
         List<Platform> platforms = new List<Platform>();
-        //List<Full> fulls = new List<Full>();
-        //List<Infant> infants = new List<Infant>();
 
         public int meteorIndex = 0;
 
         private Yum _yum;
-        //private Full _full;
-        //private Full _full2;
 
         public int foodIndex = 0;
         public int foodIndex2 = 0;
@@ -98,6 +96,7 @@ namespace DDDD
             }
             hit.dinoHit = false;
             dead.dying = false;
+            swipe.swiping = false;
             exitLoop = false;
 
             dino.dinoPosition.X = 1920 / 2;
@@ -150,14 +149,11 @@ namespace DDDD
             Ubuntu32 = Content.Load<SpriteFont>("Ubuntu32");
 
             platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1920 / 2 + 200, 1080/2 + 120), graphics));
-            //platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(550, 1080 / 2), graphics));
             platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(0, 1080 / 2 + 120), graphics));
 
-            //nest1Texture = Content.Load<Texture2D>("egg1");
             nest1Texture = Content.Load<Texture2D>("baby");
             nests.Add(new Nest(nest1Texture));
             nests[0]._position = new Vector2(50, 1080 / 2 - 25);
-            // nests.Add(new Nest(Content.Load<Texture2D>("BabyDino2"), new Vector2(1200, 400)));
 
             nest2Texture = Content.Load<Texture2D>("baby");
             nests.Add(new Nest(nest1Texture));
@@ -169,22 +165,12 @@ namespace DDDD
 
             fullTexture = Content.Load<Texture2D>("grown");
 
-            /*
-            fulls.Add(new Full(fullTexture));
-            fulls[0]._position = new Vector2(nests[0]._position.X, nests[0]._position.Y - 15);
-
-            fulls.Add(new Full(fullTexture));
-            fulls[1]._position = new Vector2(nests[1]._position.X, nests[1]._position.Y - 15);
-
-            infantTexture = Content.Load<Texture2D>("infant");
-            infants.Add(new Infant(infantTexture));
-            infants.Add(new Infant(infantTexture));
-            infants[0]._position = new Vector2(nests[0]._position.X, nests[0]._position.Y);
-            infants[1]._position = new Vector2(nests[1]._position.X, nests[1]._position.Y);
-            */
-
             hit = new Hit(Content.Load<Texture2D>("hit"), new Vector2(1920 / 2, 900));
+            swipe = new Swipe(Content.Load<Texture2D>("greenLeft"), new Vector2(1920 / 2, 900));
+
             dead = new Dead(Content.Load<Texture2D>("dead"), new Vector2(1920 / 2, 900), graphics);
+
+            piece = new Piece(Content.Load<Texture2D>("piece"), new Vector2(1920 / 2, 900));
 
         }
 
@@ -258,14 +244,38 @@ namespace DDDD
                             if(dinoHealth == 3)
                             {
                                 dino.dino = Content.Load<Texture2D>("green");
+                                if(dino.dinoAngle == 0f)
+                                {
+                                    swipe.swipe = Content.Load<Texture2D>("greenRight");
+                                }
+                                else if(dino.dinoAngle == Math.PI)
+                                {
+                                    swipe.swipe = Content.Load<Texture2D>("greenLeft");
+                                }
                             }
                             else if(dinoHealth == 2)
                             {
                                 dino.dino = Content.Load<Texture2D>("yellow");
+                                if (dino.dinoAngle == 0f)
+                                {
+                                    swipe.swipe = Content.Load<Texture2D>("yellowRight");
+                                }
+                                else if (dino.dinoAngle == Math.PI)
+                                {
+                                    swipe.swipe = Content.Load<Texture2D>("yellowLeft");
+                                }
                             }
                             else
                             {
                                 dino.dino = Content.Load<Texture2D>("red");
+                                if (dino.dinoAngle == 0f)
+                                {
+                                    swipe.swipe = Content.Load<Texture2D>("redRight");
+                                }
+                                else if (dino.dinoAngle == Math.PI)
+                                {
+                                    swipe.swipe = Content.Load<Texture2D>("redLeft");
+                                }
                             }
 
                             if (dinoHealth <= 0)
@@ -273,17 +283,27 @@ namespace DDDD
                                 dead.dying = true;
                             }
 
-                            if (hit.dinoHit == false && dead.dying == false)
+                            if (hit.dinoHit == false && dead.dying == false) // display dino
                             {
                                 dino.Update(gameTime, onPlatform, spinFlag);
                             }
-                            else if(hit.dinoHit == true)
+                            else if(hit.dinoHit == true) // display hit animation
                             {
                                 hit.Update(gameTime, dino.dinoAngle);
                             }
-                            else if(dead.dying == true)
+                            else if(dead.dying == true) // display dead animation
                             {
                                 dead.Update(gameTime, dino.dinoPosition);
+                            }
+
+                            if(dino.spaceBarPressed && swipe.swiping == false)
+                            {
+                                swipe.swiping = true;
+                            }
+
+                            if(swipe.swiping == true)
+                            {
+                                swipe.Update(gameTime);
                             }
 
                             if (dead.dying == false && dinoHealth <= 0)
@@ -339,14 +359,11 @@ namespace DDDD
 
 
                             foodAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                            //Rectangle dinoRectangle = new Rectangle((int)dino.dinoPosition.X - 250, (int)dino.dinoPosition.Y - 147, dino.dino.Width, dino.dino.Height);
-
-                            //foreach (Food food in foods)
+                            /*
                             for (int i = 0; i < foods.Count; i++)
                             {
                                 
-                                if (foods[i].Rectangle.Intersects(dino.Rectangle) && dino.hitCount == 0 /*&& spinFlag*/)//&& swipe
+                                if (foods[i].Rectangle.Intersects(dino.Rectangle) && dino.hitCount == 0)
                                 {
                                     if (dino.hitCount == 0)
                                     {
@@ -358,33 +375,45 @@ namespace DDDD
                                     }
                                 }
 
-                                foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, /*foodHitDino,*/ dino);//and swipe== true
+                                foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, dino);
                                 foods[i].foodHitDino = false;
 
-                                //Console.WriteLine(foodHitDino);
-                            }
+                            }*/
 
-                            randomFood(gameTime);
+                            for (int i = 0; i < foods.Count; i++)
+                            {
+
+                                if (foods[i].Rectangle.Intersects(dino.Rectangle) && dino.spaceBarPressed == true)
+                                {
+
+                                    foods[i].foodHitDino = true;
+
+                                }
+
+                                foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, dino);
+                                foods[i].foodHitDino = false;
+                            }
+                                randomFood(gameTime);
 
                                                                                   
                             for (int i = 0; i < meteors.Count; i++)
                             {
                                 if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyDown(Keys.Space))
                                 {
-                                    //meteorHitDino = true;
+                                    piece.destoried = true;
+                                    piece.piecePosition.X = meteors[i].meteorPosition.X;
+                                    piece.piecePosition.Y = meteors[i].meteorPosition.Y + 100;
                                     meteors.RemoveAt(i);
-
                                 }
                                 else if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyUp(Keys.Space))
                                 {
-                                    //meteorHitDino = true;
                                     meteors.RemoveAt(i);
                                     dinoHealth -= 1;
                                     hit.dinoHit = true;
 
                                 }
                             }
-                            
+                            piece.Update(gameTime);
 
                             setBabyHitbyMeteor();
 
@@ -424,8 +453,7 @@ namespace DDDD
             {
                 case GameState.Menu:
                     spriteBatch.Draw(volcano, new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width/*800*/, GraphicsDevice.DisplayMode.Height/*480*/), Color.White); //background
-                    //spriteBatch.DrawString(Ubuntu32, "Dino Daddy - Dinner Defender", new Vector2(GraphicsDevice.DisplayMode.Width / 2 - 230, 100), Color.Black);
-                    //spriteBatch.DrawString(Ubuntu32, "Press Enter to Begin", new Vector2(GraphicsDevice.DisplayMode.Width / 2 - 150, 200), Color.Black);
+
                     foreach (Food food in menuFoods)
                     {
                         food.Draw(spriteBatch);
@@ -441,6 +469,8 @@ namespace DDDD
                         meteor.Draw(spriteBatch);
                     }
 
+                    piece.Draw(spriteBatch);
+
                     foreach (Food food in foods)
                     {
                         food.Draw(spriteBatch);
@@ -450,35 +480,13 @@ namespace DDDD
                     {
                         platform.Draw(spriteBatch);
                     }
-                    /*
-                    foreach (Nest nests in nests)
-                    {
-                        nests.Draw(spriteBatch);
-                    }
-                    */
-                    /*
-                    for (int i = 0; i < nests.Count; i++)
-                    {
-                        if (nests[i].babyIsfull)
-                        {
-                            fulls[i].Draw(spriteBatch);
-                        }
-                        else if(nests[i].foodFromDaddy <= 5)
-                        {
-                            infants[i].Draw(spriteBatch);
-                        }
-                        else
-                        {
-                            nests[i].Draw(spriteBatch);
-                        }
-                    }
-                    */
+                    
                     for (int i = 0; i < nests.Count; i++)
                     {
                         nests[i].Draw(spriteBatch);
                     }
 
-                    if (hit.dinoHit == false && dead.dying == false)
+                    if (hit.dinoHit == false && dead.dying == false && swipe.swiping == false)
                     {
                         dino.Draw(spriteBatch);
                     }
@@ -490,40 +498,25 @@ namespace DDDD
                     {
                         dead.Draw(spriteBatch);
                     }
-                    
-
-                    /*
-                    foreach(Nest nests in nests)
+                    else if(swipe.swiping == true)
                     {
-                        nests.Draw(spriteBatch);
+                        swipe.Draw(spriteBatch, dino.dinoPosition.X, dino.dinoPosition.Y);
                     }
-                    */
-
+                    
                     babyReceivedFood();
                     setBabyAsFull();
-                    //babyGrows();
-                  
-
-                    //spriteBatch.DrawString(Ubuntu32, "Daddy HP: " + dinoHealth, new Vector2(100, 100), Color.Black);
-
-                    //spriteBatch.DrawString(Ubuntu32, "Baby (L) HP: " + nests[0].babyHealth, new Vector2(100, 150), Color.Black);
-                    //spriteBatch.DrawString(Ubuntu32, "Baby (R) HP: " + nests[1].babyHealth, new Vector2(100, 200), Color.Black);
-
-                    //spriteBatch.DrawString(Ubuntu32, "Baby (L) Progress: " + nests[0].foodFromDaddy + "/10", new Vector2(1400, 150), Color.Black);
-                    //spriteBatch.DrawString(Ubuntu32, "Baby (R) Progress: " + nests[1].foodFromDaddy + "/10", new Vector2(1400, 200), Color.Black);
+                    
 
 
                     break;
 
                 case GameState.Win:
                     spriteBatch.Draw(volcano, new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width/*800*/, GraphicsDevice.DisplayMode.Height/*480*/), Color.White); //background
-                    //spriteBatch.DrawString(Ubuntu32, "You Won! Press Enter to Retry", new Vector2(GraphicsDevice.DisplayMode.Width / 2 - 500, 100), Color.Black);
                     texts[1].Draw(spriteBatch);
                     break;
 
                 case GameState.Lose:
                     spriteBatch.Draw(volcano, new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width/*800*/, GraphicsDevice.DisplayMode.Height/*480*/), Color.White); //background
-                    //spriteBatch.DrawString(Ubuntu32, failText + "... Press Enter to Retry", new Vector2(GraphicsDevice.DisplayMode.Width / 2 - 500, 100), Color.Black);
                     texts[2].Draw(spriteBatch);
                     break;
             }
@@ -541,7 +534,6 @@ namespace DDDD
                 meteorAmount = 0;
                 if (meteors.Count < 2) // Amount of meteors allowed on the screen
                 {
-                    // meteors.Add(new Meteor(Content.Load<Texture2D>("Meteor"), new Vector2(randomX, -10)));
                     meteors.Add(new Meteor(Content.Load<Texture2D>("Meteor"), new Vector2(randomX, -350), graphics));
                 }
             }
@@ -664,23 +656,6 @@ namespace DDDD
                 }
             }
         }
-
-        //draw grown baby
-        /*
-        private void babyGrows()
-        {
-            if (nests[0].babyIsfull)
-            {
-                nests[0].Draw(spriteBatch);
-            }
-            if (nests[1].babyIsfull)
-            {
-                nests[1].Draw(spriteBatch);
-            }
-
-        }
-        */
-
 
         private void setBabyAsFull()
         {
