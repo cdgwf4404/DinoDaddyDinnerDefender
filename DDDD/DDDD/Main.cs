@@ -546,37 +546,34 @@ namespace DDDD
 
         public void randomMeteor() //spawn meteors
         {
-            currRandom = random.Next(0, 3);
             int randomX = 0;
-            if (currRandom == prevRandom)
-            {
-                if (currRandom == 0 || currRandom == 1)
-                {
-                    currRandom = 2;
-                }
-                else
-                {
-                    currRandom = 0;
-                }
-            }
-            prevRandom = currRandom;
-            if (currRandom == 0)
-            {
-                randomX = 0;
-            }
-            else if (currRandom == 1)
-            {
-                randomX = 888;
-            }
-            else if (currRandom == 2)
-            {
-                randomX = 1775;
-            }
+            
             if (meteorAmount > 6) // Spawn cool down (seconds)
             {
                 meteorAmount = 0;
                 if (meteors.Count < 2) // Amount of meteors allowed on the screen
                 {
+                    currRandom = random.Next(0, 3);
+                    if (currRandom == prevRandom)
+                    {
+                        while (currRandom == prevRandom)
+                        {
+                            currRandom = random.Next(0, 3);
+                        }
+                    }
+                    if (currRandom == 0)
+                    {
+                        randomX = 0;
+                    }
+                    else if (currRandom == 1)
+                    {
+                        randomX = 888;
+                    }
+                    else if (currRandom == 2)
+                    {
+                        randomX = 1775;
+                    }
+                    prevRandom = currRandom;
                     meteors.Add(new Meteor(Content.Load<Texture2D>("Meteor"), new Vector2(randomX, -350), graphics));
                 }
             }
