@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace DDDD
 {
-    public class Dino
+    public class Dino 
     {
         public Texture2D dino;
         public Vector2 dinoPosition;
@@ -56,17 +57,20 @@ namespace DDDD
             }
         }
 
-        public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
+        public Dino(Texture2D texture, Vector2 position, GraphicsDeviceManager gdm) 
         {
+           
             graphics = gdm;
             dino = texture;
-            dinoPosition = vector;
-            //dinoCenter = new Vector2(dino.Width / 2, dino.Height); //(1000 / 2, 1000)
+            dinoPosition = position;
+            dinoCenter = new Vector2(dino.Width / 2, dino.Height); //(1000 / 2, 1000)
             dinoJumpFlag = true;
-            //dinoRec = new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y, dino.Width, dino.Height);
+            dinoRec = new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y, dino.Width, dino.Height);
             dinoTextureData = new Color[dino.Width * dino.Height];
             dino.GetData(dinoTextureData);
         }
+
+
 
         public void Update(GameTime gameTime, bool onPlatform, bool spinFlag)
         {

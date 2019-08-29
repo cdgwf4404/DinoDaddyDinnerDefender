@@ -4,29 +4,35 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Apples.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/BabyDino.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Background.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Carrots.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/dino.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/dino2.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/DinoSheet.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/egg1.jpg</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/food.jpg</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/full.jpg</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/fullSmall.jpg</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Grapes.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/grown.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/infant.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/meteor.jpg</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Meteor.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/platform.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/tail.jpg</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/Ubuntu32.spritefont</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/volcano.png</File>
-    <File>C:/Users/jingyi/Desktop/master/master/DinoDaddyDinnerDefender-Jingyi/DDDD/DDDD/Content/yummy.jpg</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Apples.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/BabyDino.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Background.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Carrots.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino2.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoSheet.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoSwipeLeftGreen.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Dino-Swipe-Left-Red_250x147.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoSwipeRightRed.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/egg1.jpg</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/food.jpg</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/full.jpg</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/fullSmall.jpg</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Grapes.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/grown.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/infant.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/meteor.jpg</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Meteor.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/platform.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/tail.jpg</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Ubuntu32.spritefont</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/volcano.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/yummy.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

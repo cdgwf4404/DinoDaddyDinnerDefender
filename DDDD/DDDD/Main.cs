@@ -14,6 +14,7 @@ namespace DDDD
         public GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public Dino dino;
+               
         List<Meteor> meteors = new List<Meteor>();
         List<Food> foods = new List<Food>();
         List<Nest> nests = new List<Nest>();
@@ -21,8 +22,11 @@ namespace DDDD
         List<Full> fulls = new List<Full>();
         List<Infant> infants = new List<Infant>();
         TestDino testDino;
+        TestDino2 testDino2;
+        
 
         public int meteorIndex = 0;
+
 
         private Yum _yum;
         //private Full _full;
@@ -68,6 +72,7 @@ namespace DDDD
         public bool exitLoop = false;
 
         public bool spinFlag = false;
+        public bool spaceBarPressed = false;
 
         private void reload() //reset game values when win or fail
         {
@@ -169,6 +174,11 @@ namespace DDDD
             testDino = new TestDino(new Vector2(100,100));
             testDino.LoadContent(Content);
 
+            testDino2 = new TestDino2(new Vector2(400, 400));
+            testDino2.LoadContent(Content);
+
+            
+
         }
 
 
@@ -234,7 +244,6 @@ namespace DDDD
 
                             dino.Update(gameTime, onPlatform, spinFlag);
                             onPlatform = false;
-
 
 
                             meteorAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -330,6 +339,7 @@ namespace DDDD
                             gameWon();
 
                             testDino.Update(gameTime);
+                            testDino2.Update(gameTime);
 
                             base.Update(gameTime);
                         }
@@ -432,6 +442,8 @@ namespace DDDD
 
 
                     testDino.Draw(spriteBatch);
+                    testDino2.Draw(spriteBatch);
+                    
 
                     break;
 
@@ -664,6 +676,18 @@ namespace DDDD
 
         }
 
+        bool spaceBarDown()
+        {
+            bool spaceDown = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                spaceDown = true;
+                //spinSpan -= gameTime.ElapsedGameTime;
+                //coolDownSpan -= gameTime.ElapsedGameTime;
+                spinFlag = true;
+            }
+            return spaceDown;
+        }
 
         public bool IsTouchingLeft(Rectangle r1, Rectangle r2, Vector2 r1speed)
         {

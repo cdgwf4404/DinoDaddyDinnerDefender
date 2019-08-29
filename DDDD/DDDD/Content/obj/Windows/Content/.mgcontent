@@ -11,6 +11,9 @@
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino.png</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino2.png</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoSheet.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoSwipeLeftGreen.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Dino-Swipe-Left-Red_250x147.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoSwipeRightRed.png</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/egg1.jpg</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/food.jpg</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/full.jpg</File>
@@ -27,6 +30,9 @@
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/yummy.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

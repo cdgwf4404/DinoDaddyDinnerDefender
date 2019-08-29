@@ -325,3 +325,6 @@ C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.exe
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Aether.Physics2D.dll
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Dino-Swipe-Left-Red_250x147.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoSwipeLeftGreen.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoSwipeRightRed.xnb

@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infant.cs" />
     <Compile Include="TestDino.cs" />
+    <Compile Include="TestDino2.cs" />
     <Compile Include="Yum.cs" />
   </ItemGroup>
   <ItemGroup>
