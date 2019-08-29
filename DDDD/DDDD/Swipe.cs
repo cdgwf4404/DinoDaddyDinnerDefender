@@ -33,7 +33,7 @@ namespace DDDD
 
 
 
-        public void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, Dino dino)
         {
             aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (aniElapased >= aniDelay)
@@ -42,6 +42,7 @@ namespace DDDD
                 {
                     aniFrame = 0;
                     swiping = false;
+                    dino.spaceBarPressed = false;
                 }
                 else
                 {

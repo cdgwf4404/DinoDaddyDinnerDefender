@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -72,6 +74,9 @@ namespace DDDD
 
         public bool spinFlag = false;
 
+        Song gameplaySong;
+        Song failSong;
+
         private void reload() //reset game values when win or fail
         {
             dinoHealth = 3;
@@ -136,7 +141,9 @@ namespace DDDD
   
         protected override void LoadContent()
         {
-
+            gameplaySong = Content.Load<Song>("DDDD_BgMusic");
+            MediaPlayer.Play(gameplaySong);
+            MediaPlayer.IsRepeating = true;
             spriteBatch = new SpriteBatch(GraphicsDevice);
             volcano = Content.Load<Texture2D>("Background");
             Rectangle textRec = new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
@@ -303,7 +310,7 @@ namespace DDDD
 
                             if(swipe.swiping == true)
                             {
-                                swipe.Update(gameTime);
+                                swipe.Update(gameTime, dino);
                             }
 
                             if (dead.dying == false && dinoHealth <= 0)
@@ -359,27 +366,28 @@ namespace DDDD
 
 
                             foodAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                            /*
+                            
                             for (int i = 0; i < foods.Count; i++)
                             {
                                 
-                                if (foods[i].Rectangle.Intersects(dino.Rectangle) && dino.hitCount == 0)
+                                if (foods[i].Rectangle.Intersects(dino.Rectangle) && swipe.swiping /*dino.hitCount == 0*/)
                                 {
-                                    if (dino.hitCount == 0)
-                                    {
+                                    //if (dino.hitCount == 0)
+                                    //{
                                         foods[i].foodHitDino = true;
          
-                                        dino.hitCount = 1;
+                                       // dino.hitCount = 1;
                                         
                                         
-                                    }
+                                   // }
                                 }
 
                                 foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, dino);
                                 foods[i].foodHitDino = false;
 
-                            }*/
+                            }
 
+                            /*
                             for (int i = 0; i < foods.Count; i++)
                             {
 
@@ -392,13 +400,13 @@ namespace DDDD
 
                                 foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, dino);
                                 foods[i].foodHitDino = false;
-                            }
+                            }*/
                                 randomFood(gameTime);
 
                                                                                   
                             for (int i = 0; i < meteors.Count; i++)
                             {
-                                if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyDown(Keys.Space))
+                                if (meteors[i].Rectangle.Intersects(dino.Rectangle) && swipe.swiping/*Keyboard.GetState().IsKeyDown(Keys.Space)*/)
                                 {
                                     piece.destoried = true;
                                     piece.piecePosition.X = meteors[i].meteorPosition.X;

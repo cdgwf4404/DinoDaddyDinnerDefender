@@ -46,8 +46,8 @@ namespace DDDD
         public Rectangle aniStart;
 
 
-        //public bool hasAttacked = false;
-        //TimeSpan attackCooldown;
+        public bool hasAttacked = false;
+        TimeSpan attackCooldown;
         public int hitCount = 0;
         public Vector2 inputDirection;
 
@@ -66,7 +66,7 @@ namespace DDDD
         public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
            
-            //attackCooldown = TimeSpan.FromMilliseconds(2000);
+            attackCooldown = TimeSpan.FromMilliseconds(1000);
             inputDirection = Vector2.Zero;
             graphics = gdm;
             dino = texture;
@@ -127,7 +127,7 @@ namespace DDDD
                 dinoJumpSpeed.X = 0f;
             }
 
-            //Attack(gameTime);
+            Attack(gameTime);
 
 
 
@@ -135,16 +135,16 @@ namespace DDDD
             //coolDownSpan -= gameTime.ElapsedGameTime;
 
 
-            spaceBarPressed = spaceBarDown(gameTime, spinFlag);
+            //spaceBarPressed = spaceBarDown(gameTime, spinFlag);
 
-            if (spaceBarPressed)
+           /* if (spaceBarPressed)
             {
                 //coolDown();
                 angle = checkAngle();
-                spinFrames(angle, spinFlag);
+                //spinFrames(angle, spinFlag);
 
             }
-            
+            */
           
 
 /*
@@ -259,11 +259,12 @@ namespace DDDD
             spriteBatch.Draw(dino, new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y - 147, 250, 147), new Rectangle(250 * aniFrame, 0, 250, 147), Color.White);
         }
 
-        /*
+        
         public void Attack(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !hasAttacked)
             {
+                spaceBarPressed = true;
                 hasAttacked = true;
             }
             if (hasAttacked)
@@ -272,12 +273,13 @@ namespace DDDD
             }
             if (attackCooldown <= TimeSpan.Zero)
             {
+               
                 hasAttacked = false;
-                attackCooldown = TimeSpan.FromMilliseconds(2000);
+                attackCooldown = TimeSpan.FromMilliseconds(1000);
                 hitCount = 0;
             }
         }
-        */
+        
 
 
         public bool spaceBarDown(GameTime gameTime, bool spinFlag)

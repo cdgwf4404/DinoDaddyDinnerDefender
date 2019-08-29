@@ -73,6 +73,12 @@
 /processorParam:TextureFormat=Color
 /build:Carrots.png
 
+#begin DDDD_BgMusic.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:DDDD_BgMusic.mp3
+
 #begin dead.png
 /importer:TextureImporter
 /processor:TextureProcessor
