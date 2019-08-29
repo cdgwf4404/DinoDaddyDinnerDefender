@@ -557,3 +557,6 @@ D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CoreCompil
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CopyComplete
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.exe
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
+D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Apple_Large.xnb
+D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Grapes_Large.xnb
+D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Orange_Large.xnb

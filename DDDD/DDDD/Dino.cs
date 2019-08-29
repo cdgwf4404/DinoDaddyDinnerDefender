@@ -66,7 +66,7 @@ namespace DDDD
         public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
            
-            attackCooldown = TimeSpan.FromMilliseconds(500);
+            attackCooldown = TimeSpan.FromMilliseconds(750);
             inputDirection = Vector2.Zero;
             graphics = gdm;
             dino = texture;
@@ -275,7 +275,7 @@ namespace DDDD
             {
                
                 hasAttacked = false;
-                attackCooldown = TimeSpan.FromMilliseconds(500);
+                attackCooldown = TimeSpan.FromMilliseconds(750);
                 hitCount = 0;
             }
         }

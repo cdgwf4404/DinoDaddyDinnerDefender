@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Apple_Large.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Apple_Large.png
+
 #begin Apples.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -199,6 +211,18 @@
 /processorParam:TextureFormat=Color
 /build:Grapes.png
 
+#begin Grapes_Large.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Grapes_Large.png
+
 #begin green.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -306,6 +330,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Meteor.png
+
+#begin Orange_Large.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Orange_Large.png
 
 #begin piece.png
 /importer:TextureImporter
