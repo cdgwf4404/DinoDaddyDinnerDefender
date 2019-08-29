@@ -60,7 +60,7 @@ namespace DDDD
 
         public int foodMax = 5;
 
-        TimeSpan foodTimeout = TimeSpan.FromSeconds(3);
+        TimeSpan foodTimeout = TimeSpan.FromSeconds(0);
 
         //public bool foodHitDino = false;
         public bool meteorHitDino = false;
@@ -599,7 +599,7 @@ namespace DDDD
             if (foodAmount > 1) // Spawn cool down (seconds)
             {
                 foodAmount = 0;
-                if (foods.Count < 10) // Amount of foods allowed on the screen
+                if (foods.Count < 5) // Amount of foods allowed on the screen
                 {
                     int foodType = random.Next(0, 3);
                     if (foodType == 0)
@@ -630,7 +630,7 @@ namespace DDDD
                     {
                         foods.RemoveAt(i); //Remove foods after time
                         i--;
-                        foodTimeout = TimeSpan.FromSeconds(3);
+                        foodTimeout = TimeSpan.FromSeconds(0);
                     }
                 }
                 else if (foods[i].foodOutside == true)

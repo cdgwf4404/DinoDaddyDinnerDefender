@@ -66,7 +66,7 @@ namespace DDDD
         public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
            
-            attackCooldown = TimeSpan.FromMilliseconds(1000);
+            attackCooldown = TimeSpan.FromMilliseconds(500);
             inputDirection = Vector2.Zero;
             graphics = gdm;
             dino = texture;
@@ -217,19 +217,19 @@ namespace DDDD
             if (Keyboard.GetState().IsKeyDown(Keys.W) && dinoJumpFlag == false)
             {
                 dinoPosition.Y -= 5f;
-                dinoJumpSpeed.Y = -14f; //the height a dino jumps
+                dinoJumpSpeed.Y = -16; //the height a dino jumps
                 dinoJumpFlag = true;
             }
 
 
             if (dinoJumpFlag == true) //dino in the air
             {
-                float index = 2;
+                float index = 3;
                 dinoJumpSpeed.Y += 0.15f * index; // falling speed
             }
             else if (onPlatform == false && dinoPosition.Y < graphics.GraphicsDevice.DisplayMode.Height - 120)
             {
-                float index = 2;
+                float index = 3;
                 dinoJumpSpeed.Y += 0.15f * index;
                 //dinoJumpFlag = true;
             }
@@ -275,7 +275,7 @@ namespace DDDD
             {
                
                 hasAttacked = false;
-                attackCooldown = TimeSpan.FromMilliseconds(1000);
+                attackCooldown = TimeSpan.FromMilliseconds(500);
                 hitCount = 0;
             }
         }
