@@ -494,3 +494,4 @@ C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\
 C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
 C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DDDD_BgMusic.wma
 C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DDDD_BgMusic.xnb
+C:\Users\colin\source\repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.csprojResolveAssemblyReference.cache
