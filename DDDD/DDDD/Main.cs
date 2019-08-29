@@ -29,6 +29,8 @@ namespace DDDD
         List<Platform> platforms = new List<Platform>();
 
         public int meteorIndex = 0;
+        public int prevRandom = -1;
+        public int currRandom = -1;
 
         private Yum _yum;
 
@@ -41,6 +43,7 @@ namespace DDDD
 
         public Texture2D nest1Texture;
         public Texture2D nest2Texture;
+        public Texture2D nest3Texture;
 
         public Texture2D yumTexture;
         public Texture2D fullTexture;
@@ -155,16 +158,23 @@ namespace DDDD
             dino = new Dino(Content.Load<Texture2D>("green"), new Vector2(1920 / 2, 900), graphics);
             Ubuntu32 = Content.Load<SpriteFont>("Ubuntu32");
 
-            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1920 / 2 + 200, 1080/2 + 120), graphics));
-            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(0, 1080 / 2 + 120), graphics));
+            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1920 / 2 + 715, 1080/2 + 180), graphics));
+            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(0, 1080 / 2 + 180), graphics));
+            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(500, 1080 / 2 + 1), graphics));
+            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1175, 1080 / 2 + 1), graphics));
+
 
             nest1Texture = Content.Load<Texture2D>("baby");
             nests.Add(new Nest(nest1Texture));
-            nests[0]._position = new Vector2(50, 1080 / 2 - 25);
+            nests[0]._position = new Vector2(0, 1080 / 2 + 35);
 
             nest2Texture = Content.Load<Texture2D>("baby");
             nests.Add(new Nest(nest1Texture));
-            nests[1]._position = new Vector2(1300, 885 - 75);
+            nests[1]._position = new Vector2(1775, 1080 / 2 + 35);
+
+            nest3Texture = Content.Load<Texture2D>("baby");
+            nests.Add(new Nest(nest3Texture));
+            nests[2]._position = new Vector2(888, 1080 / 2 + 262);
 
             yumTexture = Content.Load<Texture2D>("yummy");
             _yum = new Yum(yumTexture);
@@ -536,7 +546,32 @@ namespace DDDD
 
         public void randomMeteor() //spawn meteors
         {
-            int randomX = random.Next(0, 1920);
+            currRandom = random.Next(0, 3);
+            int randomX = 0;
+            if (currRandom == prevRandom)
+            {
+                if (currRandom == 0 || currRandom == 1)
+                {
+                    currRandom = 2;
+                }
+                else
+                {
+                    currRandom = 0;
+                }
+            }
+            prevRandom = currRandom;
+            if (currRandom == 0)
+            {
+                randomX = 0;
+            }
+            else if (currRandom == 1)
+            {
+                randomX = 888;
+            }
+            else if (currRandom == 2)
+            {
+                randomX = 1775;
+            }
             if (meteorAmount > 6) // Spawn cool down (seconds)
             {
                 meteorAmount = 0;
@@ -558,7 +593,9 @@ namespace DDDD
 
         public void randomFood(GameTime gameTime) //spwan foods
         {
-            int randomX = random.Next(0, GraphicsDevice.DisplayMode.Width);
+            int randomX_1 = random.Next(200, 700); ;
+            int randomX_2 = random.Next(1100, 1600);
+
             if (foodAmount > 1) // Spawn cool down (seconds)
             {
                 foodAmount = 0;
@@ -567,15 +604,18 @@ namespace DDDD
                     int foodType = random.Next(0, 3);
                     if (foodType == 0)
                     {
-                        foods.Add(new Food(Content.Load<Texture2D>("Grapes"), new Vector2(randomX, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Grapes"), new Vector2(randomX_1, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Grapes"), new Vector2(randomX_2, -10), graphics));
                     }
                     else if (foodType == 1)
                     {
-                        foods.Add(new Food(Content.Load<Texture2D>("Apples"), new Vector2(randomX, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Apples"), new Vector2(randomX_1, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Apples"), new Vector2(randomX_2, -10), graphics));
                     }
                     else if (foodType == 2)
                     {
-                        foods.Add(new Food(Content.Load<Texture2D>("Carrots"), new Vector2(randomX, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Carrots"), new Vector2(randomX_1, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Carrots"), new Vector2(randomX_1, -10), graphics));
                     }
                 }
             }

@@ -85,7 +85,7 @@ namespace DDDD
 
             if (Keyboard.GetState().IsKeyDown(Keys.A) && dinoPosition.X > 0)
             {
-                dinoJumpSpeed.X = -7f; // dino's walking speed
+                dinoJumpSpeed.X = -11f; // dino's walking speed
                 dinoAngle = Math.PI;
                 aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (aniElapased >= aniDelay)
@@ -104,7 +104,7 @@ namespace DDDD
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.D) && dinoPosition.X < 1920 - 250)
             {
-                dinoJumpSpeed.X = 7f; // dino's walking speed
+                dinoJumpSpeed.X = 11f; // dino's walking speed
                 dinoAngle = 0f;
                 aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (aniElapased >= aniDelay)
