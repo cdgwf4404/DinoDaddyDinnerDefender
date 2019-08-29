@@ -596,7 +596,7 @@ namespace DDDD
             if (foodAmount > 1) // Spawn cool down (seconds)
             {
                 foodAmount = 0;
-                if (foods.Count < 5) // Amount of foods allowed on the screen
+                if (foods.Count < 3) // Amount of foods allowed on the screen
                 {
                     int foodType = random.Next(0, 3);
                     if (foodType == 0)
