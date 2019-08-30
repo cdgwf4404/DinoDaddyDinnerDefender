@@ -627,7 +627,7 @@ namespace DDDD
                     else if (foodType == 2)
                     {
                         foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_1, -10), graphics));
-                        foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_1, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_2, -10), graphics));
                     }
                 }
             }
