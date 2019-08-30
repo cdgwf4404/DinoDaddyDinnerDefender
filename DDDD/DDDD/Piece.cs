@@ -16,7 +16,7 @@ namespace DDDD
         public bool destoried;
 
         public float aniElapased;
-        public float aniDelay = 400f; //speed of animation
+        public float aniDelay = 800f; //speed of animation
 
 
         public Piece(Texture2D texture, Vector2 vector2)

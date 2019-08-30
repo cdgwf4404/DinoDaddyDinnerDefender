@@ -239,14 +239,14 @@ namespace DDDD
                 float index = 3;
                 dinoJumpSpeed.Y += 0.15f * index; // falling speed
             }
-            else if (onPlatform == false && dinoPosition.Y < graphics.GraphicsDevice.DisplayMode.Height - 120)
+            else if (onPlatform == false && dinoPosition.Y < graphics.GraphicsDevice.DisplayMode.Height - 130)
             {
                 float index = 3;
                 dinoJumpSpeed.Y += 0.15f * index;
                 //dinoJumpFlag = true;
             }
 
-            if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 120) //dino reaches floor
+            if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 130) //dino reaches floor
             {
                 dinoJumpFlag = false;
                 if (jumpInstance != null)

@@ -18,6 +18,7 @@
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino2.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoSheet.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/egg1.jpg</File>
+    <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Explosion.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/fail.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/food.jpg</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/FoodHit.wav</File>
@@ -53,6 +54,7 @@
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/yummy.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

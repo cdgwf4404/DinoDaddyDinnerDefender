@@ -199,7 +199,7 @@ namespace DDDD
 
             dead = new Dead(Content.Load<Texture2D>("dead"), new Vector2(1920 / 2, 900), graphics);
 
-            piece = new Piece(Content.Load<Texture2D>("piece"), new Vector2(1920 / 2, 900));
+            piece = new Piece(Content.Load<Texture2D>("Explosion"), new Vector2(1920 / 2, 900));
 
         }
 
