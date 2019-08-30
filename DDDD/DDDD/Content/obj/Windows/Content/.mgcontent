@@ -10,6 +10,7 @@
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/BabyDino.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Background.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Carrots.png</File>
+    <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DD_HitByMeteor.wav</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DDDD_BgMusic.mp3</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dead.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino.png</File>
@@ -18,6 +19,7 @@
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/egg1.jpg</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/fail.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/food.jpg</File>
+    <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/FoodHit.wav</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/full.jpg</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/fullSmall.jpg</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Grapes.png</File>
@@ -28,9 +30,11 @@
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/grown.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/hit.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/infant.png</File>
+    <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/JumpSFX.wav</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/menu.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/meteor.jpg</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Meteor.png</File>
+    <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/MeteorExplode.wav</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Orange_Large.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/piece.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/platform.png</File>
@@ -38,6 +42,7 @@
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/redLeft.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/redRight.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/tail.jpg</File>
+    <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/TailSwipe.wav</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Ubuntu32.spritefont</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/volcano.png</File>
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/win.png</File>
@@ -47,6 +52,11 @@
     <File>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/yummy.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

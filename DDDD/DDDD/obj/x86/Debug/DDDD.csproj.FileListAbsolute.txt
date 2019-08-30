@@ -560,3 +560,8 @@ D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Apple_Large.xnb
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Grapes_Large.xnb
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Orange_Large.xnb
+D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DD_HitByMeteor.xnb
+D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\FoodHit.xnb
+D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\JumpSFX.xnb
+D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\MeteorExplode.xnb
+D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\TailSwipe.xnb

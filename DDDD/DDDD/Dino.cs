@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 
 namespace DDDD
@@ -76,7 +77,7 @@ namespace DDDD
             dino.GetData(dinoTextureData);
         }
 
-        public void Update(GameTime gameTime, bool onPlatform, bool spinFlag)
+        public void Update(GameTime gameTime, bool onPlatform, bool spinFlag, List<SoundEffect> sounds)
         {
 
             dinoPosition += dinoJumpSpeed;
@@ -127,7 +128,7 @@ namespace DDDD
                 dinoJumpSpeed.X = 0f;
             }
 
-            Attack(gameTime);
+            Attack(gameTime, sounds);
 
 
 
@@ -216,6 +217,7 @@ namespace DDDD
             */
             if (Keyboard.GetState().IsKeyDown(Keys.W) && dinoJumpFlag == false)
             {
+                sounds[2].Play();
                 dinoPosition.Y -= 5f;
                 dinoJumpSpeed.Y = -16; //the height a dino jumps
                 dinoJumpFlag = true;
@@ -260,12 +262,14 @@ namespace DDDD
         }
 
         
-        public void Attack(GameTime gameTime)
+        public void Attack(GameTime gameTime, List<SoundEffect> sounds)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !hasAttacked)
             {
                 spaceBarPressed = true;
                 hasAttacked = true;
+                sounds[4].Play();
+
             }
             if (hasAttacked)
             {

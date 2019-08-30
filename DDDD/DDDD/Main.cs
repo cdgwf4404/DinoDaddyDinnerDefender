@@ -27,6 +27,7 @@ namespace DDDD
         List<Food> menuFoods = new List<Food>();
         List<Nest> nests = new List<Nest>();
         List<Platform> platforms = new List<Platform>();
+        List<SoundEffect> soundEffects = new List<SoundEffect>();
 
         public int meteorIndex = 0;
         public int prevRandom = -1;
@@ -153,6 +154,13 @@ namespace DDDD
             texts.Add(new Text(Content.Load<Texture2D>("menu"), new Vector2(0, 0)));
             texts.Add(new Text(Content.Load<Texture2D>("win"), new Vector2(0, 0)));
             texts.Add(new Text(Content.Load<Texture2D>("fail"), new Vector2(0, 0)));
+
+            soundEffects.Add(Content.Load<SoundEffect>("DD_HitByMeteor"));
+            soundEffects.Add(Content.Load<SoundEffect>("FoodHit"));
+            soundEffects.Add(Content.Load<SoundEffect>("JumpSFX"));
+            soundEffects.Add(Content.Load<SoundEffect>("MeteorExplode"));
+            soundEffects.Add(Content.Load<SoundEffect>("TailSwipe"));
+
 
 
             dino = new Dino(Content.Load<Texture2D>("green"), new Vector2(1920 / 2, 900), graphics);
@@ -302,7 +310,7 @@ namespace DDDD
 
                             if (hit.dinoHit == false && dead.dying == false) // display dino
                             {
-                                dino.Update(gameTime, onPlatform, spinFlag);
+                                dino.Update(gameTime, onPlatform, spinFlag, soundEffects);
                             }
                             else if(hit.dinoHit == true) // display hit animation
                             {
@@ -384,7 +392,8 @@ namespace DDDD
                                 {
                                     //if (dino.hitCount == 0)
                                     //{
-                                        foods[i].foodHitDino = true;
+                                    //soundEffects[1].Play();
+                                    foods[i].foodHitDino = true;
          
                                        // dino.hitCount = 1;
                                         
@@ -418,6 +427,7 @@ namespace DDDD
                             {
                                 if (meteors[i].Rectangle.Intersects(dino.Rectangle) && swipe.swiping/*Keyboard.GetState().IsKeyDown(Keys.Space)*/)
                                 {
+                                    soundEffects[3].Play();
                                     piece.destoried = true;
                                     piece.piecePosition.X = meteors[i].meteorPosition.X;
                                     piece.piecePosition.Y = meteors[i].meteorPosition.Y + 100;
@@ -425,6 +435,7 @@ namespace DDDD
                                 }
                                 else if (meteors[i].Rectangle.Intersects(dino.Rectangle) && Keyboard.GetState().IsKeyUp(Keys.Space))
                                 {
+                                    soundEffects[0].Play();
                                     meteors.RemoveAt(i);
                                     dinoHealth -= 1;
                                     hit.dinoHit = true;
