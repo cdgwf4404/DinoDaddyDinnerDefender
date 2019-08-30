@@ -18,6 +18,12 @@ namespace DDDD
         public Vector2 dinoJumpSpeed;
         public bool dinoJumpFlag;
 
+        SoundEffectInstance jumpInstance;
+        SoundEffectInstance swipeInstance;
+
+
+        private static readonly Object obj = new Object();
+
         public double dinoAngle = 0f;
         GraphicsDeviceManager graphics;
         public Rectangle dinoRec;
@@ -217,10 +223,14 @@ namespace DDDD
             */
             if (Keyboard.GetState().IsKeyDown(Keys.W) && dinoJumpFlag == false)
             {
-                sounds[2].Play();
-                dinoPosition.Y -= 5f;
-                dinoJumpSpeed.Y = -16; //the height a dino jumps
-                dinoJumpFlag = true;
+                lock(obj)
+                {
+                    dinoJumpFlag = true;
+                    jumpInstance = sounds[2].CreateInstance();
+                    jumpInstance.Play();
+                    dinoPosition.Y -= 5f;
+                    dinoJumpSpeed.Y = -16; //the height a dino jumps
+                }  
             }
 
 
@@ -239,12 +249,17 @@ namespace DDDD
             if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 120) //dino reaches floor
             {
                 dinoJumpFlag = false;
+                if (jumpInstance != null)
+                {
+                    jumpInstance.Stop();
+                }
                 dinoJumpSpeed.Y = 0f;
             }
 
             if (onPlatform == true)
             {
                 dinoJumpFlag = false;
+                jumpInstance.Stop();
             }
 
             /*
@@ -268,8 +283,8 @@ namespace DDDD
             {
                 spaceBarPressed = true;
                 hasAttacked = true;
-                sounds[4].Play();
-
+                swipeInstance = sounds[4].CreateInstance();
+                swipeInstance.Play();
             }
             if (hasAttacked)
             {
@@ -277,7 +292,7 @@ namespace DDDD
             }
             if (attackCooldown <= TimeSpan.Zero)
             {
-               
+                swipeInstance.Stop();
                 hasAttacked = false;
                 attackCooldown = TimeSpan.FromMilliseconds(750);
                 hitCount = 0;

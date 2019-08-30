@@ -155,6 +155,7 @@ namespace DDDD
             texts.Add(new Text(Content.Load<Texture2D>("win"), new Vector2(0, 0)));
             texts.Add(new Text(Content.Load<Texture2D>("fail"), new Vector2(0, 0)));
 
+            SoundEffect.MasterVolume = 0.2f;
             soundEffects.Add(Content.Load<SoundEffect>("DD_HitByMeteor"));
             soundEffects.Add(Content.Load<SoundEffect>("FoodHit"));
             soundEffects.Add(Content.Load<SoundEffect>("JumpSFX"));
