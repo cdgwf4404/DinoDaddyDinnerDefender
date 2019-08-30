@@ -29,6 +29,9 @@ namespace DDDD
         List<Platform> platforms = new List<Platform>();
         List<SoundEffect> soundEffects = new List<SoundEffect>();
 
+        SoundEffectInstance eatInstance;
+
+
         public int meteorIndex = 0;
         public int prevRandom = -1;
         public int currRandom = -1;
@@ -157,7 +160,7 @@ namespace DDDD
 
             SoundEffect.MasterVolume = 0.2f;
             soundEffects.Add(Content.Load<SoundEffect>("DD_HitByMeteor"));
-            soundEffects.Add(Content.Load<SoundEffect>("FoodHit"));
+            soundEffects.Add(Content.Load<SoundEffect>("BabyGrow"));
             soundEffects.Add(Content.Load<SoundEffect>("JumpSFX"));
             soundEffects.Add(Content.Load<SoundEffect>("MeteorExplode"));
             soundEffects.Add(Content.Load<SoundEffect>("TailSwipe"));
@@ -706,6 +709,9 @@ namespace DDDD
                 {
                     if ( nest.foodFromDaddy < foodMax) //stops receving when reaching Max
                     {
+                        eatInstance = soundEffects[1].CreateInstance();
+                        eatInstance.Volume = .7f;
+                        eatInstance.Play();
                         nest.receivedFood = false;
                         foods.RemoveAt(foodIndex);
                         nest.foodFromDaddy += 1;

@@ -61,6 +61,12 @@
 /processorParam:TextureFormat=Color
 /build:BabyDino.png
 
+#begin BabyGrow.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:BabyGrow.wav
+
 #begin Background.png
 /importer:TextureImporter
 /processor:TextureProcessor
