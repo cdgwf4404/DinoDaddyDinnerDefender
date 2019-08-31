@@ -50,6 +50,7 @@
     <Compile Include="Dino.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="Full.cs" />
+    <Compile Include="Grown.cs" />
     <Compile Include="Hit.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Meteor.cs" />

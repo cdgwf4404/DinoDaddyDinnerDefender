@@ -64,9 +64,11 @@ namespace DDDD
         public float menuFoodAmount = 0;
 
         public bool onPlatform = false;
-        
+        public bool babyOnPlatform = false;
 
         public int foodMax = 5;
+
+        public int meteorFeq = 7;
 
         TimeSpan foodTimeout = TimeSpan.FromSeconds(0);
 
@@ -102,6 +104,8 @@ namespace DDDD
             {
                 foods.RemoveAt(i);
             }
+            meteors = new List<Meteor>();
+            foods = new List<Food>();
 
             foreach (Nest nest in nests)
             {
@@ -109,6 +113,7 @@ namespace DDDD
                 nest.receivedFood = false;
                 nest.babyIsfull = false;
                 nest.babyHealth = 1;
+                nest.grown = false;
             }
             hit.dinoHit = false;
             dead.dying = false;
@@ -120,6 +125,8 @@ namespace DDDD
             {
                 chomps[i].chomping = false;
             }
+
+            meteorFeq = 7;
 
             dino.dinoPosition.X = 1920 / 2;
             dino.dinoPosition.Y = 900;
@@ -195,6 +202,7 @@ namespace DDDD
             platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(0, 1080 / 2 + 180), graphics));
             platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(500, 1080 / 2 + 1), graphics));
             platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1175, 1080 / 2 + 1), graphics));
+
 
 
             nest1Texture = Content.Load<Texture2D>("baby");
@@ -398,7 +406,7 @@ namespace DDDD
                             {
                                 for (int j = 0; j < nests.Count; j++)
                                 {
-                                    if (nests[j].Rectangle.Intersects(meteors[i].Rectangle))
+                                    if (nests[j].Rectangle.Intersects(meteors[i].Rectangle) && nests[j].grown == false)
                                     {
                                         nests[j].babyHealth -= 1;
                                         meteorIndex = i;
@@ -443,15 +451,15 @@ namespace DDDD
                                 
                                 if (foods[i].Rectangle.Intersects(dino.Rectangle) && swipe.swiping /*dino.hitCount == 0*/)
                                 {
-                                    //if (dino.hitCount == 0)
-                                    //{
-                                    //soundEffects[1].Play();
-                                    foods[i].foodHitDino = true;
-         
-                                       // dino.hitCount = 1;
+                                    if (foods[i].hitCount == 0 && dino.hitCount == 0)
+                                    {
+                                    
+                                        foods[i].foodHitDino = true;
+                                        dino.hitCount = 1;
+                                        foods[i].hitCount = 1;
                                         
                                         
-                                   // }
+                                    }
                                 }
 
                                 foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, dino);
@@ -473,7 +481,7 @@ namespace DDDD
                                 foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, dino);
                                 foods[i].foodHitDino = false;
                             }*/
-                                randomFood(gameTime);
+                                
 
                                                                                   
                             for (int i = 0; i < meteors.Count; i++)
@@ -503,13 +511,15 @@ namespace DDDD
                             {
                                 if (nests[i].receivedFood)
                                 {
-                                    if (nests[i].foodFromDaddy < foodMax) //stops receving when reaching Max
+                                    if (nests[i].foodFromDaddy < foodMax && deadBaby.babyDying == false) //stops receving when reaching Max
                                     {
                                         eatInstance = soundEffects[1].CreateInstance();
                                         eatInstance.Volume = .7f;
                                         eatInstance.Play();
                                         nests[i].receivedFood = false;
+                                        
                                         foods.RemoveAt(foodIndex);
+                                        
                                         nests[i].foodFromDaddy += 1;
 
                                         if (nests[i].foodFromDaddy == 1)
@@ -524,6 +534,7 @@ namespace DDDD
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft1");
                                                 chomps[i].frame = 6;
                                             }
+                                            chomps[i].chomping = true;
                                         }
                                         else if (nests[i].foodFromDaddy == 2)
                                         {
@@ -537,6 +548,7 @@ namespace DDDD
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft2");
                                                 chomps[i].frame = 6;
                                             }
+                                            chomps[i].chomping = true;
                                         }
                                         else if (nests[i].foodFromDaddy == 3)
                                         {
@@ -550,6 +562,7 @@ namespace DDDD
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft3");
                                                 chomps[i].frame = 5;
                                             }
+                                            chomps[i].chomping = true;
                                         }
                                         else if (nests[i].foodFromDaddy == 4)
                                         {
@@ -563,6 +576,7 @@ namespace DDDD
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft4");
                                                 chomps[i].frame = 5;
                                             }
+                                            chomps[i].chomping = true;
                                         }
                                         else if(nests[i].foodFromDaddy == 5)
                                         {
@@ -576,20 +590,28 @@ namespace DDDD
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft5");
                                                 chomps[i].frame = 5;
                                             }
+                                            chomps[i].chomping = true;
+                                            meteorFeq -= 1;
                                         }
 
-                                        chomps[i].chomping = true;
                                     }
                                 }
                             }
+                            randomFood(gameTime);
 
-                            for(int i = 0; i < chomps.Count; i++)
+                            for (int i = 0; i < chomps.Count; i++)
                             {
                                 if(chomps[i].chomping == true)
                                 {
                                     chomps[i].Update(gameTime, nests[i]._position);
                                 }
                             }
+
+                            
+
+                           
+
+                            babyOnPlatform = false;
 
                             babyIsFed();
                             gameWon();
@@ -691,20 +713,19 @@ namespace DDDD
                     
                     for (int i = 0; i < nests.Count; i++)
                     {
-                        if (deadBaby.babyDying == true)
-                        {
-                            deadBaby.Draw(spriteBatch);
-                        }
-                        else if (chomps[i].chomping == true)
+
+                        if (chomps[i].chomping == true && deadBaby.babyDying == false)
                         {
                             chomps[i].Draw(spriteBatch);
                         }
-                        else if (nests[i].babyHealth > 0)
+                        else if (nests[i].babyHealth > 0 && nests[i].foodFromDaddy < 6)
                         {
                             nests[i].Draw(spriteBatch);
                         }
-                        
-
+                        else if (deadBaby.babyDying == true)
+                        {
+                            deadBaby.Draw(spriteBatch);
+                        }
                     }
 
                     //deadBaby.Draw(spriteBatch);
@@ -767,7 +788,7 @@ namespace DDDD
         {
             int randomX = 0;
             
-            if (meteorAmount > 6) // Spawn cool down (seconds)
+            if (meteorAmount > meteorFeq) // Spawn cool down (seconds)
             {
                 meteorAmount = 0;
                 if (meteors.Count < 2) // Amount of meteors allowed on the screen
@@ -998,7 +1019,7 @@ namespace DDDD
 
                 for (int j = 0; j < nests.Count; j++)
                 {
-                    if (nests[j].Rectangle.Intersects(meteorRectangle))
+                    if (nests[j].Rectangle.Intersects(meteorRectangle) && nests[j].grown == false)
                     {
                         nests[j].hitByMeteor = true;
                         meteorIndex = i;

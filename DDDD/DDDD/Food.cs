@@ -29,7 +29,7 @@ namespace DDDD
         GraphicsDeviceManager graphics;
 
         public bool foodHitDino;
-
+        public int hitCount;
 
         public Rectangle Rectangle
         {
@@ -43,6 +43,7 @@ namespace DDDD
 
         public Food(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
+            hitCount = 0;
             foodHitDino = false;
             graphics = gdm;
             food = texture;

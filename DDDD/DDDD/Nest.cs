@@ -17,8 +17,8 @@ namespace DDDD
         public int foodFromDaddy;
         public Boolean hitByMeteor = false;
         public int babyHealth = 1;
+        public bool grown;
 
-        public int aniFrame;
 
         public Rectangle Rectangle
         {
@@ -35,16 +35,9 @@ namespace DDDD
         {
             _texture = texture;
             foodFromDaddy = 0;
+            grown = false;
         }
 
-
-
-        public void Update()
-        {
-
-
-
-        }
 
         public void Draw(SpriteBatch spriteBatch)
         {

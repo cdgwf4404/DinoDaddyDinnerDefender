@@ -21,7 +21,6 @@ namespace DDDD
         SoundEffectInstance jumpInstance;
         SoundEffectInstance swipeInstance;
 
-
         private static readonly Object obj = new Object();
 
         public double dinoAngle;
@@ -45,9 +44,6 @@ namespace DDDD
 
         public bool spaceBarPressed = false;
         public int angle = 0;
-
-        TimeSpan spinSpan = TimeSpan.FromMilliseconds(1000);
-        TimeSpan coolDownSpan = TimeSpan.FromMilliseconds(1300);
 
         //public Rectangle aniStart = new Rectangle(1920 / 2 - 250, 1080 - 147, 250, 147);
         public Rectangle aniStart;
@@ -89,7 +85,7 @@ namespace DDDD
 
             dinoPosition += dinoJumpSpeed;
 
-            dinoRec = new Rectangle((int)dinoPosition.X /*+ 250 + (dino.Width/2)*/, (int)dinoPosition.Y - 147 - (dino.Height / 2), dino.Width, dino.Height);
+            //dinoRec = new Rectangle((int)dinoPosition.X /*+ 250 + (dino.Width/2)*/, (int)dinoPosition.Y - 147 - (dino.Height / 2), dino.Width, dino.Height);
 
             if (Keyboard.GetState().IsKeyDown(Keys.A) && dinoPosition.X > 0)
             {
@@ -137,91 +133,6 @@ namespace DDDD
 
             Attack(gameTime, sounds);
 
-
-
-            //spinSpan -= gameTime.ElapsedGameTime;
-            //coolDownSpan -= gameTime.ElapsedGameTime;
-
-
-            //spaceBarPressed = spaceBarDown(gameTime, spinFlag);
-
-           /* if (spaceBarPressed)
-            {
-                //coolDown();
-                angle = checkAngle();
-                //spinFrames(angle, spinFlag);
-
-            }
-            */
-          
-
-/*
-            if (spaceBarHit() && dinoAngle == Math.PI && spinFlag == false && coolDownFlag == false)
-            {
-                spinSpan -= gameTime.ElapsedGameTime;
-                coolDownSpan -= gameTime.ElapsedGameTime;
-                spinFlag = false;
-                coolDownFlag = false;
-
-                if (spinSpan >= TimeSpan.Zero)
-                {
-                    spinFlag = true;
-                    for (int i = 17; i <= 21; i++)
-                    {
-                        swipeLeft = i;
-                        aniFrame = swipeLeft;
-                    }
-                }
-                else
-                {
-                    spinSpan = TimeSpan.FromMilliseconds(1000);
-                }
-
-                if (coolDownSpan >= TimeSpan.Zero)
-                {
-                    coolDownFlag = true;
-                }
-                else
-                {
-                    coolDownSpan = TimeSpan.FromMilliseconds(1300);
-                }
-                /*
-                if (aniElapased >= swipeDelay)
-                {
-                    if (swipeLeft >= 21)
-                    {
-                        swipeLeft = 17;
-                        
-                    }
-                    else
-                    {
-                        swipeLeft++;
-                    }
-                    aniElapased = 0;
-                }
-                aniFrame = swipeLeft;
-               
-            } */
-            //else if()
-            /*
-            else if (Keyboard.GetState().IsKeyDown(Keys.Space) && dinoAngle == 0f)
-            {
-                if (aniElapased >= swipeDelay)
-                {
-                    if (swipeRight >= 16)
-                    {
-                        swipeRight = 12;
-                    }
-                    else
-                    {
-                        swipeRight++;
-                    }
-                    aniElapased = 0;
-                }
-                aniFrame = swipeRight;
-            }
-
-            */
             if (Keyboard.GetState().IsKeyDown(Keys.W) && dinoJumpFlag == false)
             {
                 lock(obj)
@@ -244,7 +155,7 @@ namespace DDDD
             {
                 float index = 3;
                 dinoJumpSpeed.Y += 0.15f * index;
-                //dinoJumpFlag = true;
+                dinoJumpFlag = true;
             }
 
             if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 130) //dino reaches floor
