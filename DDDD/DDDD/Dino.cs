@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 
 namespace DDDD
@@ -17,7 +18,13 @@ namespace DDDD
         public Vector2 dinoJumpSpeed;
         public bool dinoJumpFlag;
 
-        public double dinoAngle = 0f;
+        SoundEffectInstance jumpInstance;
+        SoundEffectInstance swipeInstance;
+
+
+        private static readonly Object obj = new Object();
+
+        public double dinoAngle;
         GraphicsDeviceManager graphics;
         public Rectangle dinoRec;
 
@@ -66,7 +73,7 @@ namespace DDDD
         public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
            
-            attackCooldown = TimeSpan.FromMilliseconds(1000);
+            attackCooldown = TimeSpan.FromMilliseconds(750);
             inputDirection = Vector2.Zero;
             graphics = gdm;
             dino = texture;
@@ -74,9 +81,10 @@ namespace DDDD
             dinoJumpFlag = true;
             dinoTextureData = new Color[dino.Width * dino.Height];
             dino.GetData(dinoTextureData);
-        }
+            dinoAngle = 0f;
+    }
 
-        public void Update(GameTime gameTime, bool onPlatform, bool spinFlag)
+        public void Update(GameTime gameTime, bool onPlatform, bool spinFlag, List<SoundEffect> sounds)
         {
 
             dinoPosition += dinoJumpSpeed;
@@ -85,7 +93,7 @@ namespace DDDD
 
             if (Keyboard.GetState().IsKeyDown(Keys.A) && dinoPosition.X > 0)
             {
-                dinoJumpSpeed.X = -7f; // dino's walking speed
+                dinoJumpSpeed.X = -11f; // dino's walking speed
                 dinoAngle = Math.PI;
                 aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (aniElapased >= aniDelay)
@@ -104,7 +112,7 @@ namespace DDDD
             }
             else if (Keyboard.GetState().IsKeyDown(Keys.D) && dinoPosition.X < 1920 - 250)
             {
-                dinoJumpSpeed.X = 7f; // dino's walking speed
+                dinoJumpSpeed.X = 11f; // dino's walking speed
                 dinoAngle = 0f;
                 aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 if (aniElapased >= aniDelay)
@@ -127,7 +135,7 @@ namespace DDDD
                 dinoJumpSpeed.X = 0f;
             }
 
-            Attack(gameTime);
+            Attack(gameTime, sounds);
 
 
 
@@ -216,33 +224,43 @@ namespace DDDD
             */
             if (Keyboard.GetState().IsKeyDown(Keys.W) && dinoJumpFlag == false)
             {
-                dinoPosition.Y -= 5f;
-                dinoJumpSpeed.Y = -14f; //the height a dino jumps
-                dinoJumpFlag = true;
+                lock(obj)
+                {
+                    dinoJumpFlag = true;
+                    jumpInstance = sounds[2].CreateInstance();
+                    jumpInstance.Play();
+                    dinoPosition.Y -= 5f;
+                    dinoJumpSpeed.Y = -16; //the height a dino jumps
+                }  
             }
 
 
             if (dinoJumpFlag == true) //dino in the air
             {
-                float index = 2;
+                float index = 3;
                 dinoJumpSpeed.Y += 0.15f * index; // falling speed
             }
-            else if (onPlatform == false && dinoPosition.Y < graphics.GraphicsDevice.DisplayMode.Height - 120)
+            else if (onPlatform == false && dinoPosition.Y < graphics.GraphicsDevice.DisplayMode.Height - 130)
             {
-                float index = 2;
+                float index = 3;
                 dinoJumpSpeed.Y += 0.15f * index;
                 //dinoJumpFlag = true;
             }
 
-            if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 120) //dino reaches floor
+            if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 130) //dino reaches floor
             {
                 dinoJumpFlag = false;
+                if (jumpInstance != null)
+                {
+                    jumpInstance.Stop();
+                }
                 dinoJumpSpeed.Y = 0f;
             }
 
             if (onPlatform == true)
             {
                 dinoJumpFlag = false;
+                jumpInstance.Stop();
             }
 
             /*
@@ -260,12 +278,14 @@ namespace DDDD
         }
 
         
-        public void Attack(GameTime gameTime)
+        public void Attack(GameTime gameTime, List<SoundEffect> sounds)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && !hasAttacked)
             {
                 spaceBarPressed = true;
                 hasAttacked = true;
+                swipeInstance = sounds[4].CreateInstance();
+                swipeInstance.Play();
             }
             if (hasAttacked)
             {
@@ -273,9 +293,9 @@ namespace DDDD
             }
             if (attackCooldown <= TimeSpan.Zero)
             {
-               
+                swipeInstance.Stop();
                 hasAttacked = false;
-                attackCooldown = TimeSpan.FromMilliseconds(1000);
+                attackCooldown = TimeSpan.FromMilliseconds(750);
                 hitCount = 0;
             }
         }

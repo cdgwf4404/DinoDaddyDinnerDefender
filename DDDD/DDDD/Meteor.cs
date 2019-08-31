@@ -40,7 +40,7 @@ namespace DDDD
 
              
 
-            meteorSpeed = new Vector2(0f, 3);
+            meteorSpeed = new Vector2(0f, 2);
 
             meteorSpawn = true;
 

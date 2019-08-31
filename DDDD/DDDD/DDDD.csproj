@@ -43,7 +43,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Chomp.cs" />
+    <Compile Include="Cloud.cs" />
     <Compile Include="Dead.cs" />
+    <Compile Include="DeadBaby.cs" />
     <Compile Include="Dino.cs" />
     <Compile Include="Food.cs" />
     <Compile Include="Full.cs" />
@@ -58,7 +61,8 @@
     <Compile Include="Infant.cs" />
     <Compile Include="Swipe.cs" />
     <Compile Include="Text.cs" />
-    <Compile Include="Yum.cs" />
+    <Compile Include="Tree.cs" />
+    <Compile Include="Win.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

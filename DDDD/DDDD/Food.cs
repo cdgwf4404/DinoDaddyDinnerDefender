@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 
 namespace DDDD
@@ -49,7 +50,7 @@ namespace DDDD
 
             foodY = random.Next(2, 5); //randomize the falling speed of meteors between 1 and 3 
 
-            foodSpeed = new Vector2(0f, foodY);
+            foodSpeed = new Vector2(0f, 3);
 
             //foodRec = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, (int)foodPosition.X + food.Width, (int)foodPosition.Y + food.Height);
 
@@ -91,7 +92,7 @@ namespace DDDD
 
             foodRec = new Rectangle((int)foodPosition.X - food.Width / 2, (int)foodPosition.Y - food.Height / 2, food.Width, food.Height);
 
-            if (foodPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height-40) // make the meteors disappear when hit the ground
+            if (foodPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 170) // make the meteors disappear when hit the ground
             {
                 foodGround = true;
             }
