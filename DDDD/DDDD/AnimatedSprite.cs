@@ -52,16 +52,7 @@ namespace DDDD
                 {
                     frameIndex = 0; //loops the animation
                 }
-
             }
-
-            /*
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-                AddAnimation(7);
-            }
-            */
-
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -69,7 +60,7 @@ namespace DDDD
             spriteBatch.Draw(spriteTexture, spritePosition, spriteRectangles[frameIndex], Color.White);
         }
 
-        
+   
         public void AddAnimation(int frames)
         {
              //Width= 250single , 22 frames
@@ -80,23 +71,28 @@ namespace DDDD
                 spriteRectangles[i] = new Rectangle(i * width, 0, width, spriteTexture.Height);
             }
         }
+       
 
             /*
-        public void AddAnimation(int frames)
-        {
+        private Dictionary<string, Rectangle[]> spriteAnimations = new Dictionary<string, Rectangle[]>();      
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Space))
-            {
-//Width= 250single , 22 frames
+        public void AddAnimation(int frames, int yPos, int xStartFrame, string animationName, int frameWidth, int height, Vector2 offset)//offset for aligning
+        {
+            //Width= 250single , 22 frames
             int width = spriteTexture.Width / frames;
-            spriteRectangles = new Rectangle[frames];
+            //spriteRectangles = new Rectangle[frames];//we need an array of rectangles for each animation - we use a dictionary for that 
+            //a dictionary is a collection that contains a key (like "runLeft")
+            Rectangle[] Rectangles = new Rectangle[frames];//the amount of frames 
+            
+
+
             for (int i = 0; i < frames; i++)
             {
                 spriteRectangles[i] = new Rectangle(i * width, 0, width, spriteTexture.Height);
             }
-            }
-            
         }
         */
+
+
     }
 }
