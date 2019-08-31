@@ -455,15 +455,15 @@ namespace DDDD
                                 
                                 if (foods[i].Rectangle.Intersects(dino.Rectangle) && swipe.swiping /*dino.hitCount == 0*/)
                                 {
-                                    //if (dino.hitCount == 0)
-                                    //{
-                                    //soundEffects[1].Play();
-                                    foods[i].foodHitDino = true;
-         
-                                       // dino.hitCount = 1;
+                                    if (foods[i].hitCount == 0 && dino.hitCount == 0)
+                                    {
+                                    
+                                        foods[i].foodHitDino = true;
+                                        dino.hitCount = 1;
+                                        foods[i].hitCount = 1;
                                         
                                         
-                                   // }
+                                    }
                                 }
 
                                 foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, dino);
