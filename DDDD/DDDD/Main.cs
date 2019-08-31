@@ -103,6 +103,8 @@ namespace DDDD
             {
                 foods.RemoveAt(i);
             }
+            meteors = new List<Meteor>();
+            foods = new List<Food>();
 
             foreach (Nest nest in nests)
             {
@@ -110,6 +112,7 @@ namespace DDDD
                 nest.receivedFood = false;
                 nest.babyIsfull = false;
                 nest.babyHealth = 1;
+                nest.grown = false;
             }
             hit.dinoHit = false;
             dead.dying = false;
@@ -124,6 +127,7 @@ namespace DDDD
             for (int i = 0; i < growns.Count; i++)
             {
                 growns[i].spwan = false;
+                growns[i].hp = 1;
             }
 
             dino.dinoPosition.X = 1920 / 2;
@@ -511,7 +515,7 @@ namespace DDDD
                             {
                                 if (nests[i].receivedFood)
                                 {
-                                    if (nests[i].foodFromDaddy < foodMax) //stops receving when reaching Max
+                                    if (nests[i].foodFromDaddy < foodMax && deadBaby.babyDying == false) //stops receving when reaching Max
                                     {
                                         eatInstance = soundEffects[1].CreateInstance();
                                         eatInstance.Volume = .7f;
@@ -596,7 +600,6 @@ namespace DDDD
                                         {
                                             growns[i].spwan = true;
                                             growns[i].grownPosition = nests[i]._position;
-                                            //nests.RemoveAt(i);
                                             nests[i].grown = true;
                                         }
 
@@ -763,24 +766,23 @@ namespace DDDD
                     
                     for (int i = 0; i < nests.Count; i++)
                     {
-                        if (deadBaby.babyDying == true)
+
+                        if (chomps[i].chomping == true && deadBaby.babyDying == false)
                         {
-                            deadBaby.Draw(spriteBatch);
+                            chomps[i].Draw(spriteBatch);
+                        }
+                        else if (nests[i].babyHealth > 0 && nests[i].foodFromDaddy < 6)
+                        {
+                            nests[i].Draw(spriteBatch);
                         }
                         else if (growns[i].spwan == true)
                         {
                             growns[i].Draw(spriteBatch);
                         }
-                        else if (chomps[i].chomping == true)
+                        else if (deadBaby.babyDying == true)
                         {
-                            chomps[i].Draw(spriteBatch);
+                            deadBaby.Draw(spriteBatch);
                         }
-                        else if (nests[i].babyHealth > 0)
-                        {
-                            nests[i].Draw(spriteBatch);
-                        }
-                        
-
                     }
 
                     //deadBaby.Draw(spriteBatch);
