@@ -5,58 +5,111 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 
 namespace DDDD
 {
     public class Food
     {
-        Main main;
+        //Main main;
 
         public Texture2D food;
         public Vector2 foodPosition;
         public Vector2 foodSpeed;
-        public bool foodSpawn;
         public int foodY;
+        public bool foodHit;
+        public bool foodOutside;
+        public bool foodGround;
         Random random = new Random();
 
-        public Rectangle foodRec;
+        public Color[] foodTextureData;
 
-        public Food(Texture2D texture, Vector2 vector)
+        public Rectangle foodRec;
+        GraphicsDeviceManager graphics;
+
+        public bool foodHitDino;
+
+
+        public Rectangle Rectangle
         {
+            get
+            {
+
+                Rectangle rectangle = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, food.Width, food.Height);
+                return rectangle;
+            }
+        }
+
+        public Food(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
+        {
+            foodHitDino = false;
+            graphics = gdm;
             food = texture;
             foodPosition = vector;
 
             foodY = random.Next(2, 5); //randomize the falling speed of meteors between 1 and 3 
 
-            foodSpeed = new Vector2(0f, foodY);
+            foodSpeed = new Vector2(0f, 3);
 
-            foodRec = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, (int)foodPosition.X + food.Width, (int)foodPosition.Y + food.Height);
+            //foodRec = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, (int)foodPosition.X + food.Width, (int)foodPosition.Y + food.Height);
 
-            foodSpawn = true;
+            foodHit = false;
+
+            foodOutside = false;
+
+            foodGround = false;
+
+            foodTextureData = new Color[food.Width * food.Height];
+            food.GetData(foodTextureData);
 
         }
 
-        public void Update(GraphicsDevice graphicsDevice)
+        public void Update(GraphicsDevice graphicsDevice, GameTime gameTime, double dinoAngle, /*bool foodHitDino,*/ Dino dino)
         {
-            foodPosition += foodSpeed;
+            //foodRec = new Rectangle((int)foodPosition.X - food.Width/2, (int)foodPosition.Y - food.Height/2, food.Width, food.Height);
+            //if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            //{
+            if (foodHitDino == true /*&& spinFlag*//*&& foodHit == false*/)
+                {
+                    if (dinoAngle == 0f)
+                    {
+                        foodSpeed.Y = 0;
+                        foodSpeed.X = 15;
+                        foodHit = true;
+                    }
+                    else if (dinoAngle == Math.PI)
+                    {
+                        foodSpeed.Y = 0;
+                        foodSpeed.X = -15;
+                        foodHit = true;
+                    }
+                }
+            //}
 
-            if (foodPosition.Y > 500) // make the meteors disappear when hit the ground
+            foodPosition += foodSpeed;
+           
+
+            foodRec = new Rectangle((int)foodPosition.X - food.Width / 2, (int)foodPosition.Y - food.Height / 2, food.Width, food.Height);
+
+            if (foodPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 170) // make the meteors disappear when hit the ground
             {
-                foodSpawn = false;
+                foodGround = true;
             }
-            /*
-            if (foodRec.Intersects(main.dino.dinoRec))
+            else if (foodPosition.X >= graphics.GraphicsDevice.DisplayMode.Width && foodHit == true)
             {
-                foodSpawn = false;
+                foodOutside = true;
             }
-            */
-            //else if() TODO: get dinoRec from Main.cs
+            else if (foodPosition.X <= 0 && foodHit == true)
+            {
+                foodOutside = true;
+            }
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(food, foodPosition, null, Color.White, 0f, Vector2.Zero, 0.03f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(food, foodPosition, null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
     }
 }

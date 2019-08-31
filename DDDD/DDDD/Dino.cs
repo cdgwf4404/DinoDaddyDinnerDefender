@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 
 namespace DDDD
@@ -17,68 +18,301 @@ namespace DDDD
         public Vector2 dinoJumpSpeed;
         public bool dinoJumpFlag;
 
-        public double dinoAngle = 0;
+        SoundEffectInstance jumpInstance;
+        SoundEffectInstance swipeInstance;
 
+        private static readonly Object obj = new Object();
+
+        public double dinoAngle;
+        GraphicsDeviceManager graphics;
         public Rectangle dinoRec;
 
-        public Dino(Texture2D texture, Vector2 vector)
+        public Color[] dinoTextureData;
+
+        public float aniElapased;
+        public float aniDelay = 150f; //speed of animation
+        public float swipeDelay = 100f;
+
+        public int aniFrame = 0;
+        public int aniFrameRight = 0;
+        public int aniFrameLeft = 4;
+
+        public int swipeRight = 12;
+        public int swipeLeft = 17;
+
+        public bool coolDownFlag = false;
+
+        public bool spaceBarPressed = false;
+        public int angle = 0;
+
+        //public Rectangle aniStart = new Rectangle(1920 / 2 - 250, 1080 - 147, 250, 147);
+        public Rectangle aniStart;
+
+
+        public bool hasAttacked = false;
+        TimeSpan attackCooldown;
+        public int hitCount = 0;
+        public Vector2 inputDirection;
+
+
+        public Rectangle Rectangle
         {
-            dino = texture;
-            dinoPosition = vector;
-            dinoCenter = new Vector2(dino.Width / 2, dino.Height); //(1000 / 2, 1000)
-            dinoJumpFlag = true;
-            dinoRec = new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y, (int)dinoPosition.X + dino.Width, (int)dinoPosition.Y + dino.Height);
+            get
+            {
+
+                Rectangle rectangle = new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y - 147, dino.Width / 22, dino.Height);
+                //Console.WriteLine("nestrectangle height " + rectangle.Height + "width " + rectangle.Width);
+                return rectangle;
+            }
         }
 
-        public void Update(GameTime gameTime)
+        public Dino(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
-            //dino logic
+           
+            attackCooldown = TimeSpan.FromMilliseconds(750);
+            inputDirection = Vector2.Zero;
+            graphics = gdm;
+            dino = texture;
+            dinoPosition = vector;
+            dinoJumpFlag = true;
+            dinoTextureData = new Color[dino.Width * dino.Height];
+            dino.GetData(dinoTextureData);
+            dinoAngle = 0f;
+    }
+
+        public void Update(GameTime gameTime, bool onPlatform, bool spinFlag, List<SoundEffect> sounds)
+        {
+
             dinoPosition += dinoJumpSpeed;
 
-            if (Keyboard.GetState().IsKeyDown(Keys.A))
+            //dinoRec = new Rectangle((int)dinoPosition.X /*+ 250 + (dino.Width/2)*/, (int)dinoPosition.Y - 147 - (dino.Height / 2), dino.Width, dino.Height);
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A) && dinoPosition.X > 0)
             {
-                dinoJumpSpeed.X = -3f;
+                dinoJumpSpeed.X = -11f; // dino's walking speed
                 dinoAngle = Math.PI;
+                aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (aniElapased >= aniDelay)
+                {
+                    if (aniFrameLeft >= 7)
+                    {
+                        aniFrameLeft = 4;
+                    }
+                    else
+                    {
+                        aniFrameLeft++;
+                    }
+                    aniElapased = 0;
+                }
+                aniFrame = aniFrameLeft;
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D))
+            else if (Keyboard.GetState().IsKeyDown(Keys.D) && dinoPosition.X < 1920 - 250)
             {
-                dinoJumpSpeed.X = 3f;
+                dinoJumpSpeed.X = 11f; // dino's walking speed
                 dinoAngle = 0f;
+                aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+                if (aniElapased >= aniDelay)
+                {
+                    if (aniFrameRight >= 3)
+                    {
+                        aniFrameRight = 0;
+                    }
+                    else
+                    {
+                        aniFrameRight++;
+                    }
+                    aniElapased = 0;
+                }
+                aniFrame = aniFrameRight;
             }
+
             else
             {
                 dinoJumpSpeed.X = 0f;
             }
 
+            Attack(gameTime, sounds);
+
             if (Keyboard.GetState().IsKeyDown(Keys.W) && dinoJumpFlag == false)
             {
-                dinoPosition.Y -= 5f;
-                dinoJumpSpeed.Y = -7f; //the height a dino jumps
-                dinoJumpFlag = true;
+                lock(obj)
+                {
+                    dinoJumpFlag = true;
+                    jumpInstance = sounds[2].CreateInstance();
+                    jumpInstance.Play();
+                    dinoPosition.Y -= 5f;
+                    dinoJumpSpeed.Y = -16; //the height a dino jumps
+                }  
             }
 
 
             if (dinoJumpFlag == true) //dino in the air
             {
-                dinoJumpSpeed.Y += 0.15f; // falling speed
+                float index = 3;
+                dinoJumpSpeed.Y += 0.15f * index; // falling speed
+            }
+            else if (onPlatform == false && dinoPosition.Y < graphics.GraphicsDevice.DisplayMode.Height - 130)
+            {
+                float index = 3;
+                dinoJumpSpeed.Y += 0.15f * index;
+                dinoJumpFlag = true;
             }
 
-            if (dinoPosition.Y >= 480) //dino reaches floor
+            if (dinoPosition.Y >= graphics.GraphicsDevice.DisplayMode.Height - 130) //dino reaches floor
             {
                 dinoJumpFlag = false;
+                if (jumpInstance != null)
+                {
+                    jumpInstance.Stop();
+                }
+                dinoJumpSpeed.Y = 0f;
             }
 
+            if (onPlatform == true)
+            {
+                dinoJumpFlag = false;
+                jumpInstance.Stop();
+            }
+
+            /*
             if (dinoJumpFlag == false) //dino on the floor
             {
                 dinoJumpSpeed.Y = 0f;
             }
+            */
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(dino, dinoPosition, null, Color.White, 0f, dinoCenter, 0.1f, SpriteEffects.None, 0f);
+            spriteBatch.Draw(dino, new Rectangle((int)dinoPosition.X, (int)dinoPosition.Y - 147, 250, 147), new Rectangle(250 * aniFrame, 0, 250, 147), Color.White);
         }
 
+        
+        public void Attack(GameTime gameTime, List<SoundEffect> sounds)
+        {
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) && !hasAttacked)
+            {
+                spaceBarPressed = true;
+                hasAttacked = true;
+                swipeInstance = sounds[4].CreateInstance();
+                swipeInstance.Play();
+            }
+            if (hasAttacked)
+            {
+                attackCooldown -= gameTime.ElapsedGameTime;
+            }
+            if (attackCooldown <= TimeSpan.Zero)
+            {
+                swipeInstance.Stop();
+                hasAttacked = false;
+                attackCooldown = TimeSpan.FromMilliseconds(750);
+                hitCount = 0;
+            }
+        }
+        
+
+
+        public bool spaceBarDown(GameTime gameTime, bool spinFlag)
+        {
+            bool spaceDown = false;
+            if (Keyboard.GetState().IsKeyDown(Keys.Space) /*&& spinFlag == false && !coolDownFlag*/)
+            {
+                spaceDown = true;
+                //spinSpan -= gameTime.ElapsedGameTime;
+                //coolDownSpan -= gameTime.ElapsedGameTime;
+                //spinFlag = true;
+            }
+            return spaceDown;
+        }
+
+        public void swipeAnimationLeft()
+        {
+            if (aniElapased >= swipeDelay)
+            {
+                if (swipeLeft >= 21)
+                {
+                    swipeLeft = 17;
+
+                }
+                else
+                {
+                    swipeLeft++;
+                }
+                aniElapased = 0;
+            }
+            aniFrame = swipeLeft;
+        }
+
+        public void swipeAnimationRight()
+        {
+            if (aniElapased >= swipeDelay)
+            {
+                if (swipeRight >= 16)
+                {
+                    swipeRight = 12;
+                }
+                else
+                {
+                    swipeRight++;
+                }
+                aniElapased = 0;
+            }
+            aniFrame = swipeRight;
+        }
+
+        /*public void coolDown()
+        {
+            if (coolDownSpan > TimeSpan.Zero)
+            {
+                coolDownFlag = true;
+            }
+            else
+            {
+                coolDownSpan = TimeSpan.FromMilliseconds(1300);
+            }
+        }
+        */
+        public void spinFrames(int angle, bool spinFlag)
+        {
+            if (angle == 2)
+            {
+                swipeAnimationLeft();
+            }
+            else
+            {
+                swipeAnimationRight();
+            }
+            /*
+            if (spinSpan >= TimeSpan.Zero)
+            {
+               // spinFlag = true;
+            }
+            else
+            {
+                 spinFlag = false;
+                spinSpan = TimeSpan.FromMilliseconds(1000);
+            }
+            */
+        }
+
+        public int checkAngle()
+        {
+            int angle = 0;
+            if (dinoAngle == 0f)
+            {
+                angle = 1;
+            }
+            else
+            {
+                angle = 2;
+            }
+            return angle;
+        }
+
+
     }
-   
 }
+
+
+
