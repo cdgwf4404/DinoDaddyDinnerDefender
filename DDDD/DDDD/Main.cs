@@ -149,6 +149,7 @@ namespace DDDD
         protected override void LoadContent()
         {
             gameplaySong = Content.Load<Song>("DDDD_BgMusic");
+            failSong = Content.Load<Song>("JP_Harmonica");
             MediaPlayer.Play(gameplaySong);
             MediaPlayer.IsRepeating = true;
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -337,6 +338,8 @@ namespace DDDD
 
                             if (dead.dying == false && dinoHealth <= 0)
                             {
+                                MediaPlayer.Play(failSong);
+                                MediaPlayer.IsRepeating = false;
                                 reload();
                                 currentGameState = GameState.Lose;
                             }
@@ -364,6 +367,8 @@ namespace DDDD
 
                                     if(nests[j].babyHealth <= 0)
                                     {
+                                        MediaPlayer.Play(failSong);
+                                        MediaPlayer.IsRepeating = false;
                                         failText = "One of Your Babies Died";
                                         reload();
                                         currentGameState = GameState.Lose;
@@ -467,6 +472,8 @@ namespace DDDD
                     case GameState.Lose:
                         if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                         {
+                            MediaPlayer.Play(gameplaySong);
+                            MediaPlayer.IsRepeating = true;
                             currentGameState = GameState.Playing;
                         }
                         break;

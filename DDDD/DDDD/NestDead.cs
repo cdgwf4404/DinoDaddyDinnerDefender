@@ -8,11 +8,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace DDDD
 {
-    public class Dead
+    public class NestDead
     {
         private Texture2D dead;
         public Vector2 deadPosition;
-        public Vector2 fallingSpeed;
+        //public Vector2 fallingSpeed;
 
         GraphicsDeviceManager graphics;
 
@@ -24,11 +24,10 @@ namespace DDDD
         public float aniDelay = 80f; //speed of animation
 
 
-        public Dead(Texture2D texture, Vector2 vector2, GraphicsDeviceManager gdm)
+        public NestDead(Texture2D texture, Vector2 vector2, GraphicsDeviceManager gdm)
         {
             dead = texture;
             deadPosition = vector2;
-
             dying = false;
 
             aniFrame = 0;
@@ -46,6 +45,7 @@ namespace DDDD
             {
                 deadPosition = dinoPosition;
             }
+            /*
             else
             {
                 if (deadPosition.Y < graphics.GraphicsDevice.DisplayMode.Height - 120)
@@ -58,12 +58,13 @@ namespace DDDD
                     fallingSpeed.Y = 0f;
                 }
             }
+            */
 
-            deadPosition += fallingSpeed;
+            //deadPosition += fallingSpeed;
 
             if (aniElapased >= aniDelay)
             {
-                if (aniFrame >= 17)
+                if (aniFrame >= 20)
                 {
                     aniFrame = 0;
                     dying = false;

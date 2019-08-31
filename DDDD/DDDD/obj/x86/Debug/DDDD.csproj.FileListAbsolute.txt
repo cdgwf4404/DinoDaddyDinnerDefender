@@ -494,7 +494,6 @@ C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\
 C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
 C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DDDD_BgMusic.wma
 C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DDDD_BgMusic.xnb
-C:\Users\colin\source\repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.csprojResolveAssemblyReference.cache
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Apples.xnb
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\BabyDino.xnb
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Carrots.xnb
@@ -567,3 +566,18 @@ D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Meteor
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\TailSwipe.xnb
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\BabyGrow.xnb
 D:\GitHub\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Explosion.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Apple_Large.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\BabyGrow.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DD_HitByMeteor.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Explosion.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\FoodHit.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Grapes_Large.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\JumpSFX.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\MeteorExplode.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\Orange_Large.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\TailSwipe.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.csprojAssemblyReference.cache
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.csproj.CopyComplete
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\baby_left_death.xnb
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\JP_Harmonica.wma
+C:\Users\colin\Source\Repos\cdgwf4404\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\JP_Harmonica.xnb

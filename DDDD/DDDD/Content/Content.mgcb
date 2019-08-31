@@ -49,6 +49,18 @@
 /processorParam:TextureFormat=Color
 /build:baby.png
 
+#begin baby_left_death.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:baby_left_death.png
+
 #begin BabyDino.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -324,6 +336,12 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:infant.png
+
+#begin JP_Harmonica.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:JP_Harmonica.mp3
 
 #begin JumpSFX.wav
 /importer:WavImporter

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Meteor.png</SourceFile>
-  <SourceTime>2019-08-28T11:56:04.5987605-06:00</SourceTime>
-  <DestFile>D:/GitHub/DinoDaddyDinnerDefender/DDDD/DDDD/Content/bin/Windows/Meteor.xnb</DestFile>
-  <DestTime>2019-08-29T19:10:27.8643948-06:00</DestTime>
+  <SourceFile>C:/Users/colin/source/repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/Meteor.png</SourceFile>
+  <SourceTime>2019-08-30T12:01:34.2089244-06:00</SourceTime>
+  <DestFile>C:/Users/colin/source/repos/cdgwf4404/DinoDaddyDinnerDefender/DDDD/DDDD/Content/bin/Windows/Meteor.xnb</DestFile>
+  <DestTime>2019-08-30T12:41:20.69734-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T09:35:54-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

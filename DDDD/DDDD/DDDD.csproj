@@ -51,6 +51,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="Meteor.cs" />
     <Compile Include="Nest.cs" />
+    <Compile Include="NestDead.cs" />
     <Compile Include="Piece.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Program.cs" />
