@@ -22,6 +22,7 @@ namespace DDDD
         public Swipe swipe;
         public Tree tree;
         public DeadBaby deadBaby;
+        
         //public Cloud cloud;
 
         List<Text> texts = new List<Text>();
@@ -35,6 +36,7 @@ namespace DDDD
         List<Win> wins = new List<Win>();
         List<Chomp> chomps = new List<Chomp>();
         List<Grown> growns = new List<Grown>();
+        List<Sprite> menus = new List<Sprite>();
 
         SoundEffectInstance eatInstance;
 
@@ -59,6 +61,12 @@ namespace DDDD
         public Texture2D fullTexture2;
 
         public Texture2D infantTexture;
+
+        public Texture2D menuTexture;
+        public Texture2D menuTextureFull;
+        public Texture2D menuTexture1deaths;
+        public Texture2D menuTexture2deaths;
+        public Texture2D menuTexture3deaths;
 
         public float meteorAmount = 0;
         public float foodAmount = 0;
@@ -174,6 +182,7 @@ namespace DDDD
             spriteBatch = new SpriteBatch(GraphicsDevice);
             volcano = Content.Load<Texture2D>("sky");
             tree = new Tree(Content.Load<Texture2D>("tree"));
+            
 
             clouds.Add(new Cloud(Content.Load<Texture2D>("cloud"), new Rectangle(0, 0, 4000, 1080)));
             clouds.Add(new Cloud(Content.Load<Texture2D>("cloud"), new Rectangle(4000, 0, 4000, 1080)));
@@ -210,7 +219,7 @@ namespace DDDD
             growns.Add(new Grown(Content.Load<Texture2D>("winBaby"), graphics));
             growns.Add(new Grown(Content.Load<Texture2D>("winBaby"), graphics));
 
-            nest1Texture = Content.Load<Texture2D>("baby");
+            nest1Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationA");
             nests.Add(new Nest(nest1Texture));
             nests[0]._position = new Vector2(0, 1080 / 2 + 35);
 
@@ -221,6 +230,23 @@ namespace DDDD
             nest3Texture = Content.Load<Texture2D>("baby");
             nests.Add(new Nest(nest3Texture));
             nests[2]._position = new Vector2(888, 1080 / 2 + 262);
+            
+            menuTextureFull = Content.Load<Texture2D>("DinoDaddyLifeMenuFull");
+            menus.Add(new Sprite(menuTextureFull));
+            menus[0].spritePosition = new Vector2(0, 990);
+
+            menuTexture1deaths = Content.Load<Texture2D>("DinoDaddyLifeMenu1deaths");
+            menus.Add(new Sprite(menuTexture1deaths));
+            menus[1].spritePosition = new Vector2(0, 990);
+
+            menuTexture2deaths = Content.Load<Texture2D>("DinoDaddyLifeMenu2deaths");
+            menus.Add(new Sprite(menuTexture2deaths));
+            menus[2].spritePosition = new Vector2(0, 990);
+
+            menuTexture3deaths = Content.Load<Texture2D>("DinoDaddyLifeMenu3deaths");
+            menus.Add(new Sprite(menuTexture3deaths));
+            menus[3].spritePosition = new Vector2(0, 990);
+
 
             fullTexture = Content.Load<Texture2D>("grown");
 
@@ -265,6 +291,7 @@ namespace DDDD
                         tree.Update(gameTime);
                         clouds[0].Update(gameTime);
                         clouds[1].Update(gameTime);
+                       
                         menuFoodAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
                         for (int i = 0; i < menuFoods.Count; i++)
                         {
@@ -326,6 +353,7 @@ namespace DDDD
 
                             if(dinoHealth == 3)
                             {
+                                menuTexture = Content.Load<Texture2D>("DinoDaddyLifeMenuFull");
                                 dino.dino = Content.Load<Texture2D>("green");
                                 if(dino.dinoAngle == 0f)
                                 {
@@ -338,6 +366,7 @@ namespace DDDD
                             }
                             else if(dinoHealth == 2)
                             {
+                                
                                 dino.dino = Content.Load<Texture2D>("yellow");
                                 if (dino.dinoAngle == 0f)
                                 {
@@ -734,6 +763,8 @@ namespace DDDD
                     clouds[0].Draw(spriteBatch);
                     clouds[1].Draw(spriteBatch);
                     tree.Draw(spriteBatch);
+                  
+
 
                     foreach (Food food in menuFoods)
                     {
@@ -747,6 +778,29 @@ namespace DDDD
                     clouds[0].Draw(spriteBatch);
                     clouds[1].Draw(spriteBatch);
                     tree.Draw(spriteBatch);
+                   
+
+                    switch (dinoHealth)
+                    {
+                        case 3:
+                            menus[0].Draw(spriteBatch);
+                            break;
+
+                        case 2:
+                            menus[1].Draw(spriteBatch);
+                            break;
+
+                        case 1:
+                            menus[2].Draw(spriteBatch);
+                            break;
+                        case 0:
+                            menus[3].Draw(spriteBatch);
+                            break;
+
+                        default:
+                            
+                            break;
+                    }
 
                     foreach (Meteor meteor in meteors)
                     {

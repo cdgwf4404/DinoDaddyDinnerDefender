@@ -782,3 +782,10 @@ C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\obj\x86\Debug\DDDD.pdb
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoFailureCancled.xnb
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\failed2.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoBabyEggLoopAnimationA.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoBabyEggLoopAnimationB.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoBabyEggLoopAnimationC.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoDaddyLifeMenu1deaths.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoDaddyLifeMenu2deaths.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoDaddyLifeMenu3deaths.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoDaddyLifeMenuFull.xnb

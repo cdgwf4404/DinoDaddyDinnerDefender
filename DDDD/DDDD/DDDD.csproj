@@ -53,6 +53,7 @@
     <Compile Include="Grown.cs" />
     <Compile Include="Hit.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Meteor.cs" />
     <Compile Include="Nest.cs" />
     <Compile Include="Piece.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infant.cs" />
+    <Compile Include="Sprite.cs" />
     <Compile Include="Swipe.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="Tree.cs" />

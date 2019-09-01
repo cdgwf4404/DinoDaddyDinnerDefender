@@ -29,6 +29,13 @@
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/deadBaby.png</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino.png</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/dino2.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoBabyEggLoopAnimationA.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoBabyEggLoopAnimationB.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoBabyEggLoopAnimationC.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoDaddyLifeMenu1deaths.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoDaddyLifeMenu2deaths.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoDaddyLifeMenu3deaths.png</File>
+    <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoDaddyLifeMenuFull.png</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoFailureCancled.png</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/DinoSheet.png</File>
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/egg1.jpg</File>
@@ -74,6 +81,13 @@
     <File>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/yummy.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
