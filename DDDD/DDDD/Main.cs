@@ -181,7 +181,8 @@ namespace DDDD
             Rectangle textRec = new Rectangle(0, 0, GraphicsDevice.DisplayMode.Width, GraphicsDevice.DisplayMode.Height);
             texts.Add(new Text(Content.Load<Texture2D>("menu"), new Vector2(0, 0)));
             texts.Add(new Text(Content.Load<Texture2D>("win"), new Vector2(0, 0)));
-            texts.Add(new Text(Content.Load<Texture2D>("fail"), new Vector2(0, 0)));
+            //texts.Add(new Text(Content.Load<Texture2D>("fail"), new Vector2(0, 0)));
+            texts.Add(new Text(Content.Load<Texture2D>("failed2"), new Vector2(0, 0)));
 
             chomps.Add(new Chomp(Content.Load<Texture2D>("chompRight1"), new Vector2(0, 0)));
             chomps.Add(new Chomp(Content.Load<Texture2D>("chompRight1"), new Vector2(0, 0)));
