@@ -51,7 +51,7 @@ namespace DDDD
 
             foodY = random.Next(2, 5); //randomize the falling speed of meteors between 1 and 3 
 
-            foodSpeed = new Vector2(0f, 3);
+            foodSpeed = new Vector2(0f, 1.8f);
 
             //foodRec = new Rectangle((int)foodPosition.X, (int)foodPosition.Y, (int)foodPosition.X + food.Width, (int)foodPosition.Y + food.Height);
 

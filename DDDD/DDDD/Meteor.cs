@@ -37,7 +37,7 @@ namespace DDDD
             meteor = texture;
             meteorPosition = vector;
 
-            meteorSpeed = new Vector2(0f, 2);
+            meteorSpeed = new Vector2(0f, 1.3f);
             meteorSpawn = true;
         }
 
