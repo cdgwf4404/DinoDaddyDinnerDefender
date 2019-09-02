@@ -31,8 +31,8 @@ namespace DDDD
         {
             get
             {
-                Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);//change width
-                //Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width / 5, _texture.Height);
+                //Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);//change width
+                Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width / 5, _texture.Height);
                 return rectangle;
             }
         }

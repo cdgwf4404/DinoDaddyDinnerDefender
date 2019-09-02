@@ -111,27 +111,27 @@ namespace DDDD
             //meteors = new List<Meteor>();
             foods = new List<Food>();
 
-            
+            /*
             for (int i = 0; i < nests.Count; i++)
             {
                 if (nests[i].receivedFood) {
                 nests.RemoveAt(i);
                 }
             }
-            
+            */
             nests = new List<SpriteAnimatedNest>();
 
             nest1Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationA");
             nests.Add(new SpriteAnimatedNest(nest1Texture));
-            nests[0]._position = new Vector2(0, 1080 / 2 + 22);
+            nests[0]._position = new Vector2(0, 1080 / 2 + 42);
 
             nest2Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationB");
             nests.Add(new SpriteAnimatedNest(nest2Texture));
-            nests[1]._position = new Vector2(1775, 1080 / 2 + 22);
+            nests[1]._position = new Vector2(1775, 1080 / 2 + 42);
 
             nest3Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationC");
             nests.Add(new SpriteAnimatedNest(nest3Texture));
-            nests[2]._position = new Vector2(888, 1080 / 2 + 252);
+            nests[2]._position = new Vector2(888, 1080 / 2 + 272);
 
             foreach (SpriteAnimatedNest nest in nests)
             {
@@ -238,18 +238,17 @@ namespace DDDD
             growns.Add(new Grown(Content.Load<Texture2D>("winBaby"), graphics));
             growns.Add(new Grown(Content.Load<Texture2D>("winBaby"), graphics));
 
-
             nest1Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationA");
             nests.Add(new SpriteAnimatedNest(nest1Texture));
-            nests[0]._position = new Vector2(0, 1080 / 2 + 22);
+            nests[0]._position = new Vector2(0, 1080 / 2 + 42);
 
             nest2Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationB");
             nests.Add(new SpriteAnimatedNest(nest2Texture));
-            nests[1]._position = new Vector2(1775, 1080 / 2 + 22);
+            nests[1]._position = new Vector2(1775, 1080 / 2 + 42);
 
             nest3Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationC");
             nests.Add(new SpriteAnimatedNest(nest3Texture));
-            nests[2]._position = new Vector2(888, 1080 / 2 + 252);
+            nests[2]._position = new Vector2(888, 1080 / 2 + 272);
 
             menuTextureFull = Content.Load<Texture2D>("DinoDaddyLifeMenuFull");
             menus.Add(new Sprite(menuTextureFull));
