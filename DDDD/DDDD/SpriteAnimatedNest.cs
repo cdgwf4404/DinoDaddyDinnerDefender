@@ -32,7 +32,7 @@ namespace DDDD
             get
             {
                 //Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);//change width
-                Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width / 5, _texture.Height);
+                Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width / 10, _texture.Height);
                 return rectangle;
             }
         }
@@ -42,7 +42,6 @@ namespace DDDD
             _texture = texture;
             foodFromDaddy = 0;
             grown = false;
-
         }
 
         public SpriteAnimatedNest(Texture2D texture, Vector2 position)
@@ -52,7 +51,6 @@ namespace DDDD
 
             aniFrame = 0;
             frame = 0;
-
         }
 
 

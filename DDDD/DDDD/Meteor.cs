@@ -25,7 +25,6 @@ namespace DDDD
         {
             get
             {
-
                 Rectangle rectangle = new Rectangle((int)meteorPosition.X, (int)meteorPosition.Y, meteor.Width, meteor.Height);
                 //Console.WriteLine("nestrectangle height " + rectangle.Height + "width " + rectangle.Width);
                 return rectangle;
@@ -38,12 +37,8 @@ namespace DDDD
             meteor = texture;
             meteorPosition = vector;
 
-             
-
             meteorSpeed = new Vector2(0f, 2);
-
             meteorSpawn = true;
-
         }
 
         public void Update(GraphicsDevice graphicsDevice)
@@ -52,7 +47,7 @@ namespace DDDD
 
             //if(meteorPosition.Y > 500) // make the meteors disappear when hit the ground
             //if (meteorPosition.Y > graphics.GraphicsDevice.DisplayMode.Height - 100) // make the meteors disappear when hit the ground
-                if (meteorPosition.Y > graphics.GraphicsDevice.DisplayMode.Height)
+                if (meteorPosition.Y > graphics.GraphicsDevice.DisplayMode.Height -100)
                 {
                 meteorSpawn = false;
             }
