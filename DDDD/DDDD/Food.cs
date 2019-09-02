@@ -17,6 +17,10 @@ namespace DDDD
         public Texture2D food;
         public Vector2 foodPosition;
         public Vector2 foodSpeed;
+        
+        public int minSpeed = 5;
+        public int maxSpeed = 10;
+
         public int foodY;
         public bool foodHit;
         public bool foodOutside;
