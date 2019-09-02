@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-AI/DinoDaddyDinnerDefender-AI/DDDD/DDDD/Content/waiting5.png</SourceFile>
-  <SourceTime>2019-09-02T13:59:09.7881888-06:00</SourceTime>
-  <DestFile>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-AI/DinoDaddyDinnerDefender-AI/DDDD/DDDD/Content/bin/Windows/Content/waiting5.xnb</DestFile>
-  <DestTime>2019-09-02T14:05:20.5050547-06:00</DestTime>
+  <SourceFile>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/waiting5.png</SourceFile>
+  <SourceTime>2019-09-02T15:02:15.4778132-06:00</SourceTime>
+  <DestFile>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/bin/Windows/Content/waiting5.xnb</DestFile>
+  <DestTime>2019-09-02T15:03:32.7905159-06:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T09:35:54-07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

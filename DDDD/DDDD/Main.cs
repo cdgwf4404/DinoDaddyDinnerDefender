@@ -793,14 +793,22 @@ namespace DDDD
 
                     foreach (Meteor meteor in meteors)
                     {
-                        meteor.Draw(spriteBatch);
+                        if (!deadBaby.babyDying)
+                        {
+                            meteor.Draw(spriteBatch);
+                        }
+                        //meteor.Draw(spriteBatch);
                     }
 
                     piece.Draw(spriteBatch);
 
                     foreach (Food food in foods)
                     {
-                        food.Draw(spriteBatch);
+                        if (!deadBaby.babyDying || dinoHealth > 0)
+                        {
+                            food.Draw(spriteBatch);
+                        }
+                        //food.Draw(spriteBatch);
                     }
 
                     foreach (Platform platform in platforms)
@@ -881,6 +889,7 @@ namespace DDDD
         public void randomMeteor() //spawn meteors
         {
             int randomX = 0;
+            
             meteorFreq = 9 - countFullBabies();
             if (meteorAmount > meteorFreq) // Spawn cool down (seconds)
             {
