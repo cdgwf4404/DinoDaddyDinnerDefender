@@ -19,7 +19,7 @@ namespace DDDD
         GraphicsDeviceManager graphics;
 
         public bool grownJumpFlag;
-        public bool spwan;
+        public bool spawn;
 
         public int aniFrame = 0;
 
@@ -46,14 +46,14 @@ namespace DDDD
             grown = texture;
             graphics = gdm;
             grownJumpFlag = true;
-            spwan = false;
+            spawn = false;
             hp = 1;
         }
 
         public void Update(GameTime gameTime, Vector2 dinoPosition, bool onPlatform, Rectangle meteorRec)
         {
             /*
-            if(spwan == true)
+            if(spawn == true)
             {
                 grownPosition = nestPosition;
             }

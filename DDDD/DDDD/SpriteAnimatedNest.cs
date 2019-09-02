@@ -31,9 +31,8 @@ namespace DDDD
         {
             get
             {
-
-                //Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);//change width
-                Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width / 5, _texture.Height);//from nest didn't work
+                Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width, _texture.Height);//change width
+                //Rectangle rectangle = new Rectangle((int)_position.X, (int)_position.Y, _texture.Width / 5, _texture.Height);
                 return rectangle;
             }
         }
@@ -59,7 +58,6 @@ namespace DDDD
 
         public void Update(GameTime gameTime, Vector2 position)
         {
-           
                 aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
                 _position = position;
 
@@ -81,9 +79,9 @@ namespace DDDD
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 147, 159), new Rectangle(147 * aniFrame, 0, 147, 159), Color.White);//animated sprite
-            //spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 147, 147), new Rectangle(147 * foodFromDaddy, 0, 147, 147), Color.White);//from nest not working
-            //spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 147, 159), new Rectangle(147 * aniFrame, 0, 147, 159), Color.White);
+            //spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 147, 159), new Rectangle(147 * aniFrame, 0, 147, 159), Color.White);//animated sprite
+            //spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 147, 147), new Rectangle(147 * foodFromDaddy, 0, 147, 147), Color.White);//not every food is registered - no animation, same meteor issue
+            spriteBatch.Draw(_texture, new Rectangle((int)_position.X, (int)_position.Y, 147, 147), new Rectangle(147 * aniFrame, 0, 147, 147), Color.White);
         }
 
 

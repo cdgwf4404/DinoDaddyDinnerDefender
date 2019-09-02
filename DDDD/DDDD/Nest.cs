@@ -52,7 +52,6 @@ namespace DDDD
 
             aniFrame = 0;
             frame = 0;
-
         }
 
 

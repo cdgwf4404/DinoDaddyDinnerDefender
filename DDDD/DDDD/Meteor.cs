@@ -51,8 +51,9 @@ namespace DDDD
             meteorPosition += meteorSpeed;
 
             //if(meteorPosition.Y > 500) // make the meteors disappear when hit the ground
-            if (meteorPosition.Y > graphics.GraphicsDevice.DisplayMode.Height - 100) // make the meteors disappear when hit the ground
-            {
+            //if (meteorPosition.Y > graphics.GraphicsDevice.DisplayMode.Height - 100) // make the meteors disappear when hit the ground
+                if (meteorPosition.Y > graphics.GraphicsDevice.DisplayMode.Height)
+                {
                 meteorSpawn = false;
             }
         }
