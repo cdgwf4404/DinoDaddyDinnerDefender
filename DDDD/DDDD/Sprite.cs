@@ -12,12 +12,12 @@ namespace DDDD
     {
         private Texture2D spriteTexture;
         public Vector2 spritePosition;
+             
 
         public Rectangle Rectangle
         {
             get
             {
-
                 Rectangle rectangle = new Rectangle((int)spritePosition.X, (int)spritePosition.Y, spriteTexture.Width, spriteTexture.Height);
                 return rectangle;
             }
@@ -33,7 +33,13 @@ namespace DDDD
         {
             spriteTexture = texture;
             spritePosition = position;
+            
 
+        }
+
+        public void Update(GameTime gameTime, Vector2 position)
+        {
+            
         }
 
         public void Draw(SpriteBatch spriteBatch)

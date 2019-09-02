@@ -22,14 +22,15 @@ namespace DDDD
         public Swipe swipe;
         public Tree tree;
         public DeadBaby deadBaby;
-        
+
         //public Cloud cloud;
 
         List<Text> texts = new List<Text>();
         List<Meteor> meteors = new List<Meteor>();
         List<Food> foods = new List<Food>();
         List<Food> menuFoods = new List<Food>();
-        List<Nest> nests = new List<Nest>();
+        //List<Nest> nests = new List<Nest>();
+        List<SpriteAnimatedNest> nests = new List<SpriteAnimatedNest>();
         List<Platform> platforms = new List<Platform>();
         List<SoundEffect> soundEffects = new List<SoundEffect>();
         List<Cloud> clouds = new List<Cloud>();
@@ -37,6 +38,8 @@ namespace DDDD
         List<Chomp> chomps = new List<Chomp>();
         List<Grown> growns = new List<Grown>();
         List<Sprite> menus = new List<Sprite>();
+        // List<SpriteAnimated> eggs = new List<SpriteAnimated>();
+        //List<Nest> eggs = new List<Nest>();
 
         SoundEffectInstance eatInstance;
 
@@ -85,11 +88,9 @@ namespace DDDD
         private SpriteFont Ubuntu32;
 
         public int dinoHealth = 3;
-
         public bool babyHit = false;
 
         public string failText;
-
         public bool exitLoop = false;
 
         public bool spinFlag = false;
@@ -114,13 +115,16 @@ namespace DDDD
             meteors = new List<Meteor>();
             foods = new List<Food>();
 
-            foreach (Nest nest in nests)
+            foreach (SpriteAnimatedNest nest in nests)
+
             {
                 nest.foodFromDaddy = 0;
                 nest.receivedFood = false;
                 nest.babyIsfull = false;
                 nest.babyHealth = 1;
                 nest.grown = false;
+                nest.animated = true;
+                nest.frame = 20;
             }
             hit.dinoHit = false;
             dead.dying = false;
@@ -172,7 +176,7 @@ namespace DDDD
         }
 
 
-  
+
         protected override void LoadContent()
         {
             gameplaySong = Content.Load<Song>("DDDD_BgMusic");
@@ -182,7 +186,7 @@ namespace DDDD
             spriteBatch = new SpriteBatch(GraphicsDevice);
             volcano = Content.Load<Texture2D>("sky");
             tree = new Tree(Content.Load<Texture2D>("tree"));
-            
+
 
             clouds.Add(new Cloud(Content.Load<Texture2D>("cloud"), new Rectangle(0, 0, 4000, 1080)));
             clouds.Add(new Cloud(Content.Load<Texture2D>("cloud"), new Rectangle(4000, 0, 4000, 1080)));
@@ -210,7 +214,7 @@ namespace DDDD
             dino = new Dino(Content.Load<Texture2D>("green"), new Vector2(1920 / 2, 900), graphics);
             Ubuntu32 = Content.Load<SpriteFont>("Ubuntu32");
 
-            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1920 / 2 + 715, 1080/2 + 180), graphics));
+            platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1920 / 2 + 715, 1080 / 2 + 180), graphics));
             platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(0, 1080 / 2 + 180), graphics));
             platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(500, 1080 / 2 + 1), graphics));
             platforms.Add(new Platform(Content.Load<Texture2D>("platform"), new Vector2(1175, 1080 / 2 + 1), graphics));
@@ -219,18 +223,22 @@ namespace DDDD
             growns.Add(new Grown(Content.Load<Texture2D>("winBaby"), graphics));
             growns.Add(new Grown(Content.Load<Texture2D>("winBaby"), graphics));
 
+
             nest1Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationA");
-            nests.Add(new Nest(nest1Texture));
-            nests[0]._position = new Vector2(0, 1080 / 2 + 35);
+            //nests.Add(new Nest(nest1Texture));
+            nests.Add(new SpriteAnimatedNest(nest1Texture));
+            nests[0]._position = new Vector2(0, 1080 / 2 + 22);
 
-            nest2Texture = Content.Load<Texture2D>("baby");
-            nests.Add(new Nest(nest1Texture));
-            nests[1]._position = new Vector2(1775, 1080 / 2 + 35);
+            nest2Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationB");
+            //nests.Add(new Nest(nest1Texture));
+            nests.Add(new SpriteAnimatedNest(nest1Texture));
+            nests[1]._position = new Vector2(1775, 1080 / 2 + 22);
 
-            nest3Texture = Content.Load<Texture2D>("baby");
-            nests.Add(new Nest(nest3Texture));
-            nests[2]._position = new Vector2(888, 1080 / 2 + 262);
-            
+            nest3Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationC");
+            //nests.Add(new Nest(nest3Texture));
+            nests.Add(new SpriteAnimatedNest(nest3Texture));
+            nests[2]._position = new Vector2(888, 1080 / 2 + 252);
+
             menuTextureFull = Content.Load<Texture2D>("DinoDaddyLifeMenuFull");
             menus.Add(new Sprite(menuTextureFull));
             menus[0].spritePosition = new Vector2(0, 990);
@@ -279,7 +287,7 @@ namespace DDDD
                 switch (currentGameState)
                 {
                     case GameState.Menu:
-                        
+
                         if (clouds[0].cloudRec.X + clouds[0].cloud.Width <= 0)
                         {
                             clouds[0].cloudRec.X = clouds[1].cloudRec.X + clouds[1].cloud.Width;
@@ -291,7 +299,7 @@ namespace DDDD
                         tree.Update(gameTime);
                         clouds[0].Update(gameTime);
                         clouds[1].Update(gameTime);
-                       
+
                         menuFoodAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
                         for (int i = 0; i < menuFoods.Count; i++)
                         {
@@ -306,6 +314,9 @@ namespace DDDD
                         break;
 
                     case GameState.Playing:
+
+                        animateNests();
+
                         if (clouds[0].cloudRec.X + clouds[0].cloud.Width <= 0)
                         {
                             clouds[0].cloudRec.X = clouds[1].cloudRec.X + clouds[1].cloud.Width;
@@ -323,6 +334,7 @@ namespace DDDD
                         }
                         else
                         {
+
                             for (int i = 0; i < platforms.Count; i++)
                             {
 
@@ -339,9 +351,9 @@ namespace DDDD
                                     dino.dinoJumpSpeed.X = 0f;
                                     onPlatform = false;
                                 }
-                                
 
-                                 if (dino.dinoJumpSpeed.Y < 0 && IsTouchingBottom(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed))
+
+                                if (dino.dinoJumpSpeed.Y < 0 && IsTouchingBottom(dino.Rectangle, platforms[i].Rectangle, dino.dinoJumpSpeed))
                                 {
                                     dino.dinoJumpSpeed.Y = 0f;
                                     onPlatform = false;
@@ -351,22 +363,22 @@ namespace DDDD
 
                             }
 
-                            if(dinoHealth == 3)
+                            if (dinoHealth == 3)
                             {
                                 menuTexture = Content.Load<Texture2D>("DinoDaddyLifeMenuFull");
                                 dino.dino = Content.Load<Texture2D>("green");
-                                if(dino.dinoAngle == 0f)
+                                if (dino.dinoAngle == 0f)
                                 {
                                     swipe.swipe = Content.Load<Texture2D>("greenRight");
                                 }
-                                else if(dino.dinoAngle == Math.PI)
+                                else if (dino.dinoAngle == Math.PI)
                                 {
                                     swipe.swipe = Content.Load<Texture2D>("greenLeft");
                                 }
                             }
-                            else if(dinoHealth == 2)
+                            else if (dinoHealth == 2)
                             {
-                                
+
                                 dino.dino = Content.Load<Texture2D>("yellow");
                                 if (dino.dinoAngle == 0f)
                                 {
@@ -399,21 +411,21 @@ namespace DDDD
                             {
                                 dino.Update(gameTime, onPlatform, spinFlag, soundEffects);
                             }
-                            else if(hit.dinoHit == true) // display hit animation
+                            else if (hit.dinoHit == true) // display hit animation
                             {
                                 hit.Update(gameTime, dino.dinoAngle);
                             }
-                            else if(dead.dying == true) // display dead animation
+                            else if (dead.dying == true) // display dead animation
                             {
                                 dead.Update(gameTime, dino.dinoPosition);
                             }
 
-                            if(dino.spaceBarPressed && swipe.swiping == false)
+                            if (dino.spaceBarPressed && swipe.swiping == false)
                             {
                                 swipe.swiping = true;
                             }
 
-                            if(swipe.swiping == true)
+                            if (swipe.swiping == true)
                             {
                                 swipe.Update(gameTime, dino);
                             }
@@ -445,9 +457,10 @@ namespace DDDD
                                         nests[j].babyHealth -= 1;
                                         meteorIndex = i;
                                         babyHit = true;
+
                                     }
 
-                                    if(nests[j].babyHealth <= 0)
+                                    if (nests[j].babyHealth <= 0)
                                     {
                                         deadBaby.babyDying = true;
                                         deadBaby.Update(gameTime, nests[j]._position);
@@ -462,37 +475,36 @@ namespace DDDD
                                         }
                                     }
                                 }
-                                if(exitLoop == true)
+                                if (exitLoop == true)
                                 {
                                     break;
                                 }
                             }
                             if (babyHit == true)
                             {
-                                if(meteors.Count > 0)
+                                if (meteors.Count > 0)
                                 {
                                     meteors.RemoveAt(meteorIndex);
                                     babyHit = false;
-                                }                     
+                                }
                             }
 
 
 
                             foodAmount += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                            
+
                             for (int i = 0; i < foods.Count; i++)
                             {
-                                
+
                                 if (foods[i].Rectangle.Intersects(dino.Rectangle) && swipe.swiping /*dino.hitCount == 0*/)
                                 {
                                     if (foods[i].hitCount == 0 && dino.hitCount == 0)
                                     {
-                                    
+
                                         foods[i].foodHitDino = true;
                                         dino.hitCount = 1;
                                         foods[i].hitCount = 1;
-                                        
-                                        
+
                                     }
                                 }
 
@@ -515,9 +527,9 @@ namespace DDDD
                                 foods[i].Update(graphics.GraphicsDevice, gameTime, dino.dinoAngle, dino);
                                 foods[i].foodHitDino = false;
                             }*/
-                                
 
-                                                                                  
+
+
                             for (int i = 0; i < meteors.Count; i++)
                             {
                                 if (meteors[i].Rectangle.Intersects(dino.Rectangle) && swipe.swiping/*Keyboard.GetState().IsKeyDown(Keys.Space)*/)
@@ -545,28 +557,35 @@ namespace DDDD
                             {
                                 if (nests[i].receivedFood)
                                 {
+                                    nests[i].animated = false;
+
                                     if (nests[i].foodFromDaddy < foodMax && deadBaby.babyDying == false) //stops receving when reaching Max
                                     {
                                         eatInstance = soundEffects[1].CreateInstance();
                                         eatInstance.Volume = .7f;
                                         eatInstance.Play();
                                         nests[i].receivedFood = false;
-                                        
+
                                         foods.RemoveAt(foodIndex);
-                                        
+
                                         nests[i].foodFromDaddy += 1;
 
                                         if (nests[i].foodFromDaddy == 1)
                                         {
-                                            if(dino.dinoPosition.X > nests[i]._position.X)
+                                            if (dino.dinoPosition.X > nests[i]._position.X)
                                             {
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompRight1");
                                                 chomps[i].frame = 6;
+                                                nests[i]._texture = Content.Load<Texture2D>("DinobabyWaiting1");
+                                                nests[i].frame = 80;
+
                                             }
                                             else
                                             {
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft1");
                                                 chomps[i].frame = 6;
+                                                nests[i]._texture = Content.Load<Texture2D>("DinobabyWaiting1");
+                                                nests[i].frame = 80;
                                             }
                                             chomps[i].chomping = true;
                                         }
@@ -576,11 +595,15 @@ namespace DDDD
                                             {
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompRight2");
                                                 chomps[i].frame = 6;
+                                                nests[i]._texture = Content.Load<Texture2D>("DinobabyWaiting2");
+                                                nests[i].frame = 80;
                                             }
                                             else
                                             {
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft2");
                                                 chomps[i].frame = 6;
+                                                nests[i]._texture = Content.Load<Texture2D>("DinobabyWaiting2");
+                                                nests[i].frame = 80;
                                             }
                                             chomps[i].chomping = true;
                                         }
@@ -590,11 +613,15 @@ namespace DDDD
                                             {
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompRight3");
                                                 chomps[i].frame = 5;
+                                                nests[i]._texture = Content.Load<Texture2D>("DinobabyWaiting3");
+                                                nests[i].frame = 80;
                                             }
                                             else
                                             {
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft3");
                                                 chomps[i].frame = 5;
+                                                nests[i]._texture = Content.Load<Texture2D>("DinobabyWaiting3");
+                                                nests[i].frame = 80;
                                             }
                                             chomps[i].chomping = true;
                                         }
@@ -604,15 +631,19 @@ namespace DDDD
                                             {
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompRight4");
                                                 chomps[i].frame = 6;
+                                                nests[i]._texture = Content.Load<Texture2D>("DinobabyWaiting4");
+                                                nests[i].frame = 80;
                                             }
                                             else
                                             {
                                                 chomps[i].chomp = Content.Load<Texture2D>("chompLeft4");
                                                 chomps[i].frame = 5;
+                                                nests[i]._texture = Content.Load<Texture2D>("DinobabyWaiting4");
+                                                nests[i].frame = 80;
                                             }
                                             chomps[i].chomping = true;
                                         }
-                                        else if(nests[i].foodFromDaddy == 5)
+                                        else if (nests[i].foodFromDaddy == 5)
                                         {
                                             if (dino.dinoPosition.X > nests[i]._position.X)
                                             {
@@ -626,7 +657,7 @@ namespace DDDD
                                             }
                                             chomps[i].chomping = true;
                                         }
-                                        else if(nests[i].foodFromDaddy == 6)
+                                        else if (nests[i].foodFromDaddy == 6)
                                         {
                                             growns[i].spwan = true;
                                             growns[i].grownPosition = nests[i]._position;
@@ -640,15 +671,16 @@ namespace DDDD
 
                             for (int i = 0; i < chomps.Count; i++)
                             {
-                                if(chomps[i].chomping == true)
+                                if (chomps[i].chomping == true)
                                 {
                                     chomps[i].Update(gameTime, nests[i]._position);
+                                    //nests[i].animated = false;//didn't change
                                 }
                             }
 
                             for (int i = 0; i < platforms.Count; i++)
                             {
-                                for(int j = 0; j < growns.Count; j++)
+                                for (int j = 0; j < growns.Count; j++)
                                 {
                                     if (growns[j].grownSpeed.Y > 0 && IsTouchingTop(growns[j].Rectangle, platforms[i].Rectangle, growns[j].grownSpeed) /*&& dino.dinoPosition.Y <= platforms[i].platformPosition.Y*/)
                                     {
@@ -678,12 +710,12 @@ namespace DDDD
                             {
                                 if (growns[i].spwan == true)
                                 {
-                                    for(int j = 0; j < meteors.Count; j++)
+                                    for (int j = 0; j < meteors.Count; j++)
                                     {
                                         growns[i].Update(gameTime, dino.dinoPosition, babyOnPlatform, meteors[j].Rectangle);
                                     }
                                 }
-                                if(growns[i].hp == 0)
+                                if (growns[i].hp == 0)
                                 {
                                     MediaPlayer.Play(failSong);
                                     MediaPlayer.IsRepeating = false;
@@ -698,6 +730,8 @@ namespace DDDD
 
                             babyIsFed();
                             gameWon();
+
+                            updatedNests(gameTime);
 
                             base.Update(gameTime);
                         }
@@ -763,7 +797,7 @@ namespace DDDD
                     clouds[0].Draw(spriteBatch);
                     clouds[1].Draw(spriteBatch);
                     tree.Draw(spriteBatch);
-                  
+
 
 
                     foreach (Food food in menuFoods)
@@ -778,7 +812,15 @@ namespace DDDD
                     clouds[0].Draw(spriteBatch);
                     clouds[1].Draw(spriteBatch);
                     tree.Draw(spriteBatch);
-                   
+
+
+                    for (int i = 0; i < nests.Count; i++)
+                    {
+                        if (nests[i].animated == true)
+                        {
+                            nests[i].Update(gameTime, nests[i]._position);
+                        }
+                    }
 
                     switch (dinoHealth)
                     {
@@ -798,7 +840,7 @@ namespace DDDD
                             break;
 
                         default:
-                            
+
                             break;
                     }
 
@@ -818,7 +860,9 @@ namespace DDDD
                     {
                         platform.Draw(spriteBatch);
                     }
-                    
+
+
+
                     for (int i = 0; i < nests.Count; i++)
                     {
 
@@ -827,12 +871,15 @@ namespace DDDD
                             chomps[i].Draw(spriteBatch);
                         }
                         else if (nests[i].babyHealth > 0 && nests[i].foodFromDaddy < 6)
+                        //else if (nests[i].babyHealth > 0 && nests[i].foodFromDaddy < 6 && nests[i].receivedFood == false)//false received didn't change
+                         //else if (nests[i].receivedFood == false)
                         {
                             nests[i].Draw(spriteBatch);
                         }
                         else if (growns[i].spwan == true)
                         {
                             growns[i].Draw(spriteBatch);
+                           
                         }
                         else if (deadBaby.babyDying == true)
                         {
@@ -846,15 +893,15 @@ namespace DDDD
                     {
                         dino.Draw(spriteBatch);
                     }
-                    else if(hit.dinoHit == true)
+                    else if (hit.dinoHit == true)
                     {
                         hit.Draw(spriteBatch, dino.dinoPosition.X, dino.dinoPosition.Y);
                     }
-                    else if(dead.dying == true)
+                    else if (dead.dying == true)
                     {
                         dead.Draw(spriteBatch);
                     }
-                    else if(swipe.swiping == true)
+                    else if (swipe.swiping == true)
                     {
                         swipe.Draw(spriteBatch, dino.dinoPosition.X, dino.dinoPosition.Y);
                     }
@@ -862,7 +909,7 @@ namespace DDDD
 
                     //babyReceivedFood();
                     setBabyAsFull();
-                    
+
 
 
                     break;
@@ -899,7 +946,7 @@ namespace DDDD
         public void randomMeteor() //spawn meteors
         {
             int randomX = 0;
-            
+
             if (meteorAmount > 6) // Spawn cool down (seconds)
             {
                 meteorAmount = 0;
@@ -1024,7 +1071,8 @@ namespace DDDD
         {
             int totalFull = 0;
 
-            foreach (Nest nest in nests)
+            foreach (SpriteAnimatedNest nest in nests)
+            // foreach (Nest nest in nests)
             {
                 if (nest.babyIsfull)
                     totalFull += 1;
@@ -1080,7 +1128,8 @@ namespace DDDD
         */
         private void setBabyAsFull()
         {
-            foreach (Nest nest in nests)
+            foreach (SpriteAnimatedNest nest in nests)
+            //foreach (Nest nest in nests)
             {
                 if (nest.foodFromDaddy == foodMax)
                 {
@@ -1113,6 +1162,7 @@ namespace DDDD
                     {
                         nests[j].receivedFood = true;
                         foodIndex = i;
+                        //nests[j].animated = false;//didn't change
 
                     }
                 }
@@ -1143,6 +1193,19 @@ namespace DDDD
 
         }
 
+        public void nestUpdates(GameTime gameTime)
+        {
+            for (int i = 0; i < nests.Count; i++)
+            {
+                if (nests[i].animated == true)
+                {
+
+                    nests[i].Update(gameTime, nests[i]._position);
+                }
+
+
+            }
+        }
 
         public bool IsTouchingLeft(Rectangle r1, Rectangle r2, Vector2 r1speed)
         {
@@ -1154,7 +1217,7 @@ namespace DDDD
 
         public bool IsTouchingRight(Rectangle r1, Rectangle r2, Vector2 r1speed)
         {
-            return r1.Left +  r1speed.X < r2.Right &&
+            return r1.Left + r1speed.X < r2.Right &&
                    r1.Right > r2.Right &&
                    r1.Bottom > r2.Top &&
                    r1.Top < r2.Bottom;
@@ -1213,6 +1276,37 @@ namespace DDDD
 
             }
         }
+
+        public void animateNests()
+        {
+            foreach (SpriteAnimatedNest nest in nests)
+            {
+                if (nest.receivedFood == false)
+                {
+                    nest.animated = true;
+                    nest.frame = 20;
+                }
+            }
+
+
+        }
+
+        public void updatedNests(GameTime gameTime)
+        {
+            for (int i = 0; i < nests.Count; i++)
+            {
+
+                if (nests[i].animated == true)
+                {
+                    nests[i].Update(gameTime, nests[i]._position);
+                }
+
+            }
+
+
+
+        }
+
 
 
 

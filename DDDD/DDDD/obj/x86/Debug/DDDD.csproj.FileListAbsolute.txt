@@ -789,3 +789,7 @@ C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoDaddyLifeMenu2deaths.xnb
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoDaddyLifeMenu3deaths.xnb
 C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DinoDaddyLifeMenuFull.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DInobabyWaiting1.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DInobabyWaiting2.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DInobabyWaiting3.xnb
+C:\Users\u1274217\source\repos\DDDDMasterClone\DinoDaddyDinnerDefender\DDDD\DDDD\bin\Windows\x86\Debug\Content\DInobabyWaiting4.xnb

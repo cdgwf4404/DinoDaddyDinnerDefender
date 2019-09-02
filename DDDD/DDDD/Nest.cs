@@ -19,6 +19,12 @@ namespace DDDD
         public int babyHealth = 1;
         public bool grown;
 
+        public bool animated;
+        public int aniFrame;
+        public float aniElapased;
+        public float aniDelay = 80f; //speed of animation
+        public int frame;
+
 
         public Rectangle Rectangle
         {
@@ -36,6 +42,39 @@ namespace DDDD
             _texture = texture;
             foodFromDaddy = 0;
             grown = false;
+        }
+
+        public Nest(Texture2D texture, Vector2 position)
+        {
+            _texture = texture;
+            _position = position;
+            animated = false;
+
+            aniFrame = 0;
+            frame = 0;
+
+        }
+
+
+        public void Update(GameTime gameTime, Vector2 position)
+        {
+            aniElapased += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            _position = position;
+
+            if (aniElapased >= aniDelay)
+            {
+                if (aniFrame >= frame)
+                {
+                    aniFrame = 0;
+                    animated = false;
+                }
+                else
+                {
+                    aniFrame++;
+                }
+                aniElapased = 0;
+            }
+
         }
 
 
