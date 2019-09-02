@@ -13,19 +13,21 @@ namespace DDDD
     {
         public Texture2D platform;
         public Vector2 platformPosition;
-        //public Rectangle box;
+        GraphicsDeviceManager graphics;
 
         public Rectangle Rectangle
         {
             get
             {
-                return new Rectangle((int)platformPosition.X, (int)platformPosition.Y, platform.Width, platform.Height);
+                return new Rectangle((int)platformPosition.X + 100, (int)platformPosition.Y, platform.Width - 200, platform.Height);
             }
         }
 
-        public Platform(Texture2D texture)
+        public Platform(Texture2D texture, Vector2 vector, GraphicsDeviceManager gdm)
         {
             platform = texture;
+            platformPosition = vector;
+            graphics = gdm;
         }
 
         public void Update()
