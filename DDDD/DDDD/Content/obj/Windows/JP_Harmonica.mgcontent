@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-AI/DinoDaddyDinnerDefender-AI/DDDD/DDDD/Content/JP_Harmonica.mp3</SourceFile>
-  <SourceTime>2019-09-01T21:25:38-06:00</SourceTime>
-  <DestFile>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-AI/DinoDaddyDinnerDefender-AI/DDDD/DDDD/Content/bin/Windows/JP_Harmonica.xnb</DestFile>
-  <DestTime>2019-09-02T14:03:20.1823146-06:00</DestTime>
+  <SourceFile>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/JP_Harmonica.mp3</SourceFile>
+  <SourceTime>2019-08-31T18:29:02.6959889-06:00</SourceTime>
+  <DestFile>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/bin/Windows/JP_Harmonica.xnb</DestFile>
+  <DestTime>2019-09-02T20:13:37.0001458-06:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2018-12-08T09:35:54-07:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/jingyi/Desktop/DinoDaddyDinnerDefender-AI/DinoDaddyDinnerDefender-AI/DDDD/DDDD/Content/bin/Windows/JP_Harmonica.wma</string>
+    <string>C:/Users/u1274217/source/repos/DDDDMasterClone/DinoDaddyDinnerDefender/DDDD/DDDD/Content/bin/Windows/JP_Harmonica.wma</string>
   </BuildOutput>
 </PipelineBuildEvent>

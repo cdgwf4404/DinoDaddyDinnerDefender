@@ -935,27 +935,55 @@ namespace DDDD
         {
             int randomX_1 = random.Next(200, 700); ;
             int randomX_2 = random.Next(1100, 1600);
+            int randomX_3 = random.Next(900, 1400);
+            int randomX_4 = random.Next(1200, 1400);
+            int randomX_5 = random.Next(600, 900);
 
             if (foodAmount > 1) // Spawn cool down (seconds)
             {
                 foodAmount = 0;
                 if (foods.Count < 3) // Amount of foods allowed on the screen
                 {
-                    int foodType = random.Next(0, 3);
+                    int foodType = random.Next(0, 5);
                     if (foodType == 0)
                     {
-                        foods.Add(new Food(Content.Load<Texture2D>("Grapes_Large"), new Vector2(randomX_1, -10), graphics));
-                        foods.Add(new Food(Content.Load<Texture2D>("Grapes_Large"), new Vector2(randomX_2, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Grapes_drop1"), new Vector2(randomX_1+60, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Grapes_Large"), new Vector2(randomX_2, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Apple_Large"), new Vector2(randomX_2, -10), graphics));
                     }
                     else if (foodType == 1)
                     {
-                        foods.Add(new Food(Content.Load<Texture2D>("Apple_Large"), new Vector2(randomX_1, -10), graphics));
-                        foods.Add(new Food(Content.Load<Texture2D>("Apple_Large"), new Vector2(randomX_2, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Apple_drop"), new Vector2(randomX_2, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_drop6"), new Vector2(randomX_2+90, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Apple_Large"), new Vector2(randomX_2, -10), graphics));
                     }
                     else if (foodType == 2)
                     {
-                        foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_1, -10), graphics));
-                        foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_2, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_1, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_2, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Grapes_Large"), new Vector2(randomX_2, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Orange_drop6"), new Vector2(randomX_1, -10), graphics));
+                    }
+                    else if (foodType == 3)
+                    {
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_1, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_2, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Grapes_Large"), new Vector2(randomX_2, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Grapes_drop1"), new Vector2(randomX_3, -10), graphics));
+                    }
+                    else if (foodType == 4)
+                    {
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_1, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_2, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Grapes_Large"), new Vector2(randomX_2, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Apple_drop"), new Vector2(randomX_4, -10), graphics));
+                    }
+                    else if (foodType == 5)
+                    {
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_1, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX_2, -10), graphics));
+                        //foods.Add(new Food(Content.Load<Texture2D>("Grapes_Large"), new Vector2(randomX_2, -10), graphics));
+                        foods.Add(new Food(Content.Load<Texture2D>("Orange_drop6"), new Vector2(randomX_5, -10), graphics));
                     }
                 }
             }
@@ -1162,15 +1190,16 @@ namespace DDDD
                     int foodType = random.Next(0, 3);
                     if (foodType == 0)
                     {
-                        menuFoods.Add(new Food(Content.Load<Texture2D>("Grapes_Large"), new Vector2(randomX, -10), graphics));
+                        menuFoods.Add(new Food(Content.Load<Texture2D>("Grapes_drop1"), new Vector2(randomX, -10), graphics));
                     }
                     else if (foodType == 1)
                     {
-                        menuFoods.Add(new Food(Content.Load<Texture2D>("Apple_Large"), new Vector2(randomX, -10), graphics));
+                        menuFoods.Add(new Food(Content.Load<Texture2D>("Apple_drop"), new Vector2(randomX, -10), graphics));
                     }
                     else if (foodType == 2)
                     {
-                        menuFoods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX, -10), graphics));
+                        //menuFoods.Add(new Food(Content.Load<Texture2D>("Orange_Large"), new Vector2(randomX, -10), graphics));
+                        menuFoods.Add(new Food(Content.Load<Texture2D>("Orange_drop6"), new Vector2(randomX, -10), graphics));
                     }
                 }
             }
