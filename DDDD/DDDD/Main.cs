@@ -75,7 +75,7 @@ namespace DDDD
         public bool babyOnPlatform = false;
 
         public int foodMax = 5;
-        public int meteorFreq = 9;
+        public int meteorFreq = 8;
 
         TimeSpan foodTimeout = TimeSpan.FromSeconds(0);
 
@@ -194,6 +194,7 @@ namespace DDDD
         {
             gameplaySong = Content.Load<Song>("DDDD_BgMusic");
             failSong = Content.Load<Song>("JP_Harmonica");
+            MediaPlayer.Volume -= .4f;
             MediaPlayer.Play(gameplaySong);
             MediaPlayer.IsRepeating = true;
             spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -234,14 +235,16 @@ namespace DDDD
             nest1Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationA");
             nests.Add(new SpriteAnimatedNest(nest1Texture, new Vector2(0, 1080 / 2 + 23)));
             nests[0].babyRec.Width = nests[0].Rectangle.Width / 37;
+            nests[0].aniDelay = 180f;
 
-            nest2Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationB");
+            nest2Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationA");
             nests.Add(new SpriteAnimatedNest(nest2Texture, new Vector2(1775, 1080 / 2 + 23)));
             nests[1].babyRec.Width = nests[1].Rectangle.Width / 43;
 
-            nest3Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationC");
+            nest3Texture = Content.Load<Texture2D>("DinoBabyEggLoopAnimationA");
             nests.Add(new SpriteAnimatedNest(nest3Texture, new Vector2(888, 1080 / 2 + 253)));
             nests[2].babyRec.Width = nests[2].Rectangle.Width / 49;
+            nests[2].aniDelay = 100f;
 
             menuTextureFull = Content.Load<Texture2D>("DinoDaddyLifeMenuFull");
             menus.Add(new Sprite(menuTextureFull));
@@ -429,7 +432,7 @@ namespace DDDD
 
                             if (dead.dying == false && dinoHealth <= 0)
                             {
-                                MediaPlayer.Volume -= .8f;
+                                MediaPlayer.Volume -= .4f;
                                 MediaPlayer.Play(failSong);
                                 MediaPlayer.IsRepeating = false;
                                 reload();
@@ -465,7 +468,7 @@ namespace DDDD
                                         deadBaby.Update(gameTime, nests[j]._position);
                                         if (deadBaby.babyDying == false)
                                         {
-                                            MediaPlayer.Volume -= .8f;
+                                            MediaPlayer.Volume -= .4f;
                                             MediaPlayer.Play(failSong);
                                             MediaPlayer.IsRepeating = false;
                                             reload();
@@ -722,7 +725,7 @@ namespace DDDD
                         clouds[1].Update(gameTime);
                         if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                         {
-                            MediaPlayer.Volume += .8f;
+                            MediaPlayer.Volume += .4f;
                             MediaPlayer.Play(gameplaySong);
                             MediaPlayer.IsRepeating = true;
                             currentGameState = GameState.Playing;
@@ -890,7 +893,7 @@ namespace DDDD
         {
             int randomX = 0;
             
-            meteorFreq = 9 - countFullBabies();
+            meteorFreq = 8 - countFullBabies();
             if (meteorAmount > meteorFreq) // Spawn cool down (seconds)
             {
                 meteorAmount = 0;

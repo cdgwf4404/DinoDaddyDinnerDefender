@@ -16,7 +16,7 @@ namespace DDDD
         public bool animated;
         public int aniFrame;
         public float aniElapased;
-        public float aniDelay = 80f; //speed of animation
+        public float aniDelay = 150f; //speed of animation
         public int frame;
 
 
